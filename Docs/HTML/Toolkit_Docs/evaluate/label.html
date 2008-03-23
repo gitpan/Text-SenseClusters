@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>label.pl</title>
+<link rev="made" href="mailto:jluttine@marimba.d.umn.edu" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#usage">USAGE</a></li>
+	<li><a href="#input">INPUT</a></li>
+	<ul>
+
+		<li><a href="#required_arguments_">Required Arguments:</a></li>
+		<li><a href="#optional_arguments_">Optional Arguments:</a></li>
+		<ul>
+
+			<li><a href="#help">-help</a></li>
+			<li><a href="#version">-version</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#output">OUTPUT</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>label.pl</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<p>Labels the discovered clusters with sense tags such that maximum number of 
+contexts are correctly assigned.</p>
+<p>
+</p>
+<hr />
+<h1><a name="usage">USAGE</a></h1>
+<p>label.pl [OPTIONS] PRELABEL</p>
+<p>
+</p>
+<hr />
+<h1><a name="input">INPUT</a></h1>
+<p>
+</p>
+<h2><a name="required_arguments_">Required Arguments:</a></h2>
+<p>PRELABEL</p>
+<p>Should be the output of cluto2label.pl.</p>
+<p>Sample CLUTO2LABEL format</p>
+<pre>
+ 2
+ //     cord  phone   text   div
+ C0:     4       3       0       0
+ C1:     2       2       2       2
+ C2:     1       3       3       2</pre>
+<p>where the 1st line shows the number of unclustereted instances = 2</p>
+<p>2nd line shows a space separated list of sense classes starting with // mark.</p>
+<p>Each line thereafter shows the sense distribution of the instances belonging
+to each discovered cluster in the form of a cluster by sense distribution
+matrix. A cell value at (i,j) in the matrix shows the number of instances
+belonging to cluster Ci that have the sense tag Sj.</p>
+<p>Note that each row begins with the cluster id that precedes a colon (:).
+Also, the number of sense classes on 2nd line should be same as the number 
+of columns in the cluster by sense distribution table.</p>
+<p>
+</p>
+<h2><a name="optional_arguments_">Optional Arguments:</a></h2>
+<p>
+</p>
+<h3><a name="help">--help</a></h3>
+<p>Displays this message.</p>
+<p>
+</p>
+<h3><a name="version">--version</a></h3>
+<p>Displays the version information.</p>
+<p>
+</p>
+<hr />
+<h1><a name="output">OUTPUT</a></h1>
+<p>Output shows the sense labels attached to each of the discovered 
+clusters along with the score. Score tells the percentage of the total 
+number of instances correctly clustered if the clusters are tagged with 
+the sense labels as suggested.</p>
+<p>Example :</p>
+<p>Prelabel file =&gt;</p>
+<pre>
+ 0
+ //      cord    divi    form    phon    prod    text
+ C0:     35      26      44      18      23      43
+ C1:     64      34      50      43      57      52
+ C2:     0       3       1       2       0       3
+ C3:     0       0       2       31      0       0
+ C4:     1       28      0       4       6       0
+ C5:     0       9       3       2       14      2</pre>
+<p>Label Output =&gt;</p>
+<pre>
+ ClusterID -&gt; SenseID
+ C0 -&gt; form
+ C1 -&gt; cord
+ C2 -&gt; text
+ C3 -&gt; phon
+ C4 -&gt; divi
+ C5 -&gt; prod
+ Score = 30.67</pre>
+<p>shows that</p>
+<pre>
+ cluster C0 represents the 'form' sense
+ cluster C1 represents the 'cord' sense
+ cluster C2 represents the 'text' sense
+ cluster C3 represents the 'phon' sense
+ cluster C4 represents the 'divi' sense
+ and cluster C5 represents the 'prod' sense</pre>
+<p>Also, 30.67 % of the total instances are in their right sense classes
+if the clusters are tagged with this labeling scheme.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Ted Pedersen, University of Minnesota, Duluth</p>
+<p>Amruta Purandare, University of Pittsburgh</p>
+<p>Anagha Kukarni, University of Minnesota, Duluth</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (c) 2002-2006,</p>
+<pre>
+ Anagha Kulkarni, University of Minnesota, Duluth
+ kulka020 at d.umn.edu</pre>
+<pre>
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu</pre>
+<pre>
+ Amruta Purandare, University of Pittsburgh
+ amruta at cs.pitt.edu</pre>
+<p>This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program; if not, write to</p>
+<pre>
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
+
+</pre>
+
+</body>
+
+</html>

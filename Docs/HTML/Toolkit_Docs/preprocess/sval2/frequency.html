@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>frequency.pl</title>
+<link rev="made" href="mailto:jluttine@marimba.d.umn.edu" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#usgae">USGAE</a></li>
+	<li><a href="#input">INPUT</a></li>
+	<ul>
+
+		<li><a href="#required_arguments_">Required Arguments:</a></li>
+		<ul>
+
+			<ul>
+
+				<li><a href="#source">SOURCE</a></li>
+			</ul>
+
+		</ul>
+
+		<li><a href="#optional_arguments_">Optional Arguments:</a></li>
+		<ul>
+
+			<ul>
+
+				<li><a href="#help">-help</a></li>
+				<li><a href="#version">-version</a></li>
+			</ul>
+
+		</ul>
+
+	</ul>
+
+	<li><a href="#output">OUTPUT</a></li>
+	<ul>
+
+		<li><a href="#sample_output">Sample Output</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>frequency.pl</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<p>Displays distribution of senses in a given Senseval-2 file.</p>
+<p>
+</p>
+<hr />
+<h1><a name="usgae">USGAE</a></h1>
+<p>Usage: frequency.pl [OPTIONS] SOURCE</p>
+<p>Type 'frequency.pl --help' for quick summary of the Options.</p>
+<p>
+</p>
+<hr />
+<h1><a name="input">INPUT</a></h1>
+<p>
+</p>
+<h2><a name="required_arguments_">Required Arguments:</a></h2>
+<p>
+</p>
+<h4><a name="source">SOURCE</a></h4>
+<p>SOURCE should be a Senseval-2 formatted file. The sense ids are searched by 
+matching a regex /sense\s*id=``S''/.</p>
+<p>An instance having multiple sense ids should appear only once with multiple
+&lt;answer&gt; tags. e.g. If an instance IID has 2 sense ids SID1 and SID2, then
+in the SOURCE file, instance IID should be formatted as -</p>
+<pre>
+ &lt;instance id=&quot;IID&quot;&gt; 
+ &lt;answer instance=&quot;IID&quot; senseid=&quot;SID1&quot;/&gt;
+ &lt;answer instance=&quot;IID&quot; senseid=&quot;SID2&quot;/&gt;
+ &lt;context&gt;
+        Context Data comes here ....
+ &lt;/context&gt;
+ &lt;/instance&gt;</pre>
+<p>
+</p>
+<h2><a name="optional_arguments_">Optional Arguments:</a></h2>
+<p>
+</p>
+<h4><a name="help">--help</a></h4>
+<p>Displays this message.</p>
+<p>
+</p>
+<h4><a name="version">--version</a></h4>
+<p>Displays the version information.</p>
+<p>
+</p>
+<hr />
+<h1><a name="output">OUTPUT</a></h1>
+<p>Output displays</p>
+<p>1. Total number of instances in SOURCE</p>
+<p>These are counted by matching regex /instance id=\``ID\''/ for unique 
+instance ids.</p>
+<p>2. Total number of distinct sense tags found in SOURCE</p>
+<p>These are searched by matching a regex /sense\s*id=``S''/.</p>
+<p>3. Sense Distribution</p>
+<p>Output shows</p>
+<p>&lt;sense id=``S'' percent=``P''/&gt;</p>
+<p>for each sense id found in SOURCE. P is the percentage frequency of the 
+sense S.</p>
+<p>4. % of Majority sense</p>
+<p>This will be the highest sense percentage found in SOURCE.</p>
+<p>
+</p>
+<h2><a name="sample_output">Sample Output</a></h2>
+<pre>
+ &lt;sense id=&quot;begin%2:30:00::&quot; percent=&quot;59.49&quot;/&gt;
+ &lt;sense id=&quot;begin%2:30:01::&quot; percent=&quot;13.38&quot;/&gt;
+ &lt;sense id=&quot;begin%2:42:00::&quot; percent=&quot;4.70&quot;/&gt;
+ &lt;sense id=&quot;begin%2:42:03::&quot; percent=&quot;3.44&quot;/&gt;
+ &lt;sense id=&quot;begin%2:42:04::&quot; percent=&quot;18.99&quot;/&gt;
+ Total Instances = 548
+ Total Distinct Senses=5
+ Distribution={59.49,18.99,13.38,4.70,3.44}
+ % of Majority Sense = 59.49</pre>
+<p>Shows that there are total 548 instances and 5 senses.</p>
+<p>The senses are distributed with frequencies</p>
+<p>{59.49,18.99,13.38,4.70,3.44}</p>
+<p>where majority sense has frequency = 59.49</p>
+<p>The &lt;sense&gt; tags show the frequency of each individual tag.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Amruta Purandare, Ted Pedersen.
+University of Minnesota, Duluth.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (c) 2002-2005,
+Amruta Purandare, University of Pittsburgh. <a href="mailto:amruta@cs.pitt.edu">amruta@cs.pitt.edu</a>
+Ted Pedersen, University of Minnesota, Duluth. <a href="mailto:tpederse@umn.edu">tpederse@umn.edu</a></p>
+<p>This program is free software; you can
+redistribute it and/or modify it under the
+terms of the GNU General Public License as
+published by the Free Software Foundation;
+either version 2 of the License, or (at your
+option) any later version.</p>
+<p>This program is distributed in the hope
+that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE. See the GNU General Public License
+for more details.</p>
+<p>You should have received a copy of the GNU
+General Public License along with this program;
+if not, write to</p>
+<p>The Free Software Foundation, Inc.,
+59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.</p>
+
+</body>
+
+</html>

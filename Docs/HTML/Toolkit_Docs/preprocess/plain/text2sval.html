@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>text2sval.pl</title>
+<link rev="made" href="mailto:jluttine@marimba.d.umn.edu" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#usgae">USGAE</a></li>
+	<li><a href="#input">INPUT</a></li>
+	<ul>
+
+		<li><a href="#required_arguments_">Required Arguments:</a></li>
+		<ul>
+
+			<li><a href="#text">TEXT</a></li>
+		</ul>
+
+		<li><a href="#optional_arguments_">Optional Arguments:</a></li>
+		<ul>
+
+			<ul>
+
+				<li><a href="#lexelt_lex">-lexelt LEX</a></li>
+				<li><a href="#key_keyfile">-key KEYFILE</a></li>
+			</ul>
+
+			<li><a href="#other_options__">Other Options :</a></li>
+			<ul>
+
+				<li><a href="#help">-help</a></li>
+				<li><a href="#version">-version</a></li>
+			</ul>
+
+		</ul>
+
+	</ul>
+
+	<li><a href="#output">OUTPUT</a></li>
+	<li><a href="#system_requirements">SYSTEM REQUIREMENTS</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>text2sval.pl</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<p>Converts a plain text instance data file into a Senseval-2 formatted XML file.</p>
+<p>
+</p>
+<hr />
+<h1><a name="usgae">USGAE</a></h1>
+<p>text2sval.pl [OPTIONS] TEXT</p>
+<p>
+</p>
+<hr />
+<h1><a name="input">INPUT</a></h1>
+<p>
+</p>
+<h2><a name="required_arguments_">Required Arguments:</a></h2>
+<p>
+</p>
+<h3><a name="text">TEXT</a></h3>
+<p>Should be a plain text data file containing context of a single instance on each
+line. In other words, contexts of different instances should be separated by
+a newline character and there should not be any newline characters within the
+context of a single instance.</p>
+<p>e.g.</p>
+<p>--------------------------------------------------------------------</p>
+<pre>
+ market capitalization draws a &lt;head&gt;line&lt;/head&gt; between big and small stocks</pre>
+<pre>
+ volunteers using a dozen telephone &lt;head&gt;lines&lt;/head&gt; at the group's washington headquarters this week will be urging members in alabama arizona</pre>
+<pre>
+ he proceeded briskly through a reception &lt;head&gt;line&lt;/head&gt; of party officials and old friends</pre>
+<p>--------------------------------------------------------------------</p>
+<p>shows 3 instances with context of each instance on each line.</p>
+<p>
+</p>
+<h2><a name="optional_arguments_">Optional Arguments:</a></h2>
+<p>
+</p>
+<h4><a name="lexelt_lex">--lexelt LEX</a></h4>
+<p>Specifies the value of the &lt;lexelt&gt; item tag to be used in the output 
+Senseval-2 file.</p>
+<p>
+</p>
+<h4><a name="key_keyfile">--key KEYFILE</a></h4>
+<p>Displays the instance ids and optional sense tags of the instances in the TEXT
+file. These will be used as the values of the &lt;instance&gt; and &lt;sense&gt; tags in 
+the output Senseval-2 file.</p>
+<p>Each line in KEYFILE should show the instance id and optional sense tags of 
+the instance displayed on the corresponding line in the TEXT file, in the 
+format -</p>
+<pre>
+        &lt;instance id=\&quot;IID\&quot;\/&gt; [&lt;sense id=\&quot;SID\&quot;\/&gt;]*</pre>
+<p>where an &lt;instance&gt; tag is followed by zero or more &lt;sense&gt; tags.</p>
+<p>
+</p>
+<h3><a name="other_options__">Other Options :</a></h3>
+<p>
+</p>
+<h4><a name="help">--help</a></h4>
+<p>Displays this message.</p>
+<p>
+</p>
+<h4><a name="version">--version</a></h4>
+<p>Displays the version information.</p>
+<p>
+</p>
+<hr />
+<h1><a name="output">OUTPUT</a></h1>
+<p>Given TEXT input file is converted to a Senseval-2 formatted XML file that 
+is displayed on stdout.</p>
+<p>Sample Outputs</p>
+<ol>
+<li><strong><a name="item_no_options_specified">No options specified</a></strong><br />
+</li>
+Input TEXT file =&gt; input.text
+<pre>
+ ------------------------------------------------------------------</pre>
+<pre>
+ the maiden seated herself upon the golden chair and offered the silver one to her companion they were &lt;head&gt;served&lt;/head&gt; by maidens dressed in white whose feet made no sound as they moved about and not a word was spoken during the meal</pre>
+<pre>
+ why leftover beef should ever be a problem i cannot understand there is nothing better than cold roast sliced paper thin and &lt;head&gt;served&lt;/head&gt; with mustard chutney or pickled walnuts these can be found in almost any food specialty shop meat to be served cold should be removed from the refrigerator an hour or so before eating to allow it to return to room temperature</pre>
+<pre>
+ continue cooking for hours remove the ribs to a hot platter and &lt;head&gt;serve&lt;/head&gt; the pan juices separately</pre>
+<pre>
+ an agency spokesman al heier said it granted the exceptions because these crops are grown by few farmers in small areas that can be closely monitored dinoseb is a herbicide that also &lt;head&gt;serves&lt;/head&gt; as a fungicide and an insecticide</pre>
+<p>------------------------------------------------------------------</p>
+<p>Command =&gt; text2sval.pl input.text</p>
+<p>STDOUT will display =&gt;</p>
+<pre>
+ ---------------------------------------------------------------
+ &lt;corpus lang=&quot;english&quot;&gt;
+ &lt;lexelt item=&quot;LEXELT&quot;&gt;
+ &lt;instance id=&quot;0&quot;&gt;
+ &lt;answer instance=&quot;0&quot; senseid=&quot;NOTAG&quot;/&gt;
+ &lt;context&gt;
+ the maiden seated herself upon the golden chair and offered the silver one to her companion they were &lt;head&gt;served&lt;/head&gt; by maidens dressed in white whose feet made no sound as they moved about and not a word was spoken during the meal
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;1&quot;&gt;
+ &lt;answer instance=&quot;1&quot; senseid=&quot;NOTAG&quot;/&gt;
+ &lt;context&gt;
+ why leftover beef should ever be a problem i cannot understand there is nothing better than cold roast sliced paper thin and &lt;head&gt;served&lt;/head&gt; with mustard chutney or pickled walnuts these can be found in almost any food specialty shop meat to be served cold should be removed from the refrigerator an hour or so before eating to allow it to return to room temperature
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;2&quot;&gt;
+ &lt;answer instance=&quot;2&quot; senseid=&quot;NOTAG&quot;/&gt;
+ &lt;context&gt;
+ continue cooking for hours remove the ribs to a hot platter and &lt;head&gt;serve&lt;/head&gt; the pan juices separately
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;3&quot;&gt;
+ &lt;answer instance=&quot;3&quot; senseid=&quot;NOTAG&quot;/&gt;
+ &lt;context&gt;
+ an agency spokesman al heier said it granted the exceptions because these crops are grown by few farmers in small areas that can be closely monitored dinoseb is a herbicide that also &lt;head&gt;serves&lt;/head&gt; as a fungicide and an insecticide
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;/lexelt&gt;
+ &lt;/corpus&gt;
+ ---------------------------------------------------------------</pre>
+<p>Notice that -</p>
+<p>1. Since the instance ids are not provided (via --key KEYFILE), text2sval uses 
+ordinal numbers 
+0,1,2 ... etc as the instance ids for the instances in the same order
+i.e. Instance id assigned to instance at position i in the TEXT file is (i-1)</p>
+<p>2. Since the sense tags are not provided, all instances are assigned tag 'NOTAG'</p>
+<p>3. Since --lexelt is not provided, value of &lt;lexelt&gt; tag shows LEXELT i.e. as
+ &lt;lexelt item=\``LEXELT\''&gt;</p>
+<p></p>
+<li><strong><a name="item__2d_2dkey_key_is_provided_and_key_shows_only_the_i">--key KEY is provided and KEY shows only the instance ids</a></strong><br />
+</li>
+In this case, text2sval uses instance ids from KEY file as the values of 
+instance ids in &lt;instance&gt; and &lt;answer&gt; tags while sense ids will have 
+values NOTAG
+<p>For TEXT file in example (1),</p>
+<p>if the KEY file is =&gt; serve.key</p>
+<pre>
+ &lt;instance id=&quot;serve-v.aphb_34700303_2142&quot;/&gt; 
+ &lt;instance id=&quot;serve-v.aphb_51903174_3841&quot;/&gt; 
+ &lt;instance id=&quot;serve-v.aphb_51903399_3856&quot;/&gt; 
+ &lt;instance id=&quot;serve-v.w7_022806_525&quot;/&gt;</pre>
+<p>Command =&gt; text2sval.pl --key serve.key --lexelt serve-v input.text</p>
+<p>will display on stdout =&gt;</p>
+<pre>
+ --------------------------------------------------------------------
+ &lt;corpus lang=&quot;english&quot;&gt;
+ &lt;lexelt item=&quot;LEXELT&quot;&gt;
+ &lt;instance id=&quot;serve-v.aphb_34700303_2142&quot;&gt;
+ &lt;answer instance=&quot;serve-v.aphb_34700303_2142&quot; senseid=&quot;NOTAG&quot;/&gt;
+ &lt;context&gt;
+ the maiden seated herself upon the golden chair and offered the silver one to her companion they were &lt;head&gt;served&lt;/head&gt; by maidens dressed in white whose feet made no sound as they moved about and not a word was spoken during the meal
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;serve-v.aphb_51903174_3841&quot;&gt;
+ &lt;answer instance=&quot;serve-v.aphb_51903174_3841&quot; senseid=&quot;NOTAG&quot;/&gt;
+ &lt;context&gt;
+ why leftover beef should ever be a problem i cannot understand there is nothing better than cold roast sliced paper thin and &lt;head&gt;served&lt;/head&gt; with mustard chutney or pickled walnuts these can be found in almost any food specialty shop meat to be served cold should be removed from the refrigerator an hour or so before eating to allow it to return to room temperature
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;serve-v.aphb_51903399_3856&quot;&gt;
+ &lt;answer instance=&quot;serve-v.aphb_51903399_3856&quot; senseid=&quot;NOTAG&quot;/&gt;
+ &lt;context&gt;
+ continue cooking for hours remove the ribs to a hot platter and &lt;head&gt;serve&lt;/head&gt; the pan juices separately
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;serve-v.w7_022806_525&quot;&gt;
+ &lt;answer instance=&quot;serve-v.w7_022806_525&quot; senseid=&quot;NOTAG&quot;/&gt;
+ &lt;context&gt;
+ an agency spokesman al heier said it granted the exceptions because these crops are grown by few farmers in small areas that can be closely monitored dinoseb is a herbicide that also &lt;head&gt;serves&lt;/head&gt; as a fungicide and an insecticide
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;/lexelt&gt;
+ &lt;/corpus&gt;</pre>
+<pre>
+ --------------------------------------------------------------------</pre>
+<p>Note that the instance ids are taken from the KEY file while sense ids have
+NOTAGs.</p>
+<p></p>
+<li><strong><a name="item_key_file_contains_both_the_instance_and_sense_tags">KEY file contains both the instance and sense tags</a></strong><br />
+</li>
+For TEXT file in example (1),
+<p>if the KEY file is =&gt; serve.key</p>
+<pre>
+ &lt;instance id=&quot;serve-v.aphb_34700303_2142&quot;/&gt; &lt;sense id=&quot;SERVE10&quot;/&gt;
+ &lt;instance id=&quot;serve-v.aphb_51903174_3841&quot;/&gt; &lt;sense id=&quot;SERVE10&quot;/&gt;
+ &lt;instance id=&quot;serve-v.aphb_51903399_3856&quot;/&gt; &lt;sense id=&quot;SERVE10&quot;/&gt;
+ &lt;instance id=&quot;serve-v.w7_022806_525&quot;/&gt; &lt;sense id=&quot;SERVE2&quot;/&gt;</pre>
+<p>Command =&gt; text2sval.pl --key serve.key --lexelt serve-v input.text</p>
+<p>will display on STDOUT =&gt;</p>
+<pre>
+ --------------------------------------------------------------------
+ &lt;corpus lang=&quot;english&quot;&gt;
+ &lt;lexelt item=&quot;LEXELT&quot;&gt;
+ &lt;instance id=&quot;serve-v.aphb_34700303_2142&quot;&gt;
+ &lt;answer instance=&quot;serve-v.aphb_34700303_2142&quot; senseid=&quot;SERVE10&quot;/&gt;
+ &lt;context&gt;
+ the maiden seated herself upon the golden chair and offered the silver one to her companion they were &lt;head&gt;served&lt;/head&gt; by maidens dressed in white whose feet made no sound as they moved about and not a word was spoken during the meal
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;serve-v.aphb_51903174_3841&quot;&gt;
+ &lt;answer instance=&quot;serve-v.aphb_51903174_3841&quot; senseid=&quot;SERVE10&quot;/&gt;
+ &lt;context&gt;
+ why leftover beef should ever be a problem i cannot understand there is nothing better than cold roast sliced paper thin and &lt;head&gt;served&lt;/head&gt; with mustard chutney or pickled walnuts these can be found in almost any food specialty shop meat to be served cold should be removed from the refrigerator an hour or so before eating to allow it to return to room temperature
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;serve-v.aphb_51903399_3856&quot;&gt;
+ &lt;answer instance=&quot;serve-v.aphb_51903399_3856&quot; senseid=&quot;SERVE10&quot;/&gt;
+ &lt;context&gt;
+ continue cooking for hours remove the ribs to a hot platter and &lt;head&gt;serve&lt;/head&gt; the pan juices separately
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;instance id=&quot;serve-v.w7_022806_525&quot;&gt;
+ &lt;answer instance=&quot;serve-v.w7_022806_525&quot; senseid=&quot;SERVE2&quot;/&gt;
+ &lt;context&gt;
+ an agency spokesman al heier said it granted the exceptions because these crops are grown by few farmers in small areas that can be closely monitored dinoseb is a herbicide that also &lt;head&gt;serves&lt;/head&gt; as a fungicide and an insecticide
+ &lt;/context&gt;
+ &lt;/instance&gt;
+ &lt;/lexelt&gt;
+ &lt;/corpus&gt;</pre>
+<pre>
+ --------------------------------------------------------------------</pre>
+<p>where instance ids and sense tags are both extracted from the KEY file.</p>
+<p></p></ol>
+<p>
+</p>
+<hr />
+<h1><a name="system_requirements">SYSTEM REQUIREMENTS</a></h1>
+<p>No special requirements ...</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<pre>
+ Amruta Purandare, Ted Pedersen.
+ University of Minnesota at Duluth.</pre>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (c) 2002-2005,</p>
+<p>Amruta Purandare, University of Pittsburgh.
+<a href="mailto:amruta@cs.pitt.edu">amruta@cs.pitt.edu</a></p>
+<p>Ted Pedersen, University of Minnesota, Duluth.
+<a href="mailto:tpederse@umn.edu">tpederse@umn.edu</a></p>
+<p>This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program; if not, write to</p>
+<p>The Free Software Foundation, Inc.,
+59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.</p>
+
+</body>
+
+</html>

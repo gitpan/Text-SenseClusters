@@ -1,0 +1,20 @@
+#!/usr/local/bin/perl
+
+=head1 NAME
+
+README.SC-cgi.pod
+
+=head1 Description
+
+All the files under this directory should be placed under a directory 
+called SC-cgi which itself is placed under the cgi directory of the
+web-server.
+eg: For apache web-server's default settings, the files in this directory 
+should be placed under cgi-bin/SC-cgi
+
+=head1 Acknowledgment
+
+This work has been partially supported by a National Science Foundation
+Faculty Early CAREER Development award (#0092784).
+
+=cut

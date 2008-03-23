@@ -1,0 +1,213 @@
+#!/usr/local/bin/perl
+
+=head1 NAME 
+
+Toolkit.pod
+
+=head1 Toolkit Organization 
+
+This file briefly describes the functionality of all the programs in 
+the Toolkit directory of SenseClusters. 
+
+Toolkit is organized into following directories -
+
+=head2 preprocess (preprocessing programs)
+
+Organized as 
+
+=over 
+
+=item 1. plain (processes input in plain text format)
+
+Contains
+
+=over
+
+=item * 
+
+text2sval.pl - Converts simple raw text into Senseval2 format
+
+=back
+
+=item 2. sval2 (processes input in Senseval-2 format)
+
+Contains
+
+=over 
+
+=item * 
+
+balance.pl - Balances sense distribution.
+
+=item *
+
+filter.pl - Removes low frequency sense tags.
+
+=item * 
+
+frequency.pl - Displays frequency distribution of senses. 
+
+=item * 
+
+keyconvert.pl - Converts KEY file from Senseval-2 format to 
+SenseCluster's format.
+
+=item *
+
+maketarget.pl - Creates a Perl regex for the target word by spotting all 
+<head> tags in the given file
+
+=item * 
+
+prepare_sval2.pl - Prepares Senseval-2 data for experiments. 
+
+=item *
+
+sval2plain.pl - Converts a given file in Senseval-2 format to plain text
+format.
+
+=item * 
+
+windower.pl - Retains only W words around the target word in the given
+Senseval-2 instance file.
+
+=item *
+
+preprocess.pl - Tokenizes and can split the data. (Borrowed from SenseTools package)
+
+=back
+
+=back
+
+=head2 count
+
+Contains only 1 program thus far,
+
+=over
+
+=item >
+
+reduce-count.pl - Helps to reduce the size of the given bigram file created
+using a huge training data.
+
+=back
+
+=head2 vector (Vector constructors) 
+
+Contains 
+
+=over
+
+=item >
+
+order1vec.pl - Creates first order context vectors
+
+=item >
+
+order2vec.pl - Creates second order context vectors
+
+=item >
+
+wordvec.pl - Creates word vectors from given NSP bigram output
+
+=item >
+
+nsp2regex.pl - Creates regular expressions from given words. (Borrowed from SenseTools package)
+
+=back
+
+=head2 svd (SVD interface)
+
+Contains 
+
+=over
+
+=item > 
+
+mat2harbo.pl - Converts matrices from SenseClusters format to Harwell-Boeing format
+
+=item > 
+
+svdpackout.pl - Reconstructs a matrix from its singular vectors 
+created by SVDPack
+
+=back
+
+=head2 matrix (Similarity matrix constructors)
+
+Contains
+
+=over 4 
+
+=item > 
+
+bitsimat.pl - Creates a similarity matrix for given bit vectors
+
+=item > 
+
+simat.pl - Creates a similarity matrix for given non-binary (integer
+or real) vectors
+
+=back
+
+=head2 evaluate (Evaluation programs)
+
+Contains
+
+=over
+
+=item >
+
+cluto2label.pl - Converts clustering output of Cluto to a cluster
+by sense distribution table for evaluation
+
+=item > 
+
+format_clusters.pl - display clusters of text with assigned sense id, or 
+display senseval-2 format with assigned sense id. 
+
+=item > 
+
+label.pl - Assigns sense tags to the discovered clusters for evaluation. 
+
+=item > 
+
+report.pl - Reports performance accuracy of discrimination in terms
+of the precision, recall and confusion matrix
+
+=back
+
+=head2 clusterlabel (Cluster Labeling programs)
+
+Contains
+
+=over
+
+=item >
+
+clusterlabeling.pl - Selects significant word-pairs from the contents /
+instances of the clusters and assigns them as the labels to the 
+clusters. Also creates separate file for each cluster.
+
+=back
+
+=head2 clusterstopping (Cluster Stopping program)
+
+Contains
+
+=over
+
+=item >
+
+clusterstopping.pl - Predicts the number of clusters that a given data
+should be divided into. Provides three such cluster stopping measures.
+
+=back
+
+=head1 Acknowledgement
+
+This work has been partially supported by a National Science Foundation
+Faculty Early CAREER Development award (#0092784).
+
+=cut
+

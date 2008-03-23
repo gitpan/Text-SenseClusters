@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>windower.pl</title>
+<link rev="made" href="mailto:jluttine@marimba.d.umn.edu" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#usage">USAGE</a></li>
+	<li><a href="#input">INPUT</a></li>
+	<ul>
+
+		<li><a href="#required_arguments_">Required Arguments:</a></li>
+		<ul>
+
+			<li><a href="#sval2">SVAL2</a></li>
+			<li><a href="#w">W</a></li>
+		</ul>
+
+		<li><a href="#optional_arguments_">Optional Arguments:</a></li>
+		<ul>
+
+			<li><a href="#plain">-plain</a></li>
+			<li><a href="#token_tokenregex">-token TOKENREGEX</a></li>
+			<li><a href="#target_targetregex">-target TARGETREGEX</a></li>
+			<li><a href="#other_options__">Other Options :</a></li>
+			<ul>
+
+				<li><a href="#help">-help</a></li>
+				<li><a href="#version">-version</a></li>
+			</ul>
+
+		</ul>
+
+	</ul>
+
+	<li><a href="#output">OUTPUT</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>windower.pl</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<p>Limits the contexts of given instances to W tokens around the target word.</p>
+<p>
+</p>
+<hr />
+<h1><a name="usage">USAGE</a></h1>
+<p>windower.pl [OPTIONS] SVAL2 W</p>
+<p>
+</p>
+<hr />
+<h1><a name="input">INPUT</a></h1>
+<p>
+</p>
+<h2><a name="required_arguments_">Required Arguments:</a></h2>
+<p>
+</p>
+<h3><a name="sval2">SVAL2</a></h3>
+<p>SVAL2 must be a tokenized and preprocessed instance file in the Senseval-2 
+format.</p>
+<p>
+</p>
+<h3><a name="w">W</a></h3>
+<p>Should be a positive integer number specifying the window size. windower
+will display only the tokens that appear in the window of [-W, +W] centered 
+around the target word.</p>
+<p>
+</p>
+<h2><a name="optional_arguments_">Optional Arguments:</a></h2>
+<p>
+</p>
+<h3><a name="plain">--plain</a></h3>
+<p>Output will be displayed in plain text format showing context of each instance
+on a single separate line. i.e. each i'th line on stdout will show the context 
+of the i'th instance in the given SVAL2 file. By default, output is created in 
+Senseval-2 format.</p>
+<p>
+</p>
+<h3><a name="token_tokenregex">--token TOKENREGEX</a></h3>
+<p>TOKENREGEX should be a file containing Perl regular expressions that define
+the tokenization scheme in SVAL2. windower recognizes only those character
+sequences from SVAL2 that match the specified token regex/s, everything else
+will be ignored. If --token is not specified, windower searches the default
+token.regex file in the current directory.</p>
+<p>
+</p>
+<h3><a name="target_targetregex">--target TARGETREGEX</a></h3>
+<p>Specify a file containing Perl regular expressions that define the target 
+word/s. Target words must be valid tokens recognizable by the specified 
+tokenization scheme (via --token or token.regex)</p>
+<p>Following are some of the examples of TARGET word regex files -</p>
+<ol>
+<li></li>
+/&lt;head&gt;[Ll]ines?&lt;\/head&gt;/
+<p>which specifies that the target word could be</p>
+<pre>
+ line, Line, lines or Lines</pre>
+<p>delimited in &lt;head&gt; and &lt;/head&gt; tags.</p>
+<p></p>
+<li></li>
+Above regex can also be specified as multiple regexes in TARGET as -
+<p>/&lt;head&gt;line&lt;\/head&gt;/</p>
+<p>/&lt;head&gt;lines&lt;\/head&gt;/</p>
+<p>/&lt;head&gt;Line&lt;\/head&gt;/</p>
+<p>/&lt;head&gt;Lines&lt;\/head&gt;/</p>
+<p>with a single regex per line</p>
+<p></p>
+<li></li>
+Regex
+<p>/&lt;head&gt;\w+&lt;\/head&gt;/</p>
+<p>shows a more general regex for target words marked in &lt;head&gt; tags</p>
+<p></p>
+<li></li>
+Regex
+<p>/&lt;head.*&gt;\w+&lt;\/head&gt;/</p>
+<p>Shows the regex for matching target words in the original Senseval-2 
+data.</p>
+<p></p>
+<li></li>
+/[Ll]ines?/
+<p>shows that any occurrence of words - Line, line, Lines, lines are target words 
+(that are not delimited in any special tags).</p>
+<p></p></ol>
+<p>
+</p>
+<h3><a name="other_options__">Other Options :</a></h3>
+<p>
+</p>
+<h4><a name="help">--help</a></h4>
+<p>Displays this message.</p>
+<p>
+</p>
+<h4><a name="version">--version</a></h4>
+<p>Displays the version information.</p>
+<p>
+</p>
+<hr />
+<h1><a name="output">OUTPUT</a></h1>
+<p>When --plain is not selected, OUTPUT is in Senseval-2 format that looks same 
+as the input SVAL2 file except the context of each instance shows atmost W 
+words around the target word.</p>
+<p>When --plain is ON, OUTPUT shows each context on a single line i.e. context of i'th instance in the given SVAL2 file is shown on the i'th line on stdout.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Amruta Purandare, Ted Pedersen.
+University of Minnesota, Duluth.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (c) 2002-2005,</p>
+<p>Amruta Purandare, University of Pittsburgh.
+<a href="mailto:amruta@cs.pitt.edu">amruta@cs.pitt.edu</a></p>
+<p>Ted Pedersen, University of Minnesota, Duluth.
+<a href="mailto:tpederse@umn.edu">tpederse@umn.edu</a></p>
+<p>This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program; if not, write to</p>
+<p>The Free Software Foundation, Inc.,
+59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.</p>
+
+</body>
+
+</html>

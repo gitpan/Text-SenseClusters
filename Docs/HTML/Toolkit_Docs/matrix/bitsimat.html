@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>bitsimat.pl</title>
+<link rev="made" href="mailto:jluttine@marimba.d.umn.edu" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#usgae">USGAE</a></li>
+	<li><a href="#input">INPUT</a></li>
+	<ul>
+
+		<li><a href="#required_arguments_">Required Arguments:</a></li>
+		<ul>
+
+			<li><a href="#vector">VECTOR</a></li>
+			<ul>
+
+				<li><a href="#sparse_format__default_">Sparse Format [default]</a></li>
+				<li><a href="#dense_format">Dense Format</a></li>
+			</ul>
+
+		</ul>
+
+		<li><a href="#optional_arguments_">Optional Arguments:</a></li>
+		<ul>
+
+			<ul>
+
+				<li><a href="#dense">-dense</a></li>
+				<li><a href="#measure_sim">-measure SIM</a></li>
+				<li><a href="#format_form">-format FORM</a></li>
+			</ul>
+
+			<li><a href="#other_options__">Other Options :</a></li>
+			<ul>
+
+				<li><a href="#help">-help</a></li>
+				<li><a href="#version">-version</a></li>
+			</ul>
+
+		</ul>
+
+	</ul>
+
+	<li><a href="#output">OUTPUT</a></li>
+	<ul>
+
+		<li><a href="#sparse_output__default_">Sparse Output [Default]</a></li>
+		<li><a href="#dense_output">Dense Output</a></li>
+	</ul>
+
+	<li><a href="#system_requirements">SYSTEM REQUIREMENTS</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>bitsimat.pl</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<p>Constructs a similarity matrix for the given binary context vectors</p>
+<p>
+</p>
+<hr />
+<h1><a name="usgae">USGAE</a></h1>
+<p>bitsimat.pl [OPTIONS] VECTOR</p>
+<p>
+</p>
+<hr />
+<h1><a name="input">INPUT</a></h1>
+<p>
+</p>
+<h2><a name="required_arguments_">Required Arguments:</a></h2>
+<p>
+</p>
+<h3><a name="vector">VECTOR</a></h3>
+<p>A binary vector file as created by vector constructor programs in 
+Toolkit/vector.</p>
+<p>
+</p>
+<h4><a name="sparse_format__default_">Sparse Format [default]</a></h4>
+<p>By default, VECTOR is assumed to be in sparse format.</p>
+<p>For sparse vectors, the first line of the VECTOR file should show 3
+numbers separated in spaces as -</p>
+<p>N M NNZ</p>
+<p>where</p>
+<pre>
+ N = Number of vectors/rows 
+ M = Number of dimensions/columns
+ NNZ = Total number of non-zero values</pre>
+<p>Each line after this line should show a single sparse vector on each line.
+A sparse vector is a list of pairs of numbers separated by space such
+that the first number in a pair is the column index of a non-zero value in the
+vector and the second number is the non-zero value itself corresponding to
+that index. bitsimat treats all non-zero values as 1s in the bit vectors.</p>
+<p>Column indices start with 1.</p>
+<p>Sample Sparse Input</p>
+<pre>
+ 9 12 19
+ 4 1 7 1
+ 1 1
+ 1 1 4 1 8 1 11 1
+ 1 1 7 1
+ 4 1
+ 5 1 10 1
+ 1 1
+ 5 1 8 1 12 1
+ 1 1 2 1 8 1</pre>
+<p>Explaination -</p>
+<ol>
+<li></li>
+The first line shows that there are total 9 sparse vectors 
+represented in 12 dimensions. Hence, bitsimat will consider next 9 lines
+in the VECTOR file as 9 sparse vectors and will allow the column indices
+only in the range [1-12]. Here, the total non-zero values are 19.
+<p></p>
+<li></li>
+Note that, each line shows a single sparse vector as a list of 
+space separated 'index value' pairs. e.g. 2nd line shows that the 1st 
+vector is non-zero (with value 1) at column indices 4 and 7. 3rd line shows
+that the 2nd sparse vector is non-zero only at index 1. And so on ...
+<p></p></ol>
+<p>
+</p>
+<h4><a name="dense_format">Dense Format</a></h4>
+<p>If VECTOR uses dense format, switch --dense should be selected.</p>
+<p>The 1st line in the dense VECTOR file should show -</p>
+<p>N M</p>
+<p>for N vectors represented using M columns.</p>
+<p>Each line thereafter should show a single dense vector.
+All dense vectors should have M space separated numbers that indicate the 
+values at the corresponding columns in the vector.</p>
+<p>All non-zero values are treated as 1s in the binary vectors.</p>
+<p>Sample Dense Input</p>
+<pre>
+ 9 12
+ 0 0 0 1 0 0 1 0 0 0 0 0
+ 1 0 0 0 0 0 0 0 0 0 0 0
+ 1 0 0 1 0 0 0 1 0 0 1 0
+ 1 0 0 0 0 0 1 0 0 0 0 0
+ 0 0 0 1 0 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 0 0 1 0 0
+ 1 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 1 0 0 0 1
+ 1 1 0 0 0 0 0 1 0 0 0 0</pre>
+<p>shows same vectors as shown in Sample Sparse Input in dense format.</p>
+<p>VECTOR file could also optionally show the KEY file name on the first line.
+If the VECTOR file starts with the &lt;keyfile&gt; name on the 1st line, the above
+information should begin from the 2nd line onwards.</p>
+<p>
+</p>
+<h2><a name="optional_arguments_">Optional Arguments:</a></h2>
+<p>
+</p>
+<h4><a name="dense">--dense</a></h4>
+<p>This switch should be selected if the given VECTORs are in dense format. 
+This will also create the output similarity matrix in the dense format. By
+default, sparse format is assumed for both input vectors and output
+similarity matrix.</p>
+<p>
+</p>
+<h4><a name="measure_sim">--measure SIM</a></h4>
+<p>Specify the similarity measure to be used to construct the similarity matrix.</p>
+<p>Possible option values for --sim are</p>
+<pre>
+        match                   Match Coefficient
+        dice                    Dice Coefficient
+        overlap                 Overlap Coefficient
+        jaccard                 Jaccard Coefficient
+        cosine                  Cosine Coefficient</pre>
+<p>The following table shows how the similarity values are computed by each 
+of these measures.</p>
+<pre>
+        match                   |intersection(X,Y)|
+        dice                    2*|intersection(X,Y)|/(|X|+|Y|)
+        overlap                 |intersection(X,Y)|/(min(|X|,|Y|))
+        jaccard                 |intersection(X,Y)|/|union(X,Y)|
+        cosine                  |intersection(X,Y)|/sqrt(|X|*|Y|)</pre>
+<p>where X and Y represent any two binary vectors
+|X| shows the norm or number of bits set in vector X</p>
+<p>
+</p>
+<h4><a name="format_form">--format FORM</a></h4>
+<p>Specifies numeric format for representing output similarity values.</p>
+<p>Possible values of FORM are</p>
+<p>iN   -&gt; integer format allocating total N bytes/digits for each entry</p>
+<p>fN.M -&gt; floating point format allocating total N bytes/digits for each entry
+of which last M digits show the fractional part.</p>
+<p>For matching coefficient, default is i8 and for other measures, default is
+f16.10.</p>
+<p>
+</p>
+<h3><a name="other_options__">Other Options :</a></h3>
+<p>
+</p>
+<h4><a name="help">--help</a></h4>
+<p>Displays this message.</p>
+<p>
+</p>
+<h4><a name="version">--version</a></h4>
+<p>Displays the version information.</p>
+<p>
+</p>
+<hr />
+<h1><a name="output">OUTPUT</a></h1>
+<p>If the input VECTORs are in sparse format (default), output is also created
+in sparse format, while, if the input vectors are in dense format, output
+is also in dense format.</p>
+<p>
+</p>
+<h2><a name="sparse_output__default_">Sparse Output [Default]</a></h2>
+<p>The 1st line in the sparse output shows 2 space separated numbers -</p>
+<p>N NNZ1</p>
+<p>where</p>
+<pre>
+ N = Number of vectors (same as the N in the VECTOR file)
+ NNZ1 = Number of non-zero entries in the output similarity matrix</pre>
+<p>Each line after this will show the corresponding row of the 
+similarity matrix in sparse format. Specifically, each i'th line after the 
+above line shows the list of 'j SIM' pairs separated by space such that 
+SIM is the non-zero similarity value between the i'th and j'th vectors in the 
+given VECTOR file.</p>
+<p>Note that, only those pairs are listed in which the SIM value is non-zero.</p>
+<p>Sample Sparse Output</p>
+<pre>
+ 9 43
+ 1 1.000 3 0.354 4 0.500 5 0.707
+ 2 1.000 3 0.500 4 0.707 7 1.000 9 0.577
+ 1 0.354 2 0.500 3 1.000 4 0.354 5 0.500 7 0.500 8 0.289 9 0.577
+ 1 0.500 2 0.707 3 0.354 4 1.000 7 0.707 9 0.408
+ 1 0.707 3 0.500 5 1.000
+ 6 1.000 8 0.408
+ 2 1.000 3 0.500 4 0.707 7 1.000 9 0.577
+ 3 0.289 6 0.408 8 1.000 9 0.333
+ 2 0.577 3 0.577 4 0.408 7 0.577 8 0.333 9 1.000</pre>
+<p>Shows the actual full similarity matrix -</p>
+<pre>
+ 9
+ 1.000 0.000 0.354 0.500 0.707 0.000 0.000 0.000 0.000
+ 0.000 1.000 0.500 0.707 0.000 0.000 1.000 0.000 0.577
+ 0.354 0.500 1.000 0.354 0.500 0.000 0.500 0.289 0.577
+ 0.500 0.707 0.354 1.000 0.000 0.000 0.707 0.000 0.408
+ 0.707 0.000 0.500 0.000 1.000 0.000 0.000 0.000 0.000
+ 0.000 0.000 0.000 0.000 0.000 1.000 0.000 0.408 0.000
+ 0.000 1.000 0.500 0.707 0.000 0.000 1.000 0.000 0.577
+ 0.000 0.000 0.289 0.000 0.000 0.408 0.000 1.000 0.333
+ 0.000 0.577 0.577 0.408 0.000 0.000 0.577 0.333 1.000</pre>
+<p>Both these matrices show the pairwise cosine similarities among the same 9 
+vectors shown in the Sample Sparse and Dense Input sections.</p>
+<p>
+</p>
+<h2><a name="dense_output">Dense Output</a></h2>
+<p>If --dense is selected, output is created in dense format and shows all 
+similarity values including 0s.</p>
+<p>Dense output shows the number of vectors (N) on the first line. Each i'th line 
+after this shows N space separated numbers such that a number at column 
+index j shows the pairwise similarity among the i'th and j'th vectors.</p>
+<p>Sample Dense Output</p>
+<pre>
+ 9
+ 1.000 0.000 0.354 0.500 0.707 0.000 0.000 0.000 0.000
+ 0.000 1.000 0.500 0.707 0.000 0.000 1.000 0.000 0.577
+ 0.354 0.500 1.000 0.354 0.500 0.000 0.500 0.289 0.577
+ 0.500 0.707 0.354 1.000 0.000 0.000 0.707 0.000 0.408
+ 0.707 0.000 0.500 0.000 1.000 0.000 0.000 0.000 0.000
+ 0.000 0.000 0.000 0.000 0.000 1.000 0.000 0.408 0.000
+ 0.000 1.000 0.500 0.707 0.000 0.000 1.000 0.000 0.577
+ 0.000 0.000 0.289 0.000 0.000 0.408 0.000 1.000 0.333
+ 0.000 0.577 0.577 0.408 0.000 0.000 0.577 0.333 1.000</pre>
+<p>Shows the pairwise similarities among the 9 vectors shown in the Sample
+Dense Input section.</p>
+<p>Note that the similarity matrix will always be square and symmetric.</p>
+<p>If the first line of the input VECTOR file shows the &lt;keyfile&gt; tag, 
+bitsimat.pl will display the same &lt;keyfile&gt; tag on the first line of 
+output.</p>
+<p>
+</p>
+<hr />
+<h1><a name="system_requirements">SYSTEM REQUIREMENTS</a></h1>
+<p>bitsimat is implemented using CPAN modules</p>
+<p>Bit::Vector - <a href="http://search.cpan.org/dist/Bit-Vector/">http://search.cpan.org/dist/Bit-Vector/</a></p>
+<p>and</p>
+<p>Set::Scalar - <a href="http://search.cpan.org/dist/Set-Scalar/">http://search.cpan.org/dist/Set-Scalar/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<pre>
+ Amruta Purandare, Ted Pedersen.
+ University of Minnesota at Duluth.</pre>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (c) 2002-2005,</p>
+<p>Amruta Purandare, University of Pittsburgh.
+<a href="mailto:amruta@cs.pitt.edu">amruta@cs.pitt.edu</a></p>
+<p>Ted Pedersen, University of Minnesota, Duluth.
+<a href="mailto:tpederse@umn.edu">tpederse@umn.edu</a></p>
+<p>This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program; if not, write to</p>
+<p>The Free Software Foundation, Inc.,
+59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.</p>
+
+</body>
+
+</html>

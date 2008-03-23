@@ -1,0 +1,78 @@
+#!/usr/local/bin/perl
+
+=head1 Name
+
+README.Demos.pod
+
+=head1 Description
+
+The Demos directory allows a user to run various sample experiments with 
+the SenseClusters system. Sample data is provided in the /Data directory, 
+and there are scripts available that show how to exercise some of the 
+major functionality of the package. 
+
+The package supports two basic models, native SenseClusters and Latent 
+Semantic Analysis. Both of those are demoed via scripts found in this 
+directory. 
+
+SenseClusters provides a wrapper program called discriminate.pl that can 
+be used to run many different experiments. This wrapper calls many of the 
+other programs found in the package and integrates their functionality for 
+you. We show how discriminate.pl can be used to carry out target word 
+discrimination both in the native SenseClusters mode as well as for Latent 
+Semantic Analysis (target-wrapper.sh). 
+
+SenseClusters also allows a user to customize the sequence of operations 
+carried out in their experiments, and examples of that are shown in scripts 
+for native SenseClusters (sc-toolkit.sh) and Latent 
+Semantic Analysis (coming soon). 
+
+SenseClusters also supports word clustering in native SenseClusters mode 
+and feature clustering in LSA mode. These are shown in the script 
+word-wrapper.sh 
+
+=head1 Data preparation
+
+A number of sample data files are provided in /Data. The files that begin 
+with eng-lex-sample.* are from the Senseval-2 word sense disambiguation  
+exercise, and consist of multiple contexts that contain a given target  
+word that will be clustered. 
+
+The training data file (eng-lex-sample.training.xml) is intended to be 
+used for feature selection. The evaluation/test file 
+(eng-lex-sample.evaluation.xml) is the data that will be clustered. 
+eng-lex-sample.key is the official key from the Senseval-2 event, which 
+indicates what the correct sense assignment of each context should be 
+(according to that event at least). This information can be used for 
+evaluation. Finally, the file eng-global-train.txt is a file of raw text 
+that can be used for feature selection in the global mode, that is without 
+respect to any particular target words. 
+
+Before you start working with the data, you  should run the following 
+script (makedata.sh):
+
+=head2 makedata.sh 
+
+Creates experimental data in dir LexSample. 
+
+makedata also takes advantage of a SenseClusters preprocessing wrapper
+program setup.pl, and allows filtering of test data based on the 
+frequency of the senses found in that data.
+
+=head1 Note
+
+Before running any demo, make sure to
+
+=over
+
+=item remove LexSample directory if one already exists (rm -fr LexSample)
+
+=item run makedata.sh to create fresh copy of LexSample
+
+=back
+
+=head1 Acknowledgments
+
+This work has been partially supported by a National Science Foundation
+Faculty Early CAREER Development award (#0092784).
+

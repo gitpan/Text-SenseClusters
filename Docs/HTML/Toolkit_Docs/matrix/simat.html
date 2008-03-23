@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>simat.pl</title>
+<link rev="made" href="mailto:jluttine@marimba.d.umn.edu" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#usgae">USGAE</a></li>
+	<li><a href="#input">INPUT</a></li>
+	<ul>
+
+		<li><a href="#required_arguments_">Required Arguments:</a></li>
+		<ul>
+
+			<li><a href="#vector">VECTOR</a></li>
+			<ul>
+
+				<li><a href="#sparse_format__default_">Sparse Format [default]</a></li>
+				<li><a href="#dense_format">Dense Format</a></li>
+			</ul>
+
+		</ul>
+
+		<li><a href="#optional_arguments_">Optional Arguments:</a></li>
+		<ul>
+
+			<li><a href="#dense">-dense</a></li>
+			<li><a href="#format_form">-format FORM</a></li>
+			<li><a href="#other_options__">Other Options :</a></li>
+			<ul>
+
+				<li><a href="#help">-help</a></li>
+				<li><a href="#version">-version</a></li>
+			</ul>
+
+		</ul>
+
+	</ul>
+
+	<li><a href="#output">OUTPUT</a></li>
+	<ul>
+
+		<li><a href="#sparse_format__default_">Sparse Format [default]</a></li>
+		<li><a href="#dense_format">Dense Format</a></li>
+	</ul>
+
+	<li><a href="#system_requirements">SYSTEM REQUIREMENTS</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>simat.pl</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<p>Displays pair-wise cosine similarities among the given vectors.</p>
+<p>
+</p>
+<hr />
+<h1><a name="usgae">USGAE</a></h1>
+<p>simat.pl [OPTIONS] VECTOR</p>
+<p>
+</p>
+<hr />
+<h1><a name="input">INPUT</a></h1>
+<p>
+</p>
+<h2><a name="required_arguments_">Required Arguments:</a></h2>
+<p>
+</p>
+<h3><a name="vector">VECTOR</a></h3>
+<p>Should be a file containing sparse/dense vectors as created by programs in
+dir Toolkit/vector.</p>
+<p>
+</p>
+<h4><a name="sparse_format__default_">Sparse Format [default]</a></h4>
+<p>When the input vectors are in sparse format, the first line in the VECTOR
+file should show 3 space separated numbers -</p>
+<pre>
+ N M NNZ</pre>
+<p>where</p>
+<pre>
+ N = Number of rows/vectors
+ M = Number of columns
+ NNZ = Number of non-zero values</pre>
+<p>Each line after this line should show a single sparse vector on each line.
+A sparse vector is a list of pairs of numbers separated by space such
+that the first number in a pair is the index of a non-zero value in the
+vector and the second number is a non-zero value itself corresponding to
+that index.</p>
+<p>Column indices start with 1.</p>
+<p>Sample Sparse Format -</p>
+<pre>
+ 7 8 27
+ 3 0.727 4 0.921 7 0.734 8 0.841
+ 6 0.726 7 0.775 8 0.948
+ 1 0.898 3 0.712 5 0.787 8 0.724
+ 4 0.797 6 0.649
+ 1 0.695 2 0.710 3 0.837 4 0.736 7 0.631
+ 2 0.661 3 0.778 4 0.762 6 0.957
+ 1 0.915 3 0.639 5 0.989 6 0.637 8 0.649</pre>
+<p>Explaination -</p>
+<ol>
+<li></li>
+First line shows that there are 7 sparse vectors, represented using 
+8 features, and total 27 non-zero values.
+<p></p>
+<li></li>
+Each vector (all lines except the 1st line) is a list of 'INDEX VALUE'
+pairs separated by space.
+<p>e.g. line 2 shows that the 1st vector has a non-zero value 0.727 at index 3, 
+0.921 at 4, value 0.734 at index 7 and 0.841 at 8.</p>
+<p>Only those 'INDEX VALUE' pairs are listed in which value is non-zero.</p>
+<p>Column indices start from 1, to be consistent with Cluto's matrix format
+standard.</p>
+<p></p></ol>
+<p>Note that, the values could be integer and negative.</p>
+<p>
+</p>
+<h4><a name="dense_format">Dense Format</a></h4>
+<p>If VECTORs are in dense format, switch --dense should be selected.</p>
+<p>For N vectors each having M components, the first line of dense VECTOR file 
+should show exactly 2 integers N M i.e. number of vectors and number of 
+components, separated in space. This should be followed by actual vectors 
+each on a separate line. Each dense vector should only list the vector 
+component values (and not the corresponding column indices), and should 
+show all values including 0s. Thus, all vectors should be equal in length and 
+should show M space separated numbers.</p>
+<p>Sample Dense Format -</p>
+<pre>
+ 7 8
+ 0.000 0.000 0.727 0.921 0.000 0.000 0.734 0.841
+ 0.000 0.000 0.000 0.000 0.000 0.726 0.775 0.948
+ 0.898 0.000 0.712 0.000 0.787 0.000 0.000 0.724
+ 0.000 0.000 0.000 0.797 0.000 0.649 0.000 0.000
+ 0.695 0.710 0.837 0.736 0.000 0.000 0.631 0.000
+ 0.000 0.661 0.778 0.762 0.000 0.957 0.000 0.000
+ 0.915 0.000 0.639 0.000 0.989 0.637 0.000 0.649</pre>
+<p>Shows same VECTOR file as shown in section Sample Sparse Format, in dense 
+format.</p>
+<p>VECTOR file could also optionally show the &lt;keyfile&gt; tag on the first line.
+If the first line shows the &lt;keyfile&gt; name, then the above VECTOR 
+description should start from the 2nd line onwards.</p>
+<p>
+</p>
+<h2><a name="optional_arguments_">Optional Arguments:</a></h2>
+<p>
+</p>
+<h3><a name="dense">--dense</a></h3>
+<p>This switch should be selected when the given VECTORs are in dense format. 
+This will also create the output similarity matrix in dense format. By 
+default, sparse format is assumed and used for both input vectors and 
+output similarity matrix.</p>
+<p>
+</p>
+<h3><a name="format_form">--format FORM</a></h3>
+<p>Specifies the numeric representation format for output similarity matrix.</p>
+<p>Acceptable FORM value is</p>
+<p>fN.M -&gt; each similarity value is represented as a floating point number 
+occupying total N byte space with last M bytes showing the fractional part.</p>
+<p>Default format used is f16.10.</p>
+<p>Since the cosine similarity values computed by simat are always in the range
+[0-1], simat supports only floating point format.</p>
+<p>
+</p>
+<h3><a name="other_options__">Other Options :</a></h3>
+<p>
+</p>
+<h4><a name="help">--help</a></h4>
+<p>Displays this message.</p>
+<p>
+</p>
+<h4><a name="version">--version</a></h4>
+<p>Displays the version information.</p>
+<p>
+</p>
+<hr />
+<h1><a name="output">OUTPUT</a></h1>
+<p>
+</p>
+<h2><a name="sparse_format__default_">Sparse Format [default]</a></h2>
+<p>By default (when --dense is not selected), OUTPUT will be created in sparse 
+format. In sparse format, the 1st line will show two space separated numbers,</p>
+<pre>
+ N NNZ1</pre>
+<p>where
+ N = Number of vectors, same as the N in the given VECTOR file
+ NNZ1 = Number of non-zero values in the output similarity matrix</p>
+<p>Each i'th line after the above line shows the list of 'j COSINE' pairs 
+separated by space such that COSINE is the non-zero cosine similarity value
+between the i'th and j'th vectors in the given VECTOR file.</p>
+<p>Only those pairs are listed in which the COSINE values are non-zeroes.</p>
+<p>Sample Sparse Output</p>
+<pre>
+ 7 29
+ 1 1.000 4 0.441 6 0.491 7 0.357
+ 2 1.000 3 0.308 4 0.322 5 0.212
+ 2 0.308 3 1.000
+ 1 0.441 2 0.322 4 1.000 5 0.352 6 0.750 7 0.230
+ 2 0.212 4 0.352 5 1.000 6 0.651
+ 1 0.491 4 0.750 5 0.651 6 1.000 7 0.398
+ 1 0.357 4 0.230 6 0.398 7 1.000</pre>
+<p>Shows the actual full similarity matrix -</p>
+<pre>
+ 7
+ 1.000 0.000 0.000 0.441 0.000 0.491 0.357
+ 0.000 1.000 0.308 0.322 0.212 0.000 0.000
+ 0.000 0.308 1.000 0.000 0.000 0.000 0.000
+ 0.441 0.322 0.000 1.000 0.352 0.750 0.230
+ 0.000 0.212 0.000 0.352 1.000 0.651 0.000
+ 0.491 0.000 0.000 0.750 0.651 1.000 0.398
+ 0.357 0.000 0.000 0.230 0.000 0.398 1.000</pre>
+<p>Both the matrices show the pair-wise similarities among 7 vectors. 
+e.g. Row 1 shows that the cosine similarity among the 1st vector and
+the 4th vector is 0.441, between 1st and 6th is 0.491, and the similarity 
+between 1st and 7th vectors is 0.357. In sparse format, each line shows
+only those values that are non-zeroes.</p>
+<p>Note that, the similarity matrix (sparse/dense) always represents a square
+symmetric matrix.</p>
+<p>
+</p>
+<h2><a name="dense_format">Dense Format</a></h2>
+<p>For N input vectors, the first line of the dense output shows a single 
+integer number N (the total number of vectors). Thereafter, each i'th line 
+shows pair-wise similarities of i'th vector with each of the N vectors. i.e. 
+each row contains N columns such that the value at j'th column in i'th row 
+shows the pair-wise similarity between i'th and j'th vectors.</p>
+<p>Sample Dense Output</p>
+<pre>
+ 7
+ 1.000 0.000 0.000 0.441 0.000 0.491 0.357
+ 0.000 1.000 0.308 0.322 0.212 0.000 0.000
+ 0.000 0.308 1.000 0.000 0.000 0.000 0.000
+ 0.441 0.322 0.000 1.000 0.352 0.750 0.230
+ 0.000 0.212 0.000 0.352 1.000 0.651 0.000
+ 0.491 0.000 0.000 0.750 0.651 1.000 0.398
+ 0.357 0.000 0.000 0.230 0.000 0.398 1.000</pre>
+<p>where each cell shows the similarity between the corresponding pair of 
+vectors.</p>
+<p>
+</p>
+<hr />
+<h1><a name="system_requirements">SYSTEM REQUIREMENTS</a></h1>
+<p>PDL - <a href="http://search.cpan.org/dist/PDL/">http://search.cpan.org/dist/PDL/</a></p>
+<p>Math::SparseVector - <a href="http://search.cpan.org/dist/Math-SparseVector/">http://search.cpan.org/dist/Math-SparseVector/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Amruta Purandare, Ted Pedersen.
+University of Minnesota, Duluth.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (c) 2002-2005,</p>
+<p>Amruta Purandare, University of Pittsburgh.
+<a href="mailto:amruta@cs.pitt.edu">amruta@cs.pitt.edu</a></p>
+<p>Ted Pedersen, University of Minnesota, Duluth.
+<a href="mailto:tpederse@umn.edu">tpederse@umn.edu</a></p>
+<p>This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program; if not, write to</p>
+<p>The Free Software Foundation, Inc.,
+59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.</p>
+
+</body>
+
+</html>

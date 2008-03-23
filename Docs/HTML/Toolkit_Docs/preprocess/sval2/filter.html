@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>filter.pl</title>
+<link rev="made" href="mailto:jluttine@marimba.d.umn.edu" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#usage">USAGE</a></li>
+	<li><a href="#input">INPUT</a></li>
+	<ul>
+
+		<li><a href="#required_arguments_">Required Arguments:</a></li>
+		<ul>
+
+			<ul>
+
+				<li><a href="#data">DATA</a></li>
+				<li><a href="#frequency_output">FREQUENCY_OUTPUT</a></li>
+			</ul>
+
+		</ul>
+
+		<li><a href="#optional_arguments_">Optional Arguments:</a></li>
+		<ul>
+
+			<li><a href="#filter_options_">Filter Options:</a></li>
+			<ul>
+
+				<li><a href="#percent_p">-percent P</a></li>
+				<li><a href="#rank_r">-rank R</a></li>
+				<li><a href="#nomulti">-nomulti</a></li>
+			</ul>
+
+			<li><a href="#other_options__">Other Options :</a></li>
+			<ul>
+
+				<li><a href="#help">-help</a></li>
+				<li><a href="#version">-version</a></li>
+			</ul>
+
+		</ul>
+
+	</ul>
+
+	<li><a href="#output">OUTPUT</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>filter.pl</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<p>Filters given data by removing low frequency sense tags.</p>
+<p>
+</p>
+<hr />
+<h1><a name="usage">USAGE</a></h1>
+<p>filter.pl [OPTIONS] DATA FREQUENCY_OUTPUT</p>
+<p>
+</p>
+<hr />
+<h1><a name="input">INPUT</a></h1>
+<p>
+</p>
+<h2><a name="required_arguments_">Required Arguments:</a></h2>
+<p>filter.pl requires two compulsory arguments -</p>
+<p>
+</p>
+<h4><a name="data">DATA</a></h4>
+<p>Senseval-2 formatted data file that is to be filtered.</p>
+<p>
+</p>
+<h4><a name="frequency_output">FREQUENCY_OUTPUT</a></h4>
+<p>This should be an output created by program frequency.pl of this 
+package that shows percentage frequency of each sense tag appearing in given 
+DATA. FREQUENCY_OUTPUT should be created by running frequency.pl on the same 
+DATA file that is input to filter.</p>
+<p>This should show tags</p>
+<pre>
+       &lt;sense id=&quot;S&quot; percent=&quot;P&quot;/&gt;</pre>
+<p>that specify percent of each sense tag S in the DATA file.</p>
+<p>
+</p>
+<h2><a name="optional_arguments_">Optional Arguments:</a></h2>
+<p>
+</p>
+<h3><a name="filter_options_">Filter Options:</a></h3>
+<p>
+</p>
+<h4><a name="percent_p">--percent P</a></h4>
+<p>With this option, user can specify the percentage cutoff for filtering. When
+--percent is specified, filter.pl will remove all sense tags whose
+frequency in FREQUENCY_OUTPUT is below P %. A DATA instance that has all sense
+tags attached to it below P% is removed. In other words, only those DATA
+instances are retained which have atleast one sense tag with frequency more
+than or equal to P%.</p>
+<p>
+</p>
+<h4><a name="rank_r">--rank R</a></h4>
+<p>With this option, user can specify the rank cutoff for filtering. When 
+--rank is specified, filter.pl will remove those sense tags that are ranked 
+below R when senses are ordered according to their percentages. A DATA instance
+that has all sense tags attached to it below the rank R will be removed. In 
+other words, only those DATA instances are retained which have atleast one
+sense tag above rank R.</p>
+<p>filter.pl allows only one of the above filter conditions to be specified.</p>
+<p>If neither of the filter options is specified, it will set the default filter 
+condition as P = 1 and will filter DATA by removing sense tags less then 1%.</p>
+<p>
+</p>
+<h4><a name="nomulti">--nomulti</a></h4>
+<p>Removes multiple sense tags attached to an instance such that each instance is
+tagged with the most frequent sense tag among the tags attached to it.</p>
+<p>
+</p>
+<h3><a name="other_options__">Other Options :</a></h3>
+<p>--count COUNT</p>
+<p>Filters the corresponding COUNT file created by preprocess.pl 
+along with the DATA file. COUNT file is filtered such that it stays consistent 
+with the new filtered DATA file and contains only those instances left after 
+filtering, in the same order as they appear in the output.</p>
+<p>Filtered COUNT is written to file COUNT.filtered and every ith line in
+COUNT.filtered shows the instance data within &lt;context&gt; and &lt;/context&gt; tags 
+for the ith instance in the output of filter.</p>
+<p>
+</p>
+<h4><a name="help">--help</a></h4>
+<p>Displays this message.</p>
+<p>
+</p>
+<h4><a name="version">--version</a></h4>
+<p>Displays the version information.</p>
+<p>
+</p>
+<hr />
+<h1><a name="output">OUTPUT</a></h1>
+<p>Output is a sense filtered Senseval-2 file that shows only those DATA instances 
+which have at least one sense tag left after filtering.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Amruta Purandare, Ted Pedersen.
+University of Minnesota, Duluth.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (c) 2002-2005,</p>
+<p>Amruta Purandare, University of Pittsburgh.
+<a href="mailto:amruta@cs.pitt.edu">amruta@cs.pitt.edu</a></p>
+<p>Ted Pedersen, University of Minnesota, Duluth.
+<a href="mailto:tpederse@umn.edu">tpederse@umn.edu</a></p>
+<p>This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program; if not, write to</p>
+<p>The Free Software Foundation, Inc.,
+59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.</p>
+
+</body>
+
+</html>

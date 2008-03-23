@@ -1,0 +1,132 @@
+## NOTE: IF ONE uses "pod2html" TO CREATE THE SenseClusters-Code-README.html FILE 
+## FROM THIS FILE, YOU WOULD HAVE TO MANUALLY EDIT AND CORRECT THE TARGET LOCATIONS 
+## OF THE VARIOUS HTML FILES THAT ARE LINKED TOGETHER BY SenseClusters-Code-README.html
+## CURRENTLY.
+## THUS PLEASE DO NOT USE THIS FILE TO RE_CREATE THE html VERSION.
+
+=head1 discriminate.pl
+
+=head1 Context Clustering FlowChart 
+
+=head1 Word Clustering FlowChart 
+
+=head1 Toolkit
+
+=head2 Preprocessing Programs
+
+=head3 Plain Text Preprocessing
+
+=head4 text2sval.pl
+
+=head3 Senseval-2 Text Preprocessing
+
+=head4 balance.pl
+
+=head4 filter.pl
+
+=head4 frequency.pl
+
+=head4 keyconvert.pl
+
+=head4 maketarget.pl
+
+=head4 preprocess.pl
+
+=head4 prepare_sval2.pl
+
+=head4 sval2plain.pl
+
+=head4 windower.pl
+
+=head2 Cluster Labeling
+
+=head4 clusterlabeling.pl
+
+=head2 Cluster Stopping
+
+=head4 clusterstopping.pl
+
+=head2 Counting
+
+=head4 reduce-count.pl
+
+=head2 Word/Context Vector Constructors
+
+=head4 nsp2regex.pl
+
+=head4 wordvec.pl
+
+=head4 order1vec.pl
+
+=head4 order2vec.pl
+
+=head2 SVD Interface to SVDPACK and PDL::svd() 
+
+=head4 mat2harbo.pl
+
+=head4 svdpackout.pl
+
+=head2 Similarity Matrix Constructors
+
+=head4 bitsimat.pl
+
+=head4 simat.pl
+
+=head2 Evaluation Programs
+
+=head4 cluto2label.pl
+
+=head4 format_clusters.pl
+
+=head4 label.pl
+
+=head4 report.pl
+
+=head1 AUTHORS
+
+ Ted Pedersen
+ University of Minnesota, Duluth
+ tpederse@d.umn.edu
+ http://www.d.umn.edu/~tpederse/
+
+ Amruta Purandare
+ University of Pittsburgh
+ amruta@cs.pitt.edu
+ http://www.cs.pitt.edu/~amruta/
+
+ Anagha Kulkarni
+ University of Minnesota, Duluth
+ kulka020@d.umn.edu
+ http://www.d.umn.edu/~kulka020/
+
+=head1 COPYRIGHT
+
+Copyright (c) 2003-2006
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse@d.umn.edu
+
+ Amruta Purandare, University of Pittsburgh
+ amruta@cs.pitt.edu
+
+ Anagha Kulkarni, University of Minnesota, Duluth
+ kulka020@d.umn.edu
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to
+
+The Free Software Foundation, Inc.,
+59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.
+
+=cut
+
