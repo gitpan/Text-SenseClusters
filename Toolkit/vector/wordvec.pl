@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-wordvec.pl
+wordvec.pl Construct word vectors from bigram or co-occurrence matrices
 
 =head1 SYNOPSIS
 

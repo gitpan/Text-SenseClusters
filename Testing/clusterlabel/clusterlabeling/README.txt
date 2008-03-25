@@ -8,9 +8,6 @@
                     Anagha Kulkarni, kulka020@d.umn.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 Introduction:
@@ -21,8 +18,6 @@ various conditions.
 Tests:
 -------
 The test scripts are written in the files test*.sh
-We have written a single test script normal-op.sh which will run all test*.sh.
-Please run normal-op.sh by typing 'normal-op.sh' on the command line.
 
 Normal Cases
 ------------

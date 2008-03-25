@@ -1,14 +1,13 @@
-#!/usr/local/bin/perl
-
 =head1 NAME
 
-README.SC-htdocs.pod
+README.SC-htdocs Purposes of the htdocs directory in the SenseClusters web interface
 
 =head1 Description
 
 All the files under this directory should be placed under a directory 
 called SC-htdocs which itself should be placed under the htdocs directory of 
 the web-server.
+
 eg: For apache web-server's default settings, the files in this directory 
 should be placed under htdocs/SC-htdocs
 
@@ -16,5 +15,16 @@ should be placed under htdocs/SC-htdocs
 
 This work has been partially supported by a National Science Foundation
 Faculty Early CAREER Development award (#0092784).
+
+=head1 Copyright 
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 
+or any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+
+Note: a copy of the GNU Free Documentation License is available on 
+the web at L<http://www.gnu.org/copyleft/fdl.html> and is included in 
+this distribution as FDL.txt.
 
 =cut

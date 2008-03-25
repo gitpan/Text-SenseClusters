@@ -1,6 +1,6 @@
 =head1 Name
 
-README.Testing.pod
+README.Testing Explains structure and use of Testing/
 
 =head1 Purpose
 
@@ -12,30 +12,56 @@ compatibility of programs when programs are upgraded.
 
 =head1 Organization 
 
-Testing Dir contains various sub directories, each of which tests individual 
-program of this package. 
+Testing/ contains various sub directories, each of which tests 
+individual program of this package. 
 
-Each subdirectory has various .sh test files written in Cshell script. 
-All tests that test behavior of a program under normal conditions can be run
-using a script normal-op.sh(found in each sub-dir). Similarly, error-op.sh 
-scripts (in sub-dirs) test program behavior under error conditions.
+Each subdirectory has various .sh test files written in C shell script. 
+All tests that test behavior of a program under normal conditions are 
+named as testA*sh, and all those that test error conditions are named as 
+testB*.sh. Note that in earlier versions the testA*.sh scripts were run 
+by a script called normal-op.sh, and the testB*.sh scripts were run by a 
+script called error-op.sh. However, this required that subtestll.sh and 
+testall.sh (the main driver scripts for the Testing directory) be 
+installed in the system level binary directory. We'd prefer to keep the 
+Testing scripts and data isolated to the Testing directory, so we 
+created a single script ot run all test cases, ALL-TESTS.sh
 
 All test scripts in all the program directories can be run with a single 
-command testall.sh. (subtestall.sh is internally called by testall.sh and 
-shouldn't be run independantly)
+command 'csh ./TEST-ALL.sh'. If you add or change test cases, this is 
+the only place you will need to make modifications to add your test case to 
+the sequence of test scripts. 
 
-If everything is fine, you will see 
+If everything is fine, the tests will show the following:
 
-STATUS : OK 
-messages for each of these tests.
+ STATUS : OK 
 
 If the package is not installed rightly or paths not set, 
-Tests will show
+Tests will show the following:
 
-STATUS : ERROR 
-message.
+ STATUS : ERROR 
 
-=head1 Copying
+=head1 Authors
+
+Ted Pedersen, University of Minnesota, Duluth
+tpederse at d.umn.edu
+
+Amruta Purandare
+University of Pittsburgh
+
+Anagha Kulkarni
+Carnegie-Mellon University
+
+Mahesh Joshi
+Carnegie-Mellon University
+
+=head1 Acknowledgment
+
+This work has been partially supported by a National Science Foundation
+Faculty Early CAREER Development award (#0092784).
+
+=head1 Copyright
+
+Copyright 2002-2008, Ted Pedersen, Anagha Kulkarni, Mahesh Joshi, Amruta Purandare
 
 This suite of programs is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as published by
@@ -53,10 +79,5 @@ Place - Suite 330, Boston, MA  02111-1307, USA.
 
 Note: The text of the GNU General Public License is provided in the file
 GPL.txt that you should have received with this distribution.
-
-=head1 Acknowledgment
-
-This work has been partially supported by a National Science Foundation
-Faculty Early CAREER Development award (#0092784).
 
 =cut

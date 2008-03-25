@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -69,7 +66,6 @@ Test A5 :	Tests svdpackout's rowonly construction
 ----------------------
 
 Tests written in testB*.sh form test svdpackout.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1 :	lao2 file doesn't have pre-specified #S-values
 

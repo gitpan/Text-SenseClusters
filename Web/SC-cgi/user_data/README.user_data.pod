@@ -1,17 +1,16 @@
-#!/usr/local/bin/perl
-
 =head1 NAME
 
-README.user_data.pod
+README.user_data Purposes of user_data directory in web interface
 
 =head1 Purpose of the directory
 
 For each instance of the web-interface a directory is created under this 
 user_data directory.
+
 These user directories remain in user_data directory until the processing is 
-complete.
-Once the processing is complete the user directory is moved to htdocs/SC-htdocs 
-directory.
+complete. Once the processing is complete the user directory is moved to 
+htdocs/SC-htdocs directory.
+
 If an error occurs and processing is interrupted then the user directory 
 remains here.
 
@@ -22,5 +21,16 @@ user directories and should contain only this README.user_data.pod file.
 
 This work has been partially supported by a National Science Foundation
 Faculty Early CAREER Development award (#0092784).
+
+=head1 Copyright
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 
+or any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+
+Note: a copy of the GNU Free Documentation License is available on 
+the web at L<http://www.gnu.org/copyleft/fdl.html> and is included in 
+this distribution as FDL.txt.
 
 =cut

@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-discriminate.pl
+discriminate.pl Wrapper program to run SenseClusters in a single command
 
 =head1 SYNOPSIS
 
@@ -660,56 +660,20 @@ and LSA feature clustering mode
 
 =back
 
-=head1 SYSTEM REQUIREMENTS
-
-=over
-
-=item * Perl (version 5.8.5 or better) - http://www.perl.org
-
-=item * Text::NSP - http://search.cpan.org/dist/Text-NSP
-
-=item * Perl Data Language (PDL) - http://search.cpan.org/dist/PDL/
-
-=item * Bit::Vector http://search.cpan.org/dist/Bit-Vector/ when --binary is turned ON.
-
-=item * Math::SparseVector - http://search.cpan.org/dist/Math-SparseVector/
-
-=item * Math::SparseMatrix - http://search.cpan.org/dist/Math-SparseMatrix/
-
-=item * Math::BigInt - http://search.cpan.org/dist/Math-BigInt/
-
-=item * Set::Scalar - http://search.cpan.org/dist/Set-Scalar/
-
-=item * Algorithm::Munkres - http://search.cpan.org/dist/Algorithm-Munkres/
-
-=item * SVDPACK - http://www.netlib.org/svdpack/
-
-=item * Clustering Toolkit - Cluto http://www-users.cs.umn.edu/~karypis/cluto
-
-=back
-
-=head1 AUTHOR
+=head1 AUTHORS
 
  Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
+
  Amruta Purandare, University of Pittsburgh
- Anagha Kulkarni, University of Minnesota, Duluth
- Mahesh Joshi, University of Minnesota, Duluth
+
+ Anagha Kulkarni, Carnegie-Mellon University
+
+ Mahesh Joshi, Carnegie-Mellon Unversity
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Ted Pedersen, University of Minnesota, Duluth
- tpederse@d.umn.edu
-
- Amruta Purandare, University of Pittsburgh
- amruta@cs.pitt.edu
-
- Anagha Kulkarni, University of Minnesota, Duluth
- kulka020@d.umn.edu
-
- Mahesh Joshi, University of Minnesota, Duluth
- joshi031@d.umn.edu
+Copyright (c) 2002-2008, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, Mahesh Joshi
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -3520,7 +3484,7 @@ discriminate.\n";
 #version information
 sub showversion()
 {
-        print '$Id: discriminate.pl,v 1.103 2006/08/24 04:34:19 anaghakk Exp $';
+        print '$Id: discriminate.pl,v 1.104 2008/03/24 04:06:47 tpederse Exp $';
 #        print "Wrapper program for using SenseClusters' Toolkit.\n";
         print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, & Mahesh Joshi\n";
 ##        print "Date of Last Update:     07/30/2006\n";

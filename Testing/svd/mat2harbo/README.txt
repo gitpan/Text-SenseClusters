@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -37,7 +34,6 @@ the program and backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test mat2harbo.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh 
 
 Test A1  :	Tests mat2harbo when the input matrix is sparse rectangular 
 
@@ -70,7 +66,6 @@ Test A11 :	Tests options --iter, --k, --rf together
 ----------------------
 
 Tests written in testB*.sh form test mat2harbo.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1  :	Incorrect numeric format for --cpform/--rpform/--numform
 

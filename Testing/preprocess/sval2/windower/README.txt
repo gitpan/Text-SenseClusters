@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -37,7 +34,6 @@ backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test windower.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh 
 
 Test A1 :	Tests windower 
 		1. on default target and token regex files
@@ -58,7 +54,6 @@ Test A5 :	Same as A2 with --plain ON
 ---------------------
 
 Tests written in testB*.sh test windower.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1 :	Tests windower when <context> tag is found without
 		corresponding <instance> tag after last </instance>

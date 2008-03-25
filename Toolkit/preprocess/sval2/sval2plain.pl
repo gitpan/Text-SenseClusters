@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-sval2plain.pl
+sval2plain.pl Convert Senseval-2 data into plain text format
 
 =head1 SYNOPSIS
 
@@ -191,7 +191,7 @@ Type 'perldoc sval2plain.pl' to view detailed documentation of sval2plain.\n";
 #version information
 sub showversion()
 {
-	print '$Id: sval2plain.pl,v 1.5 2006/08/01 12:10:04 tpederse Exp $';
+	print '$Id: sval2plain.pl,v 1.6 2008/03/24 00:56:59 tpederse Exp $';
         print "Copyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
 #        print "sval2plain.pl      -       Version 0.01\n";
 #        print "Converts a given file in Senseval-2 format into plain text format.\n";

@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -34,10 +31,6 @@ Tests:
 ========
 
 These test scripts are written in the files testA*.sh.
-We have written a single test script normal-op.sh which will run all testA*.sh
-for you. Please run normal-op.sh by typing 'normal-op.sh' on the command line.
-
-The following tests will be run by normal-op.sh 
 
 2.1 Tests A1: 
 -----------------
@@ -98,8 +91,8 @@ INPUT                   => test-A5.source
 EXPECTED OUTPUT         => test-A5.reqd
 --------------
 
-There are no special error checks in this program and hence aren' t testes 
-using formal test scripts.
+There are no special error checks in this program and hence aren't 
+tested using formal test scripts.
 
 3. Conclusions:
 ---------------

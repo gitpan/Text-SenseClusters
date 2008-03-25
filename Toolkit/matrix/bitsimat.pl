@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-bitsimat.pl
+bitsimat.pl Create similarity matrix for binary context vectors
 
 =head1 SYNOPSIS
 

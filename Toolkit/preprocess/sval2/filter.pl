@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-filter.pl
+filter.pl Remove low  frequency sense tags
 
 =head1 SYNOPSIS
 

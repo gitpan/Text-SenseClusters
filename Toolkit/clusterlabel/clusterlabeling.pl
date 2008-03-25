@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-clusterlabeling.pl
+clusterlabeling.pl Label discovered clusters based on their content
 
 =head1 SYNOPSIS
 
@@ -687,7 +687,7 @@ Type 'perldoc clusterlabeling.pl' to view the detailed documentation.\n";
 #version information
 sub showversion()
 {
-	print '$Id: clusterlabeling.pl,v 1.26 2006/08/25 01:56:16 tpederse Exp $';
+	print '$Id: clusterlabeling.pl,v 1.27 2008/03/24 00:56:56 tpederse Exp $';
         print "\nCopyright (c) 2004-2006, Ted Pedersen, & Anagha Kulkarni\n";
 #        print "clusterlabeling.pl      -       Version 0.04\n";
 #        print "Cluster labeling program.\n";

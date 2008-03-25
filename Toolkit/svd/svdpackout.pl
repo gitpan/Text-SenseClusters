@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-svdpackout.pl
+svdpackout.pl Reconstruct matrix from singular values output by SVDPACKC
 
 =head1 SYNOPSIS
 

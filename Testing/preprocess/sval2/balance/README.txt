@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 Unit Testing of
 balance.pl
@@ -29,8 +26,6 @@ various normal and error conditions.
 Tests:
 -------
 The test scripts are written in the files testA*.sh
-We have written a single test script normal-op.sh which will run all testA*.sh
-for you. Please run normal-op.sh by typing 'normal-op.sh' on the command line.
 
 Tests A[1-7] run and test balance.pl by selecting different number of instances
 from different XML files. 

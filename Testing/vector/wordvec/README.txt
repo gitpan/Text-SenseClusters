@@ -8,8 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-		    http://senseclusters.sourceforge.net/
-
 *******************************************************************************
 
 
@@ -35,7 +33,6 @@ the correct behaviour of the program and backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test wordvec.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh. 
 
 Tests A1-A10 test wordvec when the feature file does not exist and is to be 
 automatically created by wordvec, while tests A11-20 run the same tests as
@@ -87,7 +84,6 @@ that end with
 ----------------------
 
 Tests written in testB*.sh test wordvec.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1:        Tests wordvec under the floating point over/under flow errors.
 

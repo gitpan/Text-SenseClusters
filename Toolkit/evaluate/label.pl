@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-label.pl
+label.pl Assign labels to clusters to maximize agreement 
 
 =head1 SYNOPSIS
 
@@ -309,7 +309,7 @@ sub showhelp()
 #version information
 sub showversion()
 {
- 	print '$Id: label.pl,v 1.13 2006/08/01 20:53:52 tpederse Exp $'; 
+ 	print '$Id: label.pl,v 1.14 2008/03/24 00:56:58 tpederse Exp $'; 
        print "\nCopyright (C) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
 #        print "label.pl      -       Version 0.11\n";
 #	print "Labels the discovered clusters with sense tags.";

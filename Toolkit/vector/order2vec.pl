@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-order2vec.pl
+order2vec.pl Create second order context vectors
 
 =head1 SYNOPSIS
 
@@ -1258,7 +1258,7 @@ Type 'perldoc order2vec.pl' to view detailed documentation of order2vec.\n";
 #version information
 sub showversion()
 {
-	print '$Id: order2vec.pl,v 1.30 2006/08/06 18:26:10 jmahesh Exp $';
+	print '$Id: order2vec.pl,v 1.31 2008/03/24 00:56:59 tpederse Exp $';
         print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Mahesh Joshi\n";
  #       print "order2vec.pl      -       Version 0.3\n";
  #       print "Creates second order context vectors.\n";

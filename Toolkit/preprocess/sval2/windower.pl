@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-windower.pl
+windower.pl Limit window of context around target word
 
 =head1 SYNOPSIS
 

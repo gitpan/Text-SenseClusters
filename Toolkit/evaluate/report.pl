@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-report.pl 
+report.pl Summarize results with precision, recall, and confusion matrix
 
 =head1 SYNOPSIS
 
@@ -597,7 +597,7 @@ OPTIONS:
 #version information
 sub showversion()
 {
-	print '$Id: report.pl,v 1.12 2006/08/01 20:47:44 tpederse Exp $';
+	print '$Id: report.pl,v 1.13 2008/03/24 00:56:58 tpederse Exp $';
         print "\nCopyright (C) 2002-2006, Ted Pedersen, Amruta Purandare & Anagha Kulkarni\n";
 #        print "report.pl      -       Version 0.06\n";
 #        print "Reports Precision, Recall, F-Measure and Confusion table.\n";

@@ -2,14 +2,11 @@
 
 		     README.txt FOR Testing maketarget.pl
 
-		   $Id: README.txt,v 1.4 2006/08/01 11:29:18 tpederse Exp $
+		   $Id: README.txt,v 1.5 2008/03/25 00:59:57 tpederse Exp $
                          Copyright (C) 2002-2006
                        Ted Pedersen, tpederse@umn.edu
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
-
-                   http://www.d.umn.edu/~tpederse/code.html
-
 
 *******************************************************************************
 
@@ -37,8 +34,6 @@ compatibility.
 ----------------------
 
 Tests written in testA*.sh test maketarget.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh. These tests are 
-conducted with both the --head tag and without.
 
 Test A1  :	Tests on a preprocessed data in which all letters are in 
 		lowercase
@@ -55,7 +50,6 @@ Test A4  :	Tests when the target word has only one form
 ----------------------
 
 Tests written in testB*.sh test maketarget.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1  :	Tests when the SVAL2 file does not contain any <head> tags
 

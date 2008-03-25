@@ -1,12 +1,12 @@
 # Generate a Makefile for SenseClusters. 
-# $Id: Makefile.PL,v 1.61 2006/08/02 04:18:43 tpederse Exp $
+# $Id: Makefile.PL,v 1.71 2008/03/25 03:15:42 tpederse Exp $
 
 # if you want to understand how Makefile.PL works, you should check out
 # http://search.cpan.org/~rgarcia/perl-5.6.2/lib/ExtUtils/MakeMaker.pm
 
 print "Welcome to SenseClusters !\n" unless -f "Makefile";
 
-use 5.008005;		# require perl 5.8.5
+use 5.006;		# require perl 5.6
 
 use ExtUtils::MakeMaker;
 
@@ -15,13 +15,6 @@ use ExtUtils::MakeMaker;
 # wrappers from main dir
 
 my @wrappers = qw (discriminate.pl);
-
-#wrapper from Demos dir
-my @demo_wrapper = qw (setup.pl setdirs.sh);
-
-# scripts from Docs/HTML dir
-
-my @doc_scripts = qw (create_doc.sh traverse.sh);
 
 # Now the Toolkit programs !
 
@@ -59,31 +52,30 @@ my @toolkit_cluslabel = qw (clusterlabeling.pl);
 
 my @toolkit_cluststop = qw (clusterstopping.pl);
 
-# testing dir 
-my @test_scripts = qw (testall.sh subtestall.sh);
-
-# svdcompare.pl
-my @testing_svd_svdpackout = qw (svdcompare.pl);
+# svdcompare.pl - only used for testing
+## my @testing_svd_svdpackout = qw (svdcompare.pl);
 
 WriteMakefile(
 
 	'NAME'		=> 'Text::SenseClusters',
-	'VERSION'	=> '0.96',
+        'VERSION_FROM'      => 'lib/Text/SenseClusters.pm',   
 
 ## This lists various CPAN modules that are used and must be available
 ## for SenseClusters to function.
 
-	'PREREQ_PM'	=> {'Algorithm::Munkres' => '0.06',
+	'PREREQ_PM'	=> {'Algorithm::Munkres' => '0.07',
 			    'Algorithm::RandomMatrixGeneration' => '0.04',
 	  		    'Bit::Vector' => '6.3',
 			    'Math::BigFloat' => '1.51',
-			    'Math::SparseMatrix' => '0.01',
-			    'Math::SparseVector' => '0.03',
+			    'Math::SparseVector' => '0.04',
+			    'Math::SparseMatrix' => '0.02',
 			    'PDL' => '2.4.1',
 			    'Set::Scalar' => '1.19',
-			    'Text::NSP' => '1.01'},
+			    'Text::NSP' => '1.05'},
 
-	'CONFIGURE'	=> \&configSub,
+### maybe not necessary to print out long help screen as 
+### INSTALL now includes a Bundle and other helpful aids
+###	'CONFIGURE'	=> \&configSub,
 
 ## if you change INSTALLDIRS from site to perl or default, some of the
 ## below must change too. Search for INSTALLDIRS to find where. 
@@ -97,21 +89,21 @@ WriteMakefile(
 #  install man pages, we use MAN1PODS to keep all man pages in /man1
 
 	'MAN1PODS' =>  {
-		'README.SC.pod' => '$(INST_MAN1DIR)/README.SC.1',
-		'Docs/Todo.SC.pod' => '$(INST_MAN1DIR)/Todo.SC.1',
-		'Docs/README.Docs.pod' => '$(INST_MAN1DIR)/README.Docs.1',
-		'Docs/HTML/README.HTML.pod' => '$(INST_MAN1DIR)/README.HTML.1',
-		'Docs/Flows/README.Flows.pod' => '$(INST_MAN1DIR)/README.Flows.1',
-		'Docs/FAQs.pod' => '$(INST_MAN1DIR)/FAQs.1',
-		'Demos/README.Demos.pod' => '$(INST_MAN1DIR)/README.Demos.1',
-		'Testing/README.Testing.pod' => '$(INST_MAN1DIR)/README.Testing.1',
-		'Toolkit/README.Toolkit.pod' => '$(INST_MAN1DIR)/README.Toolkit.1',
-		'Web/README.Web.pod' => '$(INST_MAN1DIR)/README.Web.1',
-		'Web/SC-cgi/README.SC-cgi.pod' => '$(INST_MAN1DIR)/README.SC-cgi.1',
-		'Web/SC-htdocs/README.SC-htdocs.pod' => '$(INST_MAN1DIR)/README.SC-htdocs.1',
-		'Web/SC-cgi/user_data/README.user_data.pod' => '$(INST_MAN1DIR)/README.user_data.1',
+# only create man pages for *.pl programs in the main line of SenseClusters
+#		'doc/TODO.pod' => '$(INST_MAN1DIR)/TODO.1',
+#		'doc/FAQ.pod' => '$(INST_MAN1DIR)/FAQ.1',
+#		'doc/Flowcharts/README.Flowcharts.pod' => '$(INST_MAN1DIR)/README.Flowcharts.1',
+#		'samples/README.Demos.pod' => '$(INST_MAN1DIR)/README.Demos.1',
+#		'Testing/README.Testing.pod' => '$(INST_MAN1DIR)/README.Testing.1',
+#		'Toolkit/README.Toolkit.pod' => '$(INST_MAN1DIR)/README.Toolkit.1',
+#		'Web/README.Web.pod' => '$(INST_MAN1DIR)/README.Web.1',
+#		'Web/SC-cgi/README.SC-cgi.pod' => '$(INST_MAN1DIR)/README.SC-cgi.1',
+#		'Web/SC-htdocs/README.SC-htdocs.pod' => '$(INST_MAN1DIR)/README.SC-htdocs.1',
+#		'Web/SC-cgi/user_data/README.user_data.pod' => '$(INST_MAN1DIR)/README.user_data.1',
+#		'samples/setup.pl' => '$(INST_MAN1DIR)/setup.pl.1',
+#		'Testing/svd/svdpackout/svdcompare.pl' => '$(INST_MAN1DIR)/svdcompare.pl.1',
+		'lib/Text/SenseClusters.pm' => '$(INST_MAN1DIR)/SenseClusters.1',
 		'discriminate.pl' => '$(INST_MAN1DIR)/discriminate.pl.1',
-		'Demos/setup.pl' => '$(INST_MAN1DIR)/setup.pl.1',
 		'Toolkit/clusterlabel/clusterlabeling.pl' => '$(INST_MAN1DIR)/clusterlabeling.pl.1',
 		'Toolkit/clusterstop/clusterstopping.pl' => '$(INST_MAN1DIR)/clusterstopping.pl.1',
 		'Toolkit/evaluate/cluto2label.pl' => '$(INST_MAN1DIR)/cluto2label.pl.1',
@@ -137,7 +129,6 @@ WriteMakefile(
 		'Toolkit/preprocess/sval2/prepare_sval2.pl' => '$(INST_MAN1DIR)/prepare_sval2.pl.1',
 		'Toolkit/preprocess/sval2/windower.pl' => '$(INST_MAN1DIR)/windower.pl.1',
 		'Toolkit/preprocess/sval2/preprocess.pl' => '$(INST_MAN1DIR)/preprocess.pl.1',
-		'Testing/svd/svdpackout/svdcompare.pl' => '$(INST_MAN1DIR)/svdcompare.pl.1',
 	},
 
 # if INSTALLBINS is changed from site, the directories mentioned below 
@@ -156,10 +147,7 @@ WriteMakefile(
 
 	'EXE_FILES'	=> [
 		map ("$_", @wrappers),
-		map ("Demos/$_", @demo_wrapper),
-		map ("Docs/HTML/$_", @doc_scripts),
-		map ("Testing/$_", @test_scripts),
-		map ("Testing/svd/svdpackout/$_",@testing_svd_svdpackout),
+##		map ("Testing/svd/svdpackout/$_",@testing_svd_svdpackout),
 		map ("Toolkit/preprocess/plain/$_", @toolkit_preprocess_plain),
 		map ("Toolkit/preprocess/sval2/$_", @toolkit_preprocess_sval),
 		map ("Toolkit/count/$_", @toolkit_count),
@@ -173,8 +161,18 @@ WriteMakefile(
 
  	($] >= 5.005 ?
 
-	(ABSTRACT => 'SenseClusters - Clustering contextually similar text instances.',
-	AUTHOR => 'Ted Pedersen <tpederse at d.umn.edu>'):()), );
+	(ABSTRACT => 'SenseClusters - Clustering similar written contexts',
+	AUTHOR => 'Ted Pedersen <tpederse at d.umn.edu>'):()), 
+
+       # allows make dist to create .tar.gz with correct name/version
+       'dist'             => {'COMPRESS' => 'gzip -9f', 'SUFFIX' => 'gz'},
+       # allows for automatic creation of META.yml
+       ($ExtUtils::MakeMaker::VERSION ge '6.30_00'?
+       ('LICENSE' => 'gpl', ) : ()),
+
+);
+
+# we no longer display this, not clear if it was really that helpful 
 
 sub configSub {
 
@@ -216,8 +214,11 @@ html:
 	@echo "     $(INSTALLSCRIPT)"
 	@echo "and that the following is in your MANPATH:"
 	@echo "     $(INSTALLSITEMAN1DIR)"
-	@echo "After your paths are set, run Testing/testall.sh to"
-	@echo "verify that installation is ok"
+	@echo "After your paths are set, run the test scripts: "
+	@echo "    cd Testing"
+	@echo "    csh ./ALL-TESTS.sh"
+	@echo "    cd .."
+	@echo "to verify that installation is ok"
 	@echo "*****************************************************"
 END
 	return ($postamble);

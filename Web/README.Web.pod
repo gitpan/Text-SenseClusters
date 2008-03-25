@@ -1,8 +1,6 @@
-#!/usr/local/bin/perl
-
 =head1 NAME
 
-README.Web.pod
+README.Web  How to install SenseClusters web interface
 
 =head1 Steps for setting up the web-interface for SenseClusters
 
@@ -70,5 +68,16 @@ please make sure that each of the following utilities is installed on your syste
 
 This work has been partially supported by a National Science Foundation
 Faculty Early CAREER Development award (#0092784).
+
+=head1 License
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 
+or any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+
+Note: a copy of the GNU Free Documentation License is available on 
+the web at L<http://www.gnu.org/copyleft/fdl.html> and is included in 
+this distribution as FDL.txt.
 
 =cut

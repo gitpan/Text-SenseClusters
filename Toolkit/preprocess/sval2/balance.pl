@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-balance.pl 
+balance.pl Created balanced data with same number of senses for each possible outcome
 
 =head1 SYNOPSIS
 

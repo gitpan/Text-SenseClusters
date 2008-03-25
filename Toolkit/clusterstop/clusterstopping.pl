@@ -5,7 +5,7 @@ eval 'exec /usr/local/bin/perl -w -S $0 ${1+"$@"}'
 
 =head1 NAME
 
-clusterstopping.pl
+clusterstopping.pl Predict the optimal number of clusters for your data
 
 =head1 SYNOPSIS
 

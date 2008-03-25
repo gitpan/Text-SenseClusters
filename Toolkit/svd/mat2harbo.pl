@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-mat2harbo.pl
+mat2harbo.pl Convert Senseclusters sparse matrix into Harwell-Boeing (HB) format
 
 =head1 SYNOPSIS
 
@@ -1246,7 +1246,7 @@ Type 'perldoc mat2harbo.pl' to view detailed documentation of mat2harbo.\n";
 #version information
 sub showversion()
 {
-	print '$Id: mat2harbo.pl,v 1.30 2006/08/21 20:39:11 tpederse Exp $';
+	print '$Id: mat2harbo.pl,v 1.31 2008/03/24 00:56:59 tpederse Exp $';
 ##      print "mat2harbo.pl      -       Version 0.4";
 ##	print "Converts a given matrix in SenseClusters' sparse format to Harwell-Boeing sparse format.\n";
         print "\nCopyright (c) 2002-2006, Amruta Purandare & Ted Pedersen\n";

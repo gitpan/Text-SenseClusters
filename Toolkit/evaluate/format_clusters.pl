@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-format_clusters.pl
+format_clusters.pl Map Cluto output to Senseval-2 format input file
 
 =head1 SYNOPSIS
 
@@ -474,7 +474,7 @@ Note: For more detailed description type 'perldoc format_clusters.pl'
 #version information
 sub showversion()
 {
-	print '$Id: format_clusters.pl,v 1.21 2006/08/04 17:51:47 anaghakk Exp $';
+	print '$Id: format_clusters.pl,v 1.22 2008/03/24 00:56:58 tpederse Exp $';
 	print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
 #        print "format_clusters.pl - Version 0.02\n";
 #        print "Maps Cluto's clustering solution file into Senseval2 input file to give more legible forms of output.\n";

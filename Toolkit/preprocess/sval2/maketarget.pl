@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-maketarget.pl
+maketarget.pl Create target.regex file for a given target word
 
 =head1 SYNOPSIS
 
@@ -305,7 +305,7 @@ Type 'perldoc maketarget.pl' to view detailed documentation of maketarget.\n";
 #version information
 sub showversion()
 {
-        print '$Id: maketarget.pl,v 1.13 2006/08/07 01:30:30 tpederse Exp $';
+        print '$Id: maketarget.pl,v 1.14 2008/03/24 00:56:59 tpederse Exp $';
         print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
 ##        print "maketarget.pl      -       Version 0.01\n";
 ##        print "Creates a Perl regex for the target word.\n";

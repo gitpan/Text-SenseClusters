@@ -10,7 +10,7 @@
 
 =head1 NAME
 
-nsp2regex.pl
+nsp2regex.pl Convert Text-NSP output into a file of regular expressions
 
 =head1 SYNOPSIS
 

@@ -8,8 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
 
 *******************************************************************************
 
@@ -37,7 +35,6 @@ and backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test simat.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh 
 
 Test A1:	 Tests simat on general vectors  
 
@@ -67,7 +64,6 @@ Test A11:	 Tests simat on both dense and sparse, int vectors
 ----------------------
 
 Tests written in testB*.sh test simat.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1:	 Tests simat when the 1st line in vector file is wrong
 

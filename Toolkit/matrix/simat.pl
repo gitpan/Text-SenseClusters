@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-simat.pl
+simat.pl Display pairwise cosine similarities between vectors
 
 =head1 SYNOPSIS
 

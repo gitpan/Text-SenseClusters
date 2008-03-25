@@ -7,8 +7,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
 *****************************************************************************
 
 Testing for label.pl
@@ -40,8 +38,6 @@ Phase B: Testing label.pl's response to erroneous conditions.
 -------------------------------------------------------------------
 
 These scripts are written in testA*.sh
-We have written a single test script normal-op.sh which will run all testA*.sh
-for you. Please run normal-op.sh by typing 'normal-op.sh' on the command line.
 
 Tests written in files TestA1* test label.pl when #clusters = #labels
 
@@ -55,10 +51,6 @@ Test written in file testA4.sh tests label.pl when #clusters=25 and #labels=25
 ---------------------------------------------------------------
 
 These scripts are written in testB*.sh
-We have written a single test script error-op.sh which will run all testB*.sh
-for you. Please run error-op.sh by typing 'error-op.sh' on the command line.
-
-The following tests will be run by error-op.sh
 
 Test B1:	Input file doesn't start with number of unclustered instances.
 

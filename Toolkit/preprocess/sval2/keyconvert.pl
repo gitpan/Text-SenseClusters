@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-keyconvert.pl
+keyconvert.pl Convert Senseval-2 answer key to Senseclusters format
 
 =head1 SYNOPSIS
 

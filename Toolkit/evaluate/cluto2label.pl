@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-cluto2label.pl 
+cluto2label.pl Convert Cluto output to a confusion matrix that label.pl can process
 
 =head1 SYNOPSIS
 
@@ -495,7 +495,7 @@ OPTIONS:
 #version information
 sub showversion()
 {
-	print '$Id: cluto2label.pl,v 1.8 2006/08/01 20:50:33 tpederse Exp $';
+	print '$Id: cluto2label.pl,v 1.9 2008/03/24 00:56:58 tpederse Exp $';
         print "\nCopyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
 #        print "cluto2label.pl - Version 0.16";
 #        print "Displays a Cluster by Sense matrix for Cluto's clustering solution file.";

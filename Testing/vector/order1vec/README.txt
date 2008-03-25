@@ -8,8 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-		    http://senseclusters.sourceforge.net/
-
 *******************************************************************************
 
 
@@ -35,7 +33,6 @@ used to test the correct behaviour of the program and backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test order1vec.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh 
 
 Test A1:	Tests order1vec on unigram features that do not include the 
 		target word
@@ -72,9 +69,6 @@ sparse formatted output.
 
 2.2 Error conditions:
 ---------------------
-
-#Tests written in testB*.sh test order1vec.pl under error conditions.
-#Run error-op.sh to run all test cases testB*.sh
 
 Currently No error tests added
 

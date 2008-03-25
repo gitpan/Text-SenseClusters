@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -36,7 +33,6 @@ used to test the correct behaviour of the program and backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test order2vec.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh 
 
 Test A1:	 Tests order2vec when the word matrix has all integral
 		 values 
@@ -78,7 +74,6 @@ Test A13:	 Tests order2vec on target co-occurrence features from
 ---------------------
 
 Tests written in testB*.sh test order2vec.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1:	Tests order2vec when #features dont match the #word vectors
 

@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -36,7 +33,6 @@ compatibility.
 ----------------------
 
 Tests written in testA*.sh test bitsimat.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh 
 
 Test A1		Tests bitsimat for default measure 
 		Sub tests test matrices with
@@ -66,7 +62,6 @@ vectors.
 ----------------------
 
 Tests written in testB*.sh test bitsimat.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1		Tests when vector doesn't show
 		#rows #cols #nnz or #rows #cols in the header line 

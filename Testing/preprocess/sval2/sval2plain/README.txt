@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -37,7 +34,6 @@ program and backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test sval2plain.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh.
 
 Test A1  :	Tests sval2plain on a Senseval-2 word art.n
 
@@ -50,7 +46,6 @@ Test A3  :	Tests when sval2 file contains sat tags
 ----------------------
 
 Tests written in testB*.sh test sval2plain.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1  :	Tests when input file has no context tags
 

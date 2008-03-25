@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-text2sval.pl
+text2sval.pl Convert plain text data into Senseval-2 format 
 
 =head1 SYNOPSIS
 

@@ -2,12 +2,12 @@
 
 =head1 NAME
 
-order1vec.pl
+order1vec.pl Create first order context vectors
 
 =head1 SYNOPSIS
 
-Creates first order context vectors or feature vectors. Both of these vectors 
-indicate whether or not a given feature occurs in the given context. The 
+Creates first order context vectors of feature vectors. Both of these 
+vectors indicate whether or not a given feature occurs in the given context. The 
 possible features are identified via Perl regular expressions of the form 
 created by nsp2regex.pl. 
 
@@ -1670,7 +1670,7 @@ Type 'perldoc order1vec.pl' to view detailed documentation of order1vec.\n";
 #version information
 sub showversion()
 {
-	print '$Id: order1vec.pl,v 1.46 2006/08/06 06:22:24 jmahesh Exp $';
+	print '$Id: order1vec.pl,v 1.47 2008/03/24 00:56:59 tpederse Exp $';
         print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, & Mahesh Joshi\n";
 #        print "order1vec.pl      -       Version 0.08\n";
 #        print "Displays the first order context vectors.\n";

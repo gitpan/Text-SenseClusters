@@ -10,7 +10,7 @@
 
 =head1 NAME
 
-preprocess.pl
+preprocess.pl Split Senseval-2 format file into one file per lexelt
 
 =head1 SYNOPSIS
 

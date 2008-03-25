@@ -1,9 +1,8 @@
 #!/usr/local/bin/perl -w
-#############################################################################
 
 =head1 NAME
 
-prepare_sval2.pl 
+prepare_sval2.pl Prepare Senseval-2 data for SenseClusters
 
 =head1 SYNOPSIS
 

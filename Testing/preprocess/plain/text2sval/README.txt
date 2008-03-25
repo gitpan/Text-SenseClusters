@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -37,7 +34,6 @@ backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test text2sval.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh 
 
 Test A1:	Tests text2sval when instance ids and sense tags of TEXT
 		instances are provided in the KEY file
@@ -52,7 +48,6 @@ Test A4:	Same as Test A1 but tested on Serve data
 ---------------------
 
 Tests written in testB*.sh test text2sval.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1:	KEY file doesn't contain sufficient entries
 

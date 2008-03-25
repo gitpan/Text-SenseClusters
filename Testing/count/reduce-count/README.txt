@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 
 
@@ -38,7 +35,6 @@ and backward compatibility.
 ----------------------
 
 Tests written in testA*.sh test reduce-count.pl under normal conditions.
-Run normal-op.sh to run all test cases testA*.sh.
 
 Test A1:	Tests reduce-count when the stop words are removed and 
 		tokens do not contain punctuations
@@ -56,7 +52,6 @@ Test A4:	Tests reduce-count when the bigram file is created
 ----------------------
 
 Tests written in testB*.sh test reduce-count.pl under error conditions.
-Run error-op.sh to run all test cases testB*.sh
 
 Test B1:	Tests reduce-count when user enters a bigram file in place of
 		the unigram file.

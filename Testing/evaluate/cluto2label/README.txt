@@ -8,9 +8,6 @@
                     Amruta Purandare amruta@cs.pitt.edu
                        University of Minnesota, Duluth
 
-                   http://www.d.umn.edu/~tpederse/code.html
-
-
 *******************************************************************************
 Unit Testing of
 cluto2label.pl
@@ -29,8 +26,6 @@ various normal and error conditions.
 Tests:
 -------
 The test scripts are written in the files testA*.sh
-We have written a single test script normal-op.sh which will run all testA*.sh
-for you. Please run normal-op.sh by typing 'normal-op.sh' on the command line.
 
 Tests A1-4 run cluto2label for various cluto solutions and keys. 
 Test A5 tests when some instances are not clustered

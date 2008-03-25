@@ -1,9 +1,8 @@
 #!/usr/local/bin/perl -w
-#############################################################################
 
 =head1 NAME
 
-frequency.pl
+frequency.pl Display distribution of senses in Senseval-2 file
 
 =head1 SYNOPSIS
 

@@ -11,7 +11,7 @@ echo "Running svdpackout.pl --format i4 lav2 lao2 > test-A1a.output"
 svdpackout.pl --format i4 lav2 lao2 > test-A1a.output
 
 # redirect STDOUT and STDERR, both to var because svdcompare.pl right to STDERR
-svdcompare.pl test-A1a.output test-A1a.reqd 1 >& var
+perl ./svdcompare.pl test-A1a.output test-A1a.reqd 1 >& var
 
 if(-z var) then
 	echo "Test Ok";
@@ -33,7 +33,7 @@ las2
 echo "Running svdpackout.pl --format f7.3 lav2 lao2 > test-A1b.output"
 svdpackout.pl --format f7.3 lav2 lao2 > test-A1b.output
 
-svdcompare.pl test-A1b.output test-A1b.reqd 0.1 >& var
+perl ./svdcompare.pl test-A1b.output test-A1b.reqd 0.1 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -55,7 +55,7 @@ las2
 echo "Running svdpackout.pl --format i5 lav2 lao2 > test-A1c.output"
 svdpackout.pl --format i5 lav2 lao2 > test-A1c.output
 
-svdcompare.pl test-A1c.output test-A1c.reqd 1 >& var
+perl ./svdcompare.pl test-A1c.output test-A1c.reqd 1 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -77,7 +77,7 @@ las2
 echo "Running svdpackout.pl --format f8.3 lav2 lao2 > test-A1d.output"
 svdpackout.pl --format f8.3 lav2 lao2 > test-A1d.output
 
-svdcompare.pl test-A1d.output test-A1d.reqd 0.1 >& var
+perl ./svdcompare.pl test-A1d.output test-A1d.reqd 0.1 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -99,7 +99,7 @@ las2
 echo "Running svdpackout.pl --format i4 lav2 lao2 > test-A1e.output"
 svdpackout.pl --format i4 lav2 lao2 > test-A1e.output
 
-svdcompare.pl test-A1e.output test-A1e.reqd 1 >& var
+perl ./svdcompare.pl test-A1e.output test-A1e.reqd 1 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -121,7 +121,7 @@ las2
 echo "Running svdpackout.pl --format f7.3 lav2 lao2 > test-A1f.output"
 svdpackout.pl --format f7.3 lav2 lao2 > test-A1f.output
 
-svdcompare.pl test-A1f.output test-A1f.reqd 0.1 >& var
+perl ./svdcompare.pl test-A1f.output test-A1f.reqd 0.1 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -143,7 +143,7 @@ las2
 echo "Running svdpackout.pl --format i5 lav2 lao2 > test-A1g.output"
 svdpackout.pl --format i5 lav2 lao2 > test-A1g.output
 
-svdcompare.pl test-A1g.output test-A1g.reqd 1 >& var
+perl ./svdcompare.pl test-A1g.output test-A1g.reqd 1 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -165,7 +165,7 @@ las2
 echo "Running svdpackout.pl --format f7.3 lav2 lao2 > test-A1h.output"
 svdpackout.pl --format f7.3 lav2 lao2 > test-A1h.output
 
-svdcompare.pl test-A1h.output test-A1h.reqd 0.1 >& var
+perl ./svdcompare.pl test-A1h.output test-A1h.reqd 0.1 >& var
 
 if(-z var) then
         echo "Test Ok";

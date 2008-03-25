@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-reduce-count.pl
+reduce-count.pl Reduce feature space by removing words not in evaluation data
 
 =head1 SYNOPSIS
 
@@ -327,7 +327,7 @@ reduce-count.\n";
 #version information
 sub showversion()
 {
-        print '$Id: reduce-count.pl,v 1.11 2006/08/02 19:13:58 tpederse Exp $';
+        print '$Id: reduce-count.pl,v 1.12 2008/03/24 00:56:57 tpederse Exp $';
         print "\nCopyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
 ###        print "Date of Last Update:     05/25/2004\n";
 }
