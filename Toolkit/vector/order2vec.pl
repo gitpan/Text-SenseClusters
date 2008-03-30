@@ -2,16 +2,18 @@
 
 =head1 NAME
 
-order2vec.pl Create second order context vectors
+order2vec.pl - Convert Senseval-2 contexts into second order context vectors in Cluto format
 
 =head1 SYNOPSIS
 
+ order2vec.pl [OPTIONS] SVAL2 WORDVEC FEATURE_REGEX
+
+Type C<order2vec.pl --help> for a quick summary of options.
+
+=head1 DESCRIPTION
+
 Creates second order context vectors by averaging word or feature vectors of 
 the contextual features.
-
-=head1 USAGE
-
-order2vec.pl [OPTIONS] SVAL2 WORDVEC FEATURE_REGEX
 
 =head1 INPUT
 
@@ -122,12 +124,12 @@ the context vectors displayed by order2vec are in sparse format.
 Select --dense if the word vectors are in dense format. This will automatically
 create output vectors in dense format as well.
 
-****************     IMPORTANT NOTE    ************
+ ****************     IMPORTANT NOTE    ************
 
-Dense word vectors (when --dense is ON) should be formatted i.e. each entry
-of WORDVEC should be represented using the same numeric format and should
-occupy exactly same number of spaces. Use --format option to specify the
-format of dense word vectors.
+ Dense word vectors (when --dense is ON) should be formatted i.e. each entry
+ of WORDVEC should be represented using the same numeric format and should
+ occupy exactly same number of spaces. Use --format option to specify the
+ format of dense word vectors.
 
 =head3 --rlabel RLABELFILE 
 
@@ -178,10 +180,10 @@ option.
 
 Format should be represented as 
 
-iN   -> integer format where each entry occupies total N bytes/digits 
+ iN   -> integer format where each entry occupies total N bytes/digits 
 
-fN.M -> floating point format where each entry occupies total N bytes/digits
-        of which last M digits show the fractional part
+ fN.M -> floating point format where each entry occupies total N bytes/digits
+         of which last M digits show the fractional part
 
 When --binary is ON, default format is i2 that assumes 2 digit space for each
 entry. When --binary is OFF, default format is f16.10 that assumes each
@@ -355,28 +357,24 @@ the format of dense word vectors.
 
 =head1 SYSTEM REQUIREMENTS
 
-PDL - http://search.cpan.org/dist/PDL/
+=over
 
-=head1 AUTHOR
+=item PDL - L<http://search.cpan.org/dist/PDL/>
 
-Ted Pedersen, University of Minnesota, Duluth
+=back
 
-Amruta Purandare, University of Minnesota, Duluth
+=head1 AUTHORS
 
-Mahesh Joshi, University of Minnesota, Duluth
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
+
+ Amruta Purandare, University of Pittsburgh
+
+ Mahesh Joshi, Carnegie-Mellon University
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Ted Pedersen, University of Minnesota, Duluth
- tpederse@umn.edu
-
- Amruta Purandare, University of Pittsburgh
- amruta@cs.pitt.edu
-
- Mahesh Joshi, University of Minnesota, Duluth
- joshi031@d.umn.edu
+Copyright (c) 2002-2008, Ted Pedersen, Amruta Purandare, Mahesh Joshi
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -1258,8 +1256,9 @@ Type 'perldoc order2vec.pl' to view detailed documentation of order2vec.\n";
 #version information
 sub showversion()
 {
-	print '$Id: order2vec.pl,v 1.31 2008/03/24 00:56:59 tpederse Exp $';
-        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Mahesh Joshi\n";
+	print '$Id: order2vec.pl,v 1.32 2008/03/30 04:40:58 tpederse Exp $';
+	print "\nConvert Senseval-2 contexts into second order feature vectors\n";
+ #       print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Mahesh Joshi\n";
  #       print "order2vec.pl      -       Version 0.3\n";
  #       print "Creates second order context vectors.\n";
  #       print "Date of Last Update:     07/29/2006\n";

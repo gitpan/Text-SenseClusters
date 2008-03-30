@@ -2,15 +2,51 @@
 
 =head1 NAME
 
-bitsimat.pl Create similarity matrix for binary context vectors
+bitsimat.pl - Build a similarity matrix from binary context vectors
 
 =head1 SYNOPSIS
 
-Constructs a similarity matrix for the given binary context vectors 
+ bitsimat.pl [OPTIONS] VECTOR
 
-=head1 USGAE
+The input file represents 5 vectors, each with 4 possible features. The
+format of the input file is sparse, so if a feature has no value it is
+not listed.
 
-bitsimat.pl [OPTIONS] VECTOR
+ cat input
+
+Output =>
+
+ 5 4 12
+ 1 1 3 1 4 1
+ 2 1 3 1
+ 1 1 3 1 4 1
+ 2 1 3 1
+ 2 1 3 1
+
+Compute the pairwise similarities between all 5 binary vectors and 
+display them in a 5x5 matrix.
+
+ bitsimat.pl input --format f4.2
+
+Output =>
+
+ 5 25
+ 1 1.00 2 0.41 3 1.00 4 0.41 5 0.41
+ 1 0.41 2 1.00 3 0.41 4 1.00 5 1.00
+ 1 1.00 2 0.41 3 1.00 4 0.41 5 0.41
+ 1 0.41 2 1.00 3 0.41 4 1.00 5 1.00
+ 1 0.41 2 1.00 3 0.41 4 1.00 5 1.00
+
+Type C<bitsimat.pl --help> for a quick summary of options
+
+=head1 DESCRIPTION
+
+Constructs a similarity matrix for the given binary context vectors. A 
+similarity matrix shows the pairwise similarities between all the 
+different vectors. Vectors are represented in an N x M matrix, where N 
+is the number of vectors and M is the number of features. All NxN
+combinations of vector pairs will be measured for similarity and stored 
+in a matrix. 
 
 =head1 INPUT
 
@@ -18,17 +54,16 @@ bitsimat.pl [OPTIONS] VECTOR
 
 =head3 VECTOR
 
-A binary vector file as created by vector constructor programs in 
-Toolkit/vector.
+A binary vector file as created by vector constructor programs in Toolkit/vector. 
 
-=head4 Sparse Format [default]
+=head4 Sparse Format (default)
 
 By default, VECTOR is assumed to be in sparse format.
 
 For sparse vectors, the first line of the VECTOR file should show 3
 numbers separated in spaces as -
 
-N M NNZ
+ N M NNZ
 
 where
 
@@ -57,7 +92,7 @@ Sample Sparse Input
  5 1 8 1 12 1
  1 1 2 1 8 1
 
-Explaination -
+Explanation :
 
 =over
 
@@ -151,10 +186,9 @@ Specifies numeric format for representing output similarity values.
 
 Possible values of FORM are
 
-iN   -> integer format allocating total N bytes/digits for each entry
+ iN   -> integer format allocating total N bytes/digits for each entry
 
-fN.M -> floating point format allocating total N bytes/digits for each entry
-of which last M digits show the fractional part.
+ fN.M -> floating point format allocating total N bytes/digits for each entry of which last M digits show the fractional part.
 
 For matching coefficient, default is i8 and for other measures, default is
 f16.10.
@@ -175,11 +209,11 @@ If the input VECTORs are in sparse format (default), output is also created
 in sparse format, while, if the input vectors are in dense format, output
 is also in dense format.
 
-=head2 Sparse Output [Default]
+=head2 Sparse Output (Default)
 
 The 1st line in the sparse output shows 2 space separated numbers -
 
-N NNZ1
+ N NNZ1
 
 where
 
@@ -256,28 +290,27 @@ output.
 
 =head1 SYSTEM REQUIREMENTS
 
-bitsimat is implemented using CPAN modules
+bitsimat is dependent on the following CPAN modules :
 
-Bit::Vector - http://search.cpan.org/dist/Bit-Vector/
+=over
 
-and
+=item Bit::Vector - L<http://search.cpan.org/dist/Bit-Vector/>
 
-Set::Scalar - http://search.cpan.org/dist/Set-Scalar/
+=item Set::Scalar - L<http://search.cpan.org/dist/Set-Scalar/>
 
-=head1 AUTHOR
+=back
 
- Amruta Purandare, Ted Pedersen.
- University of Minnesota at Duluth.
+
+=head1 AUTHORS
+
+ Amruta Purandare, University of Pittsburgh
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -291,9 +324,9 @@ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 
@@ -809,10 +842,11 @@ Type 'perldoc bitsimat.pl' to view detailed documentation of bitsimat.\n";
 #version information
 sub showversion()
 {
-        print "bitsimat.pl      -       Version 0.04\n";
-        print "Constructs a similarity matrix for given binary context vectors.\n";
-        print "Copyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
-        print "Date of Last Update:     06/01/2004\n";
+#        print "bitsimat.pl      -       Version 0.04\n";
+	print '$Id';
+        print "\nConstructs a similarity matrix from binary context vectors\n";
+#        print "Copyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
+#        print "Date of Last Update:     06/01/2004\n";
 }
 
 #############################################################################

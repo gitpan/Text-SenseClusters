@@ -2,9 +2,52 @@
 
 =head1 NAME
 
-reduce-count.pl Reduce feature space by removing words not in evaluation data
+reduce-count.pl - Reduce size of feature space by removing words not in evaluation data
 
 =head1 SYNOPSIS
+
+reduce-count.pl [OPTIONS] BIGRAM UNIGRAM
+
+The features found in training data are defined in a bigram file 'bigram':
+
+ cat bigram
+
+Output =>
+
+ 1491
+ at<>least<>3 7 3
+ co<>occurrences<>3 5 3
+ be<>a<>3 13 25
+ General<>Public<>3 3 3
+ of<>test<>3 41 9
+ file<>bigfile<>3 26 6
+ given<>set<>3 7 5
+
+The unigrams that occur in the evaluation data are defined in a file 'unigram' :
+
+ cat unigram
+
+Output => 
+
+ at<>
+ be<>
+ test<>
+
+Now remove any bigram that does not contain at least one of the words in the unigram 
+file: 
+
+ reduce-count.pl cout uni
+
+Output => 
+
+ 1491
+ at<>least<>3 7 3
+ be<>a<>3 13 25
+ of<>test<>3 41 9
+
+Type C<reduce-count.pl> for a quick summary of options
+
+=head1 DESCRIPTION
 
 This program removes all bigrams from the given BIGRAM file that do not  
 include at least one constituent word from the UNIGRAM file. Note that 
@@ -27,10 +70,6 @@ sample size or counts of bigrams. The counts remain the same, so any
 conclusions drawn from statistic.pl, for example, are not affected by this 
 program. 
 
-=head1 USAGE
-
-reduce-count.pl [OPTIONS] BIGRAM UNIGRAM
-
 =head1 INPUT
 
 =head2 Required Arguments:
@@ -39,11 +78,9 @@ reduce-count.pl [OPTIONS] BIGRAM UNIGRAM
 
 Should be a bigram file created by NSP programs, count.pl, statistic.pl
 or combig.pl. Each line containing a word pair (bigram or co-occurrences) 
-should show -
+should show either of the following forms:
 
 	word1<>word2<>n11 n1p np1 	(if created by count or combig)
-
-		OR
 
 	word1<>word2<>rank score n11 n1p np1 (if created by statistic)
 
@@ -52,11 +89,10 @@ assuming that its printed by the --extended option in NSP.
 
 =head3 UNIGRAM
 
-Should be a unigram output of NSP. Each line in the UNIGRAM file should show -
+Should be a unigram output of NSP. Each line in the UNIGRAM file should show either of 
+the following forms:
 
 	word<>
-
-	Or
 
 	word<>n
 
@@ -74,12 +110,10 @@ Displays the version information.
 
 =head1 OUTPUT
 
-reduce-count displays all lines in the given BIGRAM file except those that
-are formatted as -
+reduce-count.pl displays all lines in the given BIGRAM file except those that
+are formatted as follows:
 
         word1<>word2<>n11 n1p np1
-
-                OR
 
         word1<>word2<>rank score n11 n1p np1 
 
@@ -87,54 +121,45 @@ and neither word1 nor word2 are listed in the given UNIGRAM file.
 
 =head1 SYSTEM REQUIREMENTS
 
-N-gram Statistics Package - http://search.cpan.org/dist/Test-NSP
+=over
+=item Ngram Statistics Package - L<http://search.cpan.org/dist/Test-NSP>
+=back
 
 =head1 BUGS
 
-This program is very conservative in what it removes from a 
-given set of input bigrams. Just because a unigram occurs 
-in the test set of data does not mean that a bigram that 
-contains it must occur. So reduce-count.pl very likely
-leaves in place some bigrams that do not occur in a given
-set of test data. However, it can be applied to bigrams,
-co-occurrence and target-co-occurrences equally well,
-since it is only looking for a unigram and not an exact
-match between bigrams (where order matters).
+This program is very conservative in what it removes from a given set of input 
+bigrams. Just because a unigram occurs in the test set of data does not mean that a 
+bigram that contains it must occur. So reduce-count.pl very likely leaves in place 
+some bigrams that do not occur in a given set of test data. However, it can be applied 
+to bigrams, co-occurrence and target-co-occurrences equally well, since it is only 
+looking for a unigram and not an exact match between bigrams (where order matters).
 
-It must also be remembered that this program was originally 
-intended for use with huge-count.pl, a program from the Ngram 
-Statistics Package that calculates count information on 
-very large corpora. So if you have 1,000,000 different bigrams,
-then removing all of those that don't contain a given set of
-unigrams drawn from a much smaller sample of test data will
-make a very large difference. 
+It must also be remembered that this program was originally intended for use with 
+huge-count.pl, a program from the Ngram Statistics Package that calculates count 
+information on very large corpora. So if you have 1,000,000 different bigrams,
+then removing all of those that don't contain a given set of unigrams drawn from a 
+much smaller sample of test data will make a very large difference. 
 
-It seems like it should be possible to be more aggressive
-and find, for example, the intersection of the bigrams found
-in training and test data, and reset the features to that. 
+It seems like it should be possible to be more aggressive and find, for example, the 
+intersection of the bigrams found in training and test data, and reset the features to 
+that. 
 
-It also seems like it might be useful to reduce the number
-of unigram features in the same way.
+It also seems like it might be useful to reduce the number of unigram features in the 
+same way.
 
-This might be replaceable with a simple program that finds
-the intersection of features observed in training data and
-those that actually exist in the test data. 
+This might be replaceable with a simple program that finds the intersection of 
+features observed in training data and those that actually exist in the test data. 
 
-=head1 AUTHOR
-
-Ted Pedersen, University of Minnesota, Duluth
+=head1 AUTHORS
 
 Amruta Purandare, University of Pittsburgh
 
+Ted Pedersen, University of Minnesota, Duluth
+tpederse at d.umn.edu
+
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Ted Pedersen, University of Minnesota, Duluth.
- tpederse@umn.edu
-
- Amruta Purandare, University of Pittsburgh.
- amruta@cs.pitt.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -327,8 +352,9 @@ reduce-count.\n";
 #version information
 sub showversion()
 {
-        print '$Id: reduce-count.pl,v 1.12 2008/03/24 00:56:57 tpederse Exp $';
-        print "\nCopyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
+        print '$Id: reduce-count.pl,v 1.13 2008/03/30 04:19:01 tpederse Exp $';
+	print "\nRemove features that don't occur in evaluation data\n";
+##        print "\nCopyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
 ###        print "Date of Last Update:     05/25/2004\n";
 }
 

@@ -2,16 +2,16 @@
 
 =head1 NAME
 
-format_clusters.pl Map Cluto output to Senseval-2 format input file
+format_clusters.pl - Map Cluto output to Senseval-2 format input file
 
 =head1 SYNOPSIS
 
+ format_clusters.pl [OPTIONS] CLUTO_SOLUTION RLABEL
+
+=head1 DESCRIPTION
+
 This program maps Cluto's clustering solution file into Senseval2 input file
 to give more legible forms of output.
-
-=head1 USAGE
-
-format_clusters.pl [OPTIONS] CLUTO_SOLUTION RLABEL
 
 =head1 INPUT
 
@@ -93,29 +93,23 @@ Note: --context and --senseval2 cannot be used together.
 
 =head1 SYSTEM REQUIREMENTS
 
-The input to this program is created by Cluto, which is freely available 
-from :  http://www-users.cs.umn.edu/~karypis/cluto/
+=over
 
-=head1 AUTHOR
+=item Cluto -  L<http://www-users.cs.umn.edu/~karypis/cluto/>
+
+=back
+
+=head1 AUTHORS
 
 Ted Pedersen, University of Minnesota, Duluth
 
 Amruta Purandare, University of Pittsburgh
 
-Anagha Kulkarni, University of Minnesota, Duluth
+Anagha Kulkarni, Carnegie-Mellon University
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Ted Pedersen, University of Minnesota, Duluth
- tpederse@d.umn.edu
-
- Amruta Purandare, University of Pittsburgh
- amruta@cs.pitt.edu
-
- Anagha Kulkarni, University of Minnesota, Duluth
- kulka020@d.umn.edu
+Copyright (c) 2002-2008, Ted Pedersen, Amruta Purandare, Anagha Kulkarni
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -474,11 +468,10 @@ Note: For more detailed description type 'perldoc format_clusters.pl'
 #version information
 sub showversion()
 {
-	print '$Id: format_clusters.pl,v 1.22 2008/03/24 00:56:58 tpederse Exp $';
-	print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
+	print '$Id: format_clusters.pl,v 1.23 2008/03/30 05:06:07 tpederse Exp $';
+#	print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
 #        print "format_clusters.pl - Version 0.02\n";
-#        print "Maps Cluto's clustering solution file into Senseval2 input file to give more legible forms of output.\n";
-#	print "Date of Last Update:     09/11/2005\n";
+        print "\nMap Cluto solution into Senseval-2 data to make output more readable\n"; #	print "Date of Last Update:     09/11/2005\n";
 }
 
 

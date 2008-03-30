@@ -2,17 +2,85 @@
 
 =head1 NAME
 
-prepare_sval2.pl Prepare Senseval-2 data for SenseClusters
+prepare_sval2.pl - Makes sure Senseval-2 data is cleaned and has sense 
+tags prior to invocation of SenseClusters
 
 =head1 SYNOPSIS
 
-Prepares Senseval-2 Data for SenseClusters experiments. 
+ prepare_sval2.pl [Options] SOURCE
 
-=head1 USAGE
+Here is a Senseval-2 file that is untagged
 
-prepare_sval2.pl [Options] SOURCE
+ cat notags.txt
 
-Type 'prepare_sval2.pl --help' for quick summary of the Options.
+Output => 
+
+ <corpus lang="english">
+ <lexelt item="line">
+ <instance id="0">
+ <context>
+ he played on the offensive <head>line</head> in college
+ </context>
+ </instance>
+ <instance id="1">
+ <context>
+ i think the phone <head>line</head> is down
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
+
+Here is a key file that contains sense tags for these instances:
+
+ cat key.txt
+
+Output =>
+
+ <instance id="0"/> <sense id="formation"/>
+ <instance id="1"/> <sense id="cable"/>
+
+Now we can apply the tags in the key file to the previously untagged 
+instances:
+
+ prepare_sval2.pl notags.txt --key key.txt
+
+Output =>
+
+ <corpus lang="english" tagged="NO">
+ <lexelt item="line">
+ <instance id="0">
+ <answer instance="0" senseid="formation"/>
+ <context>
+ he played on the offensive <head>line</head> in college
+ </context>
+ </instance>
+ <instance id="1">
+ <answer instance="1" senseid="cable"/>
+ <context>
+ i think the phone <head>line</head> is down
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
+
+Type C<prepare_sval2.pl --help> for quick summary of options
+
+=head1 DESCRIPTION
+
+This program prepares Senseval-2 Data for SenseClusters experiments by 
+making sure that all instances have sense tags. Sense tags can be 
+applied from a separate key file, and if any instances do not have 
+tags, then a NOTAG is inserted. This program also deals with P tags 
+that may exist in some Senseval data. The P tag indicates that the 
+target word is a proper noun. In may cases P tagged instances are 
+ommited from experiments since they are a different kind of sense. If 
+"bush" were the target word, some instances might refer to "George 
+Bush", which may not be one of the senses we wish to evaluate. Finally, 
+this program can also deal with satellite tags that exist in some 
+Senseval data. When the target word is a verb, in some cases it may have 
+a satellite (particle), that we may or may not want to consider as a 
+part of the target word. The satellite tags have identifiers in them 
+that may cause parsing trouble, so they are often removed.
 
 =head1 INPUT
 
@@ -31,6 +99,7 @@ Sense Tagging mechanism in prepare_sval2.pl -
 
 prepare_sval2.pl makes sure that all SOURCE instances are tagged with some 
 answer tags (or NOTAGs at least). 
+
 If the sense tags are found in the same SOURCE file, these will 
 be retained, however if the SOURCE instances are not tagged, instances will be 
 either attached "NOTAG"s or will be attached the sense tags given in the 
@@ -114,18 +183,14 @@ information.
 
 e.g. by selecting --modifysat,
 
- ------------------------------------------------------------------------
  Perhaps he 'd have <head sats="call_for.018:0">called</head> <sat
  id="call_for.018:0">for</sat> a decentralized political and economic
  system
- ------------------------------------------------------------------------
 
 will be transformed to 
 
- ------------------------------------------------------------------------
  perhaps he 'd have <head> called </head> <sat> for </sat> a 
  decentralized political and economic system
- ------------------------------------------------------------------------
 
 By not selecting --modifysat, the satellite ids would be retained.
 
@@ -146,20 +211,16 @@ Displays the version information.
 
 Output will be a Senseval-2 file displayed to stdout. 
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Amruta Purandare, Ted Pedersen.
-University of Minnesota, Duluth.
+ Amruta Purandare, University of Pittsburgh
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -173,9 +234,9 @@ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 
@@ -570,7 +631,7 @@ Optional Parameters:
 
 --attachP 
 	Attaches P tags to the Sense Tags immediately following them. By 
-	default, P tags are removed. 
+	default, P tags are removed since they indicate proper nouns. 
 	Note: attachP doesn't work when answer tags are provided in KEY file.
 	But an option --attachP is provided in keyconvert.pl program that 
 	attaches P tags while converting format of KEY file to SenseClusters 
@@ -596,10 +657,11 @@ Optional Parameters:
 #version information
 sub showversion()
 {
-        print "prepare_sval2.pl - Version 0.19\n";
-        print "Prepares Senseval-2 Data for SenseClusters experiments.";
-        print "\nCopyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
-        print "Date of Last Update: 07/18/2003\n";
+#        print "prepare_sval2.pl - Version 0.19\n";
+	print '$id$';
+        print "\nEnsure Senseval-2 data is sense tagged and cleaned\n";
+#        print "\nCopyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
+#        print "Date of Last Update: 07/18/2003\n";
 }
 
 #############################################################################

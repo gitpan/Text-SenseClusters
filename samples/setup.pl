@@ -2,18 +2,17 @@
 
 =head1 NAME 
 
-setup.pl 
+setup.pl - Preprocess Senseval-2 data for sample experiments
 
 =head1 SYNOPSIS 
 
-A Perl script that preprocesses and prepares DATA for Demo experiments 
-with SenseClusters. 
+A Perl script that preprocesses and prepares DATA for experiments with SenseClusters. 
 
 =head1 USAGE 
 
 setup.pl [Options] DATA 
 
-Type 'setup.pl --help' for quick summary of the Options.
+Type 'setup.pl --help' for quick summary of options
 
 =head1 INPUT
 
@@ -180,29 +179,23 @@ programming.
 
 =head1 SYSTEM REQUIREMENTS
 
-setup.pl uses a preprocessing program preprocess.pl which is included in 
-SenseClusters
-
-=head1 AUTHORS
-
-Ted Pedersen, University of Minnesota, Duluth
-
-Amruta Purandare, University of Pittsburgh
+setup.pl uses a preprocessing program L<preprocess.pl> which is included 
+in SenseClusters
 
 =head1 SEE ALSO
 
-The perldoc man page of the wrapper discriminate.pl that uses the training and 
-test files created by setup.pl
+L<discriminate.pl> uses the training and test files created by setup.pl
+
+=head1 AUTHORS
+
+ Amruta Purandare, University of Pittsburgh
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under 
 the terms of the GNU General Public License as published by the Free Software 
@@ -624,10 +617,11 @@ See perldoc page of setup.pl for detailed help.\n";
 #version information
 sub showversion()
 {
-        print "setup.pl      -       Version 0.03\n";
-        print "Prepares DATA for running experiments with SenseClusters.";
-        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare.\n";
-        print "Date of Last Update:     07/28/2006\n";
+#        print "setup.pl      -       Version 0.03\n";
+	print '$Id: setup.pl,v 1.3 2008/03/29 23:43:35 tpederse Exp $';
+        print "\nPrepares samples DATA for running experiments with SenseClusters\n";
+#        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare.\n";
+#        print "Date of Last Update:     07/28/2006\n";
 }
 
 #############################################################################

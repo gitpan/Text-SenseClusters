@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-textXML.pl Check XML data to see if well-formed
+testXML.pl - [Web Interface] Check XML data to see if well-formed
 
 =head1 SYNOPSIS
 

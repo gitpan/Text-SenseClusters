@@ -1,6 +1,6 @@
 =head1 Name
 
-README.Flowcharts Word and Context Clustering Flowcharts
+README.Flowcharts - Word and Context Clustering Flowcharts
 
 =head1 Description
 
@@ -9,17 +9,17 @@ SenseClusters in .ai and .pdf format :
 
 Using SenseClusters to cluster contexts: 
 
-=over
+=over 4
 
-=item L<SenseClusters-ContextClustering.pdf>
+=item L<http://search.cpan.org/src/TPEDERSE/Text-SenseClusters-0.98/doc/Flowcharts/SenseClusters-ContextClustering.pdf>
 
 =back
 
 Using SenseClusers to cluster words/features :
 
-=over
+=over 4
  
-=item L<SenseClusters-WordClustering.pdf>
+=item L<http://search.cpan.org/src/TPEDERSE/Text-SenseClusters-0.98/doc/Flowcharts/SenseClusters-ContextClustering.pdf>
 
 =back
 
@@ -28,9 +28,9 @@ and possible variations in feature, context and clustering type.
 
 =head1 AUTHORS
 
-Anagha Kulkarni, Carnegie-Mellon University
+ Anagha Kulkarni, Carnegie-Mellon University
 
-Mahesh Joshi, Carnegie-Mellon University
+ Mahesh Joshi, Carnegie-Mellon University
 
 =head1 Acknowledgements
 

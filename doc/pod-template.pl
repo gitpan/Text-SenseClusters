@@ -2,15 +2,18 @@
 
 =head1 NAME
 
-pod-template.pl Skeleton for creating new SenseClusters programs
+pod-template.pl - Skeleton for creating new SenseClusters programs
 
 =head1 SYNOPSIS
 
-Intended as documentation, not to be run. 
-
-=head1 USAGE
-
 _program_name_ [OPTIONS] _INPUT_
+
+The synopsis should ideally present a cut, paste, and run example of a 
+SenseClusters program.  
+
+=head1 DESCRIPTION
+
+A short description of the overall functionality of the program.
 
 =head1 INPUT
 
@@ -46,19 +49,17 @@ _list_the_required_packages_or_modules_here
 
 _describe_any_limitations_here
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+[your name], [your affiliation]
+[your email]
 
 Ted Pedersen, University of Minnesota, Duluth
+tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
 Copyright (c) 2008 [your name here], Ted Pedersen 
-
- [your name, affiliation]
- [your email]
-
- Ted Pedersen, University of Minnesota, Duluth
- tpederse at d.umn.edu
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -173,8 +174,8 @@ Type 'perldoc program.pl' to view detailed documentation of this program.\n";
 #version information
 sub showversion()
 {
-       print '$Id: pod-template.pl,v 1.3 2008/03/24 04:06:53 tpederse Exp $';
-       print "\nCopyright (C) 2006, Ted Pedersen\n";
+       print '$Id: pod-template.pl,v 1.4 2008/03/29 23:47:44 tpederse Exp $';
+       print "\nshort description of functionality\n";
 }
 
 #############################################################################

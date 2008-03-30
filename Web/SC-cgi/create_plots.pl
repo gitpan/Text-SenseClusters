@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-create_plots.pl Create gnuplot output for web interface user
+create_plots.pl - [Web Interface] Create gnuplot output for Web interface user 
 
 =head1 AUTHOR
 

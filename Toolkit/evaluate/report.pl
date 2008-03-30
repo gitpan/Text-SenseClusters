@@ -2,16 +2,18 @@
 
 =head1 NAME
 
-report.pl Summarize results with precision, recall, and confusion matrix
+report.pl - Summarize SenseClusters results with precision, recall, and confusion matrix
 
 =head1 SYNOPSIS
 
+ report.pl [OPTIONS] LABEL PRELABEL
+
+Type C<report.pl --help> for a quick summary of options
+
+=head1 DESCRIPTION 
+
 Reports the performance of discrimination in terms of the precision, recall 
 and confusion table.
-
-=head1 USGAE
-
-Usage: report.pl [OPTIONS] LABEL PRELABEL
 
 =head1 INPUT
 
@@ -77,12 +79,15 @@ e.g.
 
 Note that -
 
-1. 1st line shows the number of instances unclustered. 
+=over
 
-2. 2nd line starts with // and shows the sense labels of corresponding columns.
+=item 1. 1st line shows the number of instances unclustered. 
 
-3. 3rd line and onwards show the cluster by sense distribution matrix.
+=item 2. 2nd line starts with // and shows the sense labels of corresponding columns.
 
+=item 3. 3rd line and onwards show the cluster by sense distribution matrix.
+
+=back
 
 =head2 Optional Arguments:
 
@@ -114,12 +119,12 @@ The sum of the diagonal entries shows the total number of instances that are
 correctly discriminated(#hits). From this number, report computes precision
 and recall where 
 
-precision = #hits / #clustered
+ precision = #hits / #clustered
 
 #clustered = Number of instances clustered = total #instances - #instances 
 that belong to the unlabelled clusters - #thrown shown in PRELABEL input file.
 
-recall = #hits / #total instances
+ recall = #hits / #total instances
 
 Sample Output : 
 
@@ -147,42 +152,38 @@ Sample Output :
  
 shows 
 
-1. 9 clusters(C0-C8) and 4 senses (S0-S3). 
+=over 
 
-2. Cluster C0 represents sense S1 which stands for actual sense SERVE12
-C1 represents S2 (stands for SERVE2),
-C6 represents S0 (stands for SERVE10)
-and C9 represents S3 (stands for SERVE6)
+=item 1. 9 clusters(C0-C8) and 4 senses (S0-S3). 
 
-3. The above maximal mapping gives precision of 36.92% and recall of 26.54%
+=item 2. Cluster C0 represents sense S1 which stands for actual sense SERVE12
+
+ C1 represents S2 (stands for SERVE2),
+ C6 represents S0 (stands for SERVE10)
+ C9 represents S3 (stands for SERVE6)
+
+=item 3. The above maximal mapping gives precision of 36.92% and recall of 26.54%
 where total 1162 instances are correctly discriminated among the total 4378
 instances.
 
-4. The last two columns show the total number and percentage of instances in 
+=item 4. The last two columns show the total number and percentage of instances in 
 each cluster(row marginal totals) while the last two rows indicate the total 
 number and percentage of instances in each sense class(column marginal totals).
 
-=head1 AUTHOR
+=back
+
+=head1 AUTHORS
 
  Ted Pedersen, University of Minnesota, Duluth
 
  Amruta Purandare, University of Pittsburgh
 
- Anagha Kulkarni, University of Minnesota, Duluth
+ Anagha Kulkarni, Carnegie-Mellon University
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
+Copyright (c) 2002-2008, Ted Pedersen, Amruta Purandare, Anagha Kulkarni
  
- Ted Pedersen, University of Minnesota, Duluth
- tpederse@d.umn.edu
-
- Amruta Purandare, University of Pittsburgh
- amruta@cs.pitt.edu
-
- Anagha Kulkarni, University of Minnesota, Duluth
- kulka020@d.umn.edu
-
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
 Foundation; either version 2 of the License, or (at your option) any later
@@ -597,10 +598,10 @@ OPTIONS:
 #version information
 sub showversion()
 {
-	print '$Id: report.pl,v 1.13 2008/03/24 00:56:58 tpederse Exp $';
-        print "\nCopyright (C) 2002-2006, Ted Pedersen, Amruta Purandare & Anagha Kulkarni\n";
+	print '$Id: report.pl,v 1.14 2008/03/30 05:06:07 tpederse Exp $';
+#        print "\nCopyright (C) 2002-2006, Ted Pedersen, Amruta Purandare & Anagha Kulkarni\n";
 #        print "report.pl      -       Version 0.06\n";
-#        print "Reports Precision, Recall, F-Measure and Confusion table.\n";
+        print "\nReports Precision, Recall, F-Measure and Confusion table\n";
 #        print "Date of Last Update:     01/19/2005\n";
 }
 

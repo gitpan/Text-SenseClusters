@@ -2,16 +2,16 @@
 
 =head1 NAME
 
-cluto2label.pl Convert Cluto output to a confusion matrix that label.pl can process
+cluto2label.pl - Convert Cluto output to a confusion matrix 
 
 =head1 SYNOPSIS
 
-Converts Cluto's clustering solution file to a cluster by sense 
-distribution matrix as accepted by SenseCluster's evaluation program label.pl. 
+ cluto2label.pl [OPTIONS] CLUTO KEY
 
-=head1 USGAE
+=head1 SYNOPSIS
 
-cluto2label.pl [OPTIONS] CLUTO KEY
+Converts Cluto's clustering solution file to a cluster by sense distribution matrix to 
+then be input to SenseClusters evaluation program L<label.pl>.
 
 =head1 INPUT
 
@@ -41,13 +41,13 @@ Cluto's clustering solution file =>
 
 shows the cluster ids of each of the 8 instances clustered by Cluto's program.
 
-1st, 5th and 6th instance belong to 1st cluster (Cluster No 0)
+ 1st, 5th and 6th instance belong to 1st cluster (Cluster No 0)
 
-2nd, 3rd and 7th instance belong to 2nd cluster (Cluster No 1)
+ 2nd, 3rd and 7th instance belong to 2nd cluster (Cluster No 1)
 
 And 
 
-4th and 8th instance belong to 3rd cluster (Cluster No 2)
+ 4th and 8th instance belong to 3rd cluster (Cluster No 2)
 
 Note: cluster id could be possibly -1 which means the corresponding instance 
 is not assigned to any cluster
@@ -81,21 +81,21 @@ the instance ids of corresponding instances in the beginning of each line.
 
 e.g. 
 
-<instance id="line-n.w7_098:6515:"/> <sense id="art2"/> <sense id="art4"/>
+ <instance id="line-n.w7_098:6515:"/> <sense id="art2"/> <sense id="art4"/>
 
-<instance id="line-n.w8_083:14771:"/> <sense id="art1"/>
+ <instance id="line-n.w8_083:14771:"/> <sense id="art1"/>
 
-<instance id="line-n.art} aphb 02700649:"/> <sense id="art3"/><sense id="art4"/>
+ <instance id="line-n.art} aphb 02700649:"/> <sense id="art3"/><sense id="art4"/>
 
-<instance id="line-n.art} aphb 53900889:"/> <sense id="art3"/>
+ <instance id="line-n.art} aphb 53900889:"/> <sense id="art3"/>
 
-<instance id="line-n.w7_066:11025:"/> <sense id="art4"/> <sense id="art1"/>
+ <instance id="line-n.w7_066:11025:"/> <sense id="art4"/> <sense id="art1"/>
 
-<instance id="line-n.art} aphb 42100373:"/> <sense id="art1"/>
+ <instance id="line-n.art} aphb 42100373:"/> <sense id="art1"/>
 
-<instance id="line-n.w8_109:8774:"/> <sense id="art5"/> <sense id="art2"/> <sense id="art3"/>
+ <instance id="line-n.w8_109:8774:"/> <sense id="art5"/> <sense id="art2"/> <sense id="art3"/>
 
-<instance id="line-n.w7_004:10784:"/> <sense id="art2"/> <sense id="art4"/>
+ <instance id="line-n.w7_004:10784:"/> <sense id="art2"/> <sense id="art4"/>
 
 =head2 Optional Arguments:
 
@@ -163,29 +163,22 @@ Similar description applies to 2nd and 3rd clusters.
 
 =head1 SYSTEM REQUIREMENTS
 
-To use clustering programs in Clustering Toolkit - Cluto, Cluto must be 
-downloaded and installed on your system.
+=over 
 
-Cluto can be freely downloaded from 
+=item Cluto - L<http://www-users.cs.umn.edu/~karypis/cluto/>
 
-http://www-users.cs.umn.edu/~karypis/cluto/
+=back
 
-=head1 AUTHOR
-
- Ted Pedersen,  University of Minnesota, Duluth
+=head1 AUTHORS
 
  Amruta Purandare, University of Pittsburgh
 
+ Ted Pedersen,  University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Ted Pedersen, University of Minnesota, Duluth
- tpederse@d.umn.edu
-
- Amruta Purandare, University of Pittsburgh
- amruta@cs.pitt.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -495,10 +488,10 @@ OPTIONS:
 #version information
 sub showversion()
 {
-	print '$Id: cluto2label.pl,v 1.9 2008/03/24 00:56:58 tpederse Exp $';
-        print "\nCopyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
+	print '$Id: cluto2label.pl,v 1.10 2008/03/30 05:06:07 tpederse Exp $';
+#        print "\nCopyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
 #        print "cluto2label.pl - Version 0.16";
-#        print "Displays a Cluster by Sense matrix for Cluto's clustering solution file.";
+        print "\nConvert Cluto output to confusion matrix\n";
 #        print "Date of Last Update:     12/17/2003\n";
 }
 

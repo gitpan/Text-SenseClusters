@@ -2,9 +2,13 @@
 
 =head1 NAME
 
-clusterlabeling.pl Label discovered clusters based on their content
+clusterlabeling.pl - Label discovered clusters based on their content
 
 =head1 SYNOPSIS
+
+ clusterlabeling.pl [OPTIONS] INPUTFILE
+
+=head1 DESCRIPTION
 
 Assigns labels to each cluster with the significant word pairs found in 
 the cluster contexts. Also separates the clusters in different files.
@@ -15,23 +19,17 @@ Discriminating. Descriptive labels are the top n significant word pairs.
 Discriminating labels are the word-pairs unique to the cluster out of the 
 top n significant word-pairs for the cluster.
 
-=head1 USAGE
-
-clusterlabeling.pl [OPTIONS] INPUTFILE
-
 =head2 Required Arguments:
 
 =head3 INPUTFILE
 
-File created by Toolkit/evaluate/format_clusters.pl with 
---context option.
+File created by Toolkit/evaluate/format_clusters.pl with --context option.
 
 =head2 Optional Arguments:
 
 =head4 --token TOKEN
 
-A file containing Perl regex/s that define the tokenization scheme 
-in INPUTFILE file.
+A file containing Perl regex/s that define the tokenization scheme in INPUTFILE file.
 
 If --token is not specified, default token regex file 
 token.regex is searched in the current directory.
@@ -152,15 +150,16 @@ Displays to STDERR the current program status.
 
 =head1 SYSTEM REQUIREMENTS
 
-Input to this program should be created by format_clusters.pl
+Input to this program should be created by L<format_clusters.pl>
 
 =head1 BUGS
 
 =head1 AUTHOR
 
-Ted Pedersen, University of Minnesota, Duluth
+ Anagha Kulkarni, Carnegie-Mellon University
 
-Anagha Kulkarni, University of Minnesota, Duluth
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =cut
 
@@ -687,8 +686,9 @@ Type 'perldoc clusterlabeling.pl' to view the detailed documentation.\n";
 #version information
 sub showversion()
 {
-	print '$Id: clusterlabeling.pl,v 1.27 2008/03/24 00:56:56 tpederse Exp $';
-        print "\nCopyright (c) 2004-2006, Ted Pedersen, & Anagha Kulkarni\n";
+	print '$Id: clusterlabeling.pl,v 1.28 2008/03/30 04:51:26 tpederse Exp $';
+	print "\nLabel discovered clusters based on their content\n";
+#        print "\nCopyright (c) 2004-2006, Ted Pedersen, & Anagha Kulkarni\n";
 #        print "clusterlabeling.pl      -       Version 0.04\n";
 #        print "Cluster labeling program.\n";
 #        print "Date of Last Update:     01/22/2006\n";
@@ -698,13 +698,7 @@ sub showversion()
 
 =head1 COPYRIGHT
 
-Copyright (c) 2004-2006,
-
- Anagha Kulkarni, University of Minnesota, Duluth
- kulka020@umn.edu
-
- Ted Pedersen, University of Minnesota, Duluth
- tpederse@umn.edu
+Copyright (c) 2004-2008, Anagha Kulkarni and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it 
 under the terms of the GNU General Public License as published by the Free 

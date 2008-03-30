@@ -1,6 +1,6 @@
 =head1 NAME
 
-README.Web  How to install SenseClusters web interface
+README.Web - [Web Interface] How to install SenseClusters Web interface
 
 =head1 Steps for setting up the web-interface for SenseClusters
 
@@ -64,7 +64,7 @@ please make sure that each of the following utilities is installed on your syste
 
 =back
 
-=head1 Acknowledgement
+=head1 Acknowledgment
 
 This work has been partially supported by a National Science Foundation
 Faculty Early CAREER Development award (#0092784).

@@ -1,6 +1,6 @@
 =head1 NAME
 
-README.SC-cgi Description of cgi files used in SenseClusters web interface
+README.SC-cgi - [Web Interface] Description of cgi files used in SenseClusters web interface
 
 =head1 Description
 

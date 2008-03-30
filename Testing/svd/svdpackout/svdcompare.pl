@@ -2,16 +2,19 @@
 
 =head1 NAME
 
-svdcompare.pl
+svdcompare.pl - Provide a "fuzzy" diff command for comparing svd output 
+to our key 
 
 =head1 SYNOPSIS
 
 Simulates 'diff' system command on numeric matrices allowing some precision 
-errors within a given tolerance.
+errors within a given tolerance. This is necessary since the results 
+from SVDPACKC can vary somewhat depending on the underlying 
+architecture. 
 
 =head1 USGAE
 
-svdcompare.pl MATRIX1 MATRIX2 TOLERANCE
+C<svdcompare.pl MATRIX1 MATRIX2 TOLERANCE>
 
 =head1 INPUT
 
@@ -53,18 +56,16 @@ for all lines I where the matrices differ as per the above conditions.
 
 =head1 AUTHOR
 
-Amruta Purandare, Ted Pedersen.
-University of Minnesota at Duluth.
+Amruta Purandare 
+University of Pittsburgh
+
+Ted Pedersen
+University of Minnesota, Duluth
+tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2003,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2003-2008 Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

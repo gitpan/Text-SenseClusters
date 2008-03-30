@@ -2,15 +2,55 @@
 
 =head1 NAME
 
-text2sval.pl Convert plain text data into Senseval-2 format 
+text2sval.pl - Convert a plain text file with one context per line into Senseval-2 format 
 
 =head1 SYNOPSIS
 
-Converts a plain text instance data file into a Senseval-2 formatted XML file.
+Create a Senseval-2 format file from a plain text input (where target 
+words are marked) and a given key file:
 
-=head1 USGAE
+ cat small.txt
+ 
+Output => 
 
-text2sval.pl [OPTIONS] TEXT
+ he played on the offensive <head>line</head> in college
+ i think the phone <head>line</head> is down
+
+cat key.txt
+
+Output =>
+
+ <instance id="0"/> <sense id="formation"/>
+ <instance id="1"/> <sense id="cable"/>
+
+ text2sval.pl small.txt --lexelt line --key key.txt
+
+Output =>
+
+ <corpus lang="english">
+ <lexelt item="line">
+ <instance id="0">
+ <answer instance="0" senseid="formation"/>
+ <context>
+ he played on the offensive <head>line</head> in college
+ </context>
+ </instance>
+ <instance id="1">
+ <answer instance="1" senseid="cable"/>
+ <context>
+ i think the phone <head>line</head> is down
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
+
+Type C<text2sval.pl> for a quick summary of options.
+
+=head1 DESCRIPTION
+
+Converts a plain text instance data file into a Senseval-2 formatted XML 
+file. Sense tags, instances ids, and lexelt tags can be inserted into 
+the Senseval-2 file. 
 
 =head1 INPUT
 
@@ -21,21 +61,14 @@ text2sval.pl [OPTIONS] TEXT
 Should be a plain text data file containing context of a single instance on each
 line. In other words, contexts of different instances should be separated by
 a newline character and there should not be any newline characters within the
-context of a single instance. 
-
-e.g. 
-
---------------------------------------------------------------------
+context of a single instance. For example, the following shows 3 
+instances with context of each instance on each line.
 
  market capitalization draws a <head>line</head> between big and small stocks
 
  volunteers using a dozen telephone <head>lines</head> at the group's washington headquarters this week will be urging members in alabama arizona
 
  he proceeded briskly through a reception <head>line</head> of party officials and old friends
-
---------------------------------------------------------------------
-
-shows 3 instances with context of each instance on each line.
 
 =head2 Optional Arguments:
 
@@ -52,7 +85,7 @@ the output Senseval-2 file.
 
 Each line in KEYFILE should show the instance id and optional sense tags of 
 the instance displayed on the corresponding line in the TEXT file, in the 
-format -
+format :
 
 	<instance id=\"IID\"\/> [<sense id=\"SID\"\/>]*
 
@@ -81,8 +114,6 @@ Sample Outputs
 
 Input TEXT file => input.text
 
- ------------------------------------------------------------------
-
  the maiden seated herself upon the golden chair and offered the silver one to her companion they were <head>served</head> by maidens dressed in white whose feet made no sound as they moved about and not a word was spoken during the meal
 
  why leftover beef should ever be a problem i cannot understand there is nothing better than cold roast sliced paper thin and <head>served</head> with mustard chutney or pickled walnuts these can be found in almost any food specialty shop meat to be served cold should be removed from the refrigerator an hour or so before eating to allow it to return to room temperature
@@ -91,13 +122,10 @@ Input TEXT file => input.text
 
  an agency spokesman al heier said it granted the exceptions because these crops are grown by few farmers in small areas that can be closely monitored dinoseb is a herbicide that also <head>serves</head> as a fungicide and an insecticide 
 
-------------------------------------------------------------------
-
 Command => text2sval.pl input.text 
 
 STDOUT will display =>
 
- ---------------------------------------------------------------
  <corpus lang="english">
  <lexelt item="LEXELT">
  <instance id="0">
@@ -126,7 +154,6 @@ STDOUT will display =>
  </instance>
  </lexelt>
  </corpus>
- ---------------------------------------------------------------
 
 Notice that -
 
@@ -159,7 +186,6 @@ Command => text2sval.pl --key serve.key --lexelt serve-v input.text
 
 will display on stdout =>
 
- --------------------------------------------------------------------
  <corpus lang="english">
  <lexelt item="LEXELT">
  <instance id="serve-v.aphb_34700303_2142">
@@ -189,8 +215,6 @@ will display on stdout =>
  </lexelt>
  </corpus>
 
- --------------------------------------------------------------------
-
 Note that the instance ids are taken from the KEY file while sense ids have
 NOTAGs.
 
@@ -209,7 +233,6 @@ Command => text2sval.pl --key serve.key --lexelt serve-v input.text
 
 will display on STDOUT =>
 
- --------------------------------------------------------------------
  <corpus lang="english">
  <lexelt item="LEXELT">
  <instance id="serve-v.aphb_34700303_2142">
@@ -239,30 +262,20 @@ will display on STDOUT =>
  </lexelt>
  </corpus>
 
- --------------------------------------------------------------------
-
 where instance ids and sense tags are both extracted from the KEY file.
 
 =back
 
-=head1 SYSTEM REQUIREMENTS
+=head1 AUTHORS
 
-No special requirements ...
+ Amruta Purandare, University of Pittsburgh
 
-=head1 AUTHOR
-
- Amruta Purandare, Ted Pedersen.
- University of Minnesota at Duluth.
+ Ted Pedersen,  University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -593,10 +606,11 @@ Type 'perldoc text2sval.pl' to view detailed documentation of text2sval.\n";
 #version information
 sub showversion()
 {
-        print "text2sval.pl      -       Version 0.01\n";
-        print "Converts a plain text file into a Senseval-2 formatted XML file.\n";
-        print "Copyright (c) 2002-2005, Amruta Purandare & Ted Pedersen.\n";
-        print "Date of Last Update:     12/02/2003\n";
+#        print "text2sval.pl      -       Version 0.01\n";
+	print '$Id: text2sval.pl,v 1.9 2008/03/29 23:37:25 tpederse Exp $';
+        print "\nConverts a plain text file into a Senseval-2 formatted XML file.\n";
+#        print "Copyright (c) 2002-2005, Amruta Purandare & Ted Pedersen.\n";
+#        print "Date of Last Update:     12/02/2003\n";
 }
 
 #############################################################################

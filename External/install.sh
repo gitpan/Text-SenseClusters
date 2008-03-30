@@ -26,6 +26,7 @@ set CLUTOSITE = 'http://glaros.dtc.umn.edu/gkhome/fetch/sw/cluto/cluto-2.1.1.tar
 set CLUTODIR = 'cluto-2.1.1'
 set OSNAME = `uname -s`
 set INSTALLDIR = $1
+set GCCVERSION = `gcc --version`
  
 if (! -d $INSTALLDIR) then
         echo "$INSTALLDIR does not exist" 
@@ -48,6 +49,10 @@ echo "this involes compiling the las2 program and then"
 echo "doing a very simple check to make sure that worked"
 echo "via a diff command of output produced by your"
 echo "installed version with a key we provide (lao2.key)"
+echo " "
+echo "your gcc version is $GCCVERSION"
+echo "SVDPACKC generally requires 3.2 or 3.3, and usually"
+echo "has problems with 4.0 or above"
 echo " "
 
 cd SVDPACKC

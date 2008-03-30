@@ -2,16 +2,56 @@
 
 =head1 NAME
 
-mat2harbo.pl Convert Senseclusters sparse matrix into Harwell-Boeing (HB) format
+mat2harbo.pl - Convert matrix in Senseclusters sparse format to Harwell-Boeing (HB)  
+format and set input parameters (lap2) for input to SVDPACKC. 
 
 =head1 SYNOPSIS
 
-Converts a given sparse matrix in SenseClusters' format to Harwell-Boeing(HB) 
-sparse format. 
+ mat2harbo.pl [OPTIONS] MATRIX
 
-=head1 USGAE
+The file input is a SenseClusters sparse matrix
 
-mat2harbo.pl [OPTIONS] MATRIX
+ cat input
+
+Output => 
+
+ 5 4 12
+ 1 1.5 3 2.5 4 1.0
+ 2 2.5 3 2.5
+ 1 1.5 3 2.5 4 1.0
+ 2 2.5 3 2.5
+ 2 2.5 3 2.5
+
+Convert that to Harwell-Boeing form.
+
+ mat2harbo.pl input --title "matrix format convestion" --id "sample" --numform 10f8.4
+
+Output => 
+
+ matrix format convestion                                                sample
+ #
+ rra                        5             4            12             0
+           (10i8)          (10i8)            (10f8.4)            (10f8.4)
+        1       3       6      11      13
+        1       3       2       4       5       1       2       3       4       5
+        1       3
+   1.5000  1.5000  2.5000  2.5000  2.5000  2.5000  2.5000  2.5000  2.5000  2.5000
+   1.0000  1.0000
+
+The Harwell Boeing format stores data in 80 columns. The numform 10f8.4 says that 
+there should be 10 numbers per line, each with 8 numeric values, where 4 digits are to 
+the right of the decimal point. 
+
+See L<http://math.nist.gov/MatrixMarket/formats.html#hb> for a detailed explanation of 
+Harwell Boeing format. 
+
+Type C<mat2harbo.pl --help> for a quick summary of options
+
+=head1 DESCRIPTION
+
+Converts a sparse matrix in SenseClusters format to Harwell-Boeing (HB) 
+sparse format, which is the format required by SVDPACKC. This program also creates 
+(optionally) the lap2 file which provides parameter settings for SVDPACKC.
 
 =head1 INPUT
 
@@ -22,7 +62,8 @@ mat2harbo.pl [OPTIONS] MATRIX
 A sparse MATRIX in SenseClusters' format that is to be converted into 
 Harwell Boeing format.
 
-First line should show exactly 3 numbers separated by blanks as 
+First line should show exactly 3 numbers separated by blanks as :
+
  #nrows #ncols #nnz
 
 where 
@@ -96,7 +137,8 @@ the default title.
 =head4 --id ID
 
 Programs processing the HB formatted matrix can identify the matrix by the ID 
-specified at Line1 (73-80). Default ID is "harbomat".
+specified at Line1 (73-80). Default ID is "harbomat". This identifier is limited to 8 
+characters. 
 
 =head4 --cpform CPFORM
 
@@ -117,11 +159,11 @@ Specifies the Numeric Format to represent the matrix values in Block3.
 
 mat2harbo allows 2 numeric formats :
 
-1. MiN type, which has same interpretation as --cpform and --rpform.
+=over
+=item 1. MiN type, which has same interpretation as --cpform and --rpform.
 
-2. MfD.F - which means that there are total M real numbers on each line 
-of block3, each occupying total D digit/character space, of which last F 
-digits show fractional portion. 
+=item 2. MfD.F - which means that there are total M real numbers on each line of block3, each occupying total D digit/character space, of which last F digits show fractional portion. 
+=back
 
 Thus, Matrix values could be Integer or Real, selected by specifying a 
 particular format. 
@@ -169,7 +211,8 @@ Default I = min((3 * maxprs),#cols) where maxprs = min(K,N/RF).
 
 The header file las2.h in SVDPACKC specifies values of various constants
 for las2. This section provides some guidelines on setting these constants
-for using SenseClusters.
+for using SenseClusters. Please note that the version of SVDPACKC found in /External 
+has been modified with the settings as described below.
 
 =over
 
@@ -206,12 +249,12 @@ initial setting of LMTNW in las2.h is 600000, however, we find that this
 is often too small. In general, the size of LMTNW is determined by the  
 values you set NMAX and NZMAX to. LMTNW should be at least as large as :
 
-LMTNW = (6*NMAX + 4*NMAX + 1 + NZMAX*NZMAX) 
+ LMTNW = (6*NMAX + 4*NMAX + 1 + NZMAX*NZMAX) 
 
 mat2harbo.p assumes that NMAX has been reset to 30,000 and that NZMAX is  
 set to 9,000,000.  Thus, 
 
-LMTNW = ((6 * 30,000) + (4 * 30,000) + 1 + (30,000 * 30,000))
+ LMTNW = ((6 * 30,000) + (4 * 30,000) + 1 + (30,000 * 30,000))
 
 This leads to the new value for LMTNW of 900,300,001, which is equivalent 
 to a maximum working memory size of 1 GB. We have found this size to be  
@@ -1246,30 +1289,25 @@ Type 'perldoc mat2harbo.pl' to view detailed documentation of mat2harbo.\n";
 #version information
 sub showversion()
 {
-	print '$Id: mat2harbo.pl,v 1.31 2008/03/24 00:56:59 tpederse Exp $';
+	print '$Id: mat2harbo.pl,v 1.33 2008/03/30 04:19:02 tpederse Exp $';
 ##      print "mat2harbo.pl      -       Version 0.4";
-##	print "Converts a given matrix in SenseClusters' sparse format to Harwell-Boeing sparse format.\n";
-        print "\nCopyright (c) 2002-2006, Amruta Purandare & Ted Pedersen\n";
+	print "\nConvert a matrix in SenseClusters sparse format to Harwell-Boeing sparse format\n";
+##        print "\nCopyright (c) 2002-2006, Amruta Purandare & Ted Pedersen\n";
 ##      print "Date of Last Update:     11/06/2004\n";
 }
 
 #############################################################################
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Amruta Purandare, University of Pittsburgh
 
 Ted Pedersen, University of Minnesota, Duluth
+tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2003-2006
-
-Amruta Purandare, University of Pittsburgh
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth
-tpederse@umn.edu
+Copyright (c) 2003-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -1283,9 +1321,9 @@ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 

@@ -2,16 +2,48 @@
 
 =head1 NAME
 
-sval2plain.pl Convert Senseval-2 data into plain text format
+sval2plain.pl - Convert a Senseval-2 data file into plain text format 
 
 =head1 SYNOPSIS
 
+ sval2plain.pl [OPTIONS] SVAL2
+
+Note that there are 255 instances (contexts) in the Senseval-2 formatted 
+input file. 
+
+ frequency.pl begin.v-test.xml
+
+OUTPUT =>
+ 
+ <sense id="begin%2:30:00::" percent="64.31"/>
+ <sense id="begin%2:30:01::" percent="14.51"/>
+ <sense id="begin%2:42:04::" percent="21.18"/>
+ Total Instances = 255
+ Total Distinct Senses=3
+ Distribution={64.31,21.18,14.51}
+ % of Majority Sense = 64.31
+
+After converting to plain text, note that there are 255 lines in that 
+file, one per context.
+
+ sval2plain.pl begin.v-test.xml > begin.v-test.txt
+
+ wc begin.v-test.txt
+
+OUTPUT => 
+
+ 255   15049   92598 begin.v-test.txt
+
+You can find L<begin.v-test.xml> in samples/Data
+
+You can type C<sval2plain.pl --help> for a quick summary of options
+
+=head1 DESCRIPTION
+
 Converts a given file from Senseval-2 format into plain text format. Each 
-line of the plain text files contains a single context. 
-
-=head1 USGAE
-
-sval2plain.pl [OPTIONS] SVAL2
+line of the plain text files contains a single context. This is useful 
+when you have Senseval-2 data that you would like to use as feature 
+extraction (training) data, which much be in plain text format. 
 
 =head1 INPUT
 
@@ -40,19 +72,14 @@ the given SVAL2 file.
 
 =head1 AUTHOR
 
-Ted Pedersen, University of Minnesota, Duluth
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
-Amruta Purandare, University of Minnesota, Duluth
+ Amruta Purandare, University of Pittsburgh
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Ted Pedersen, University of Minnesota, Duluth.
- tpederse@umn.edu
-
- Amruta Purandare, University of Pittsburgh.
- amruta@cs.pitt.edu
+Copyright (c) 2002-2008, Ted Pedersen and Amruta Purandare
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -191,10 +218,10 @@ Type 'perldoc sval2plain.pl' to view detailed documentation of sval2plain.\n";
 #version information
 sub showversion()
 {
-	print '$Id: sval2plain.pl,v 1.6 2008/03/24 00:56:59 tpederse Exp $';
-        print "Copyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
+	print '$Id: sval2plain.pl,v 1.9 2008/03/29 20:52:30 tpederse Exp $';
+#        print "Copyright (c) 2002-2006, Ted Pedersen & Amruta Purandare\n";
 #        print "sval2plain.pl      -       Version 0.01\n";
-#        print "Converts a given file in Senseval-2 format into plain text format.\n";
+        print "\nConvert a Senseval-2 file into plain text\n";
 #        print "Date of Last Update:     06/02/2004\n";
 }
 

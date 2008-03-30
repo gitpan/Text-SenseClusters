@@ -2,14 +2,35 @@
 
 =head1 NAME
 
-maketarget.pl Create target.regex file for a given target word
+maketarget.pl - Create target.regex file for a given Senseval-2 data 
+file that shows all the forms of the target word
 
 =head1 SYNOPSIS
 
-Creates a Perl regex for the TARGET word by detecting its various forms 
-from the given SVAL2 file.
+ maketarget.pl -head begin.v-test.xml
+
+This creates a file called target.regex with the following contents: 
+
+ /<head>\s*(began)|(begin)|(beginning)|(begins)|(begun)\s*</head>/
+
+ maketarget.pl begin.v-test.xml
+
+This creates a file called target.regex with the following contents: 
+
+ /(\bbegan\b)|(\bbegin\b)|(\bbeginning\b)|(\bbegins\b)|(\bbegun\b)/
+ 
+These are regular expressions that show all the forms of "begin" that 
+appear in the given Senseval-2 data file with and without a surrounding 
+head tag.
+
+You can find begin.v-test.xml at samples/Data
+
+Type C<maketarget.pl> for a quick list of options
 
 =head1 DESCRIPTION
+
+This program creates a Perl regex for the TARGET word by detecting its 
+various forms from the given SVAL2 file.
 
 This program will create a regular expression file called target.regex 
 that can be used to match target words via the --target option in many 
@@ -27,10 +48,6 @@ plain unannotated text. The second form is the default, while the first is
 available with the --head option. Note that in the first form the <head> 
 tag acts as a delimiter on word boundaries, while in the second form the 
 \b character class is used for that purpose. 
-
-=head1 USAGE
-
-maketarget.pl [OPTIONS] SVAL2
 
 =head1 INPUT
 
@@ -78,24 +95,18 @@ It is restricted to target words that are a single string, such as
 
  <head> Bill_Clinton </head>
 
-=head1 AUTHOR
+=head1 AUTHORS
 
  Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
+
  Amruta Purandare, University of Pittsburgh
- Anagha Kulkarni, University of Minnesota, Duluth
+
+ Anagha Kulkarni, Carnegie-Mellon University
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Ted Pedersen, University of Minnesota, Duluth
- tpederse@umn.edu
-
- Amruta Purandare, University of Pittsburgh
- amruta@cs.pitt.edu
-
- Anagha Kulkarni, University of Minnesota, Duluth
- kulka020@d.umn.edu
+Copyright (c) 2002-2008, Ted Pedersen, Amurta Purandare, Anagha Kulkarni
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -305,10 +316,10 @@ Type 'perldoc maketarget.pl' to view detailed documentation of maketarget.\n";
 #version information
 sub showversion()
 {
-        print '$Id: maketarget.pl,v 1.14 2008/03/24 00:56:59 tpederse Exp $';
-        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
+        print '$Id: maketarget.pl,v 1.17 2008/03/29 20:52:30 tpederse Exp $';
+##        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
 ##        print "maketarget.pl      -       Version 0.01\n";
-##        print "Creates a Perl regex for the target word.\n";
+        print "\nCreate a Perl regex for a target word in a Senseval-2 file\n";
 #        print "Date of Last Update:     07/30/2006\n";
 }
 

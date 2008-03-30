@@ -2,15 +2,51 @@
 
 =head1 NAME
 
-simat.pl Display pairwise cosine similarities between vectors
+simat.pl - Build a similarity matrix from real-valued context vectors
 
 =head1 SYNOPSIS
 
-Displays pair-wise cosine similarities among the given vectors.
-
-=head1 USGAE
-
 simat.pl [OPTIONS] VECTOR
+
+The input file represents 5 vectors, each with 4 possible features. The 
+format of the input file is sparse, so if a feature has no value it is 
+not listed.
+
+ cat input
+
+Output => 
+
+ 5 4 12
+ 1 1.5 3 2.5 4 1.0
+ 2 2.5 3 2.5
+ 1 1.5 3 2.5 4 1.0
+ 2 2.5 3 2.5
+ 2 2.5 3 2.5
+
+Compute the pairwise similarities between all 5 vectors and display them 
+in a 5x5 matrix. 
+
+ simat.pl input --format f4.2
+
+Output =>
+
+ 5 25
+ 1 1.00 2 0.57 3 1.00 4 0.57 5 0.57
+ 1 0.57 2 1.00 3 0.57 4 1.00 5 1.00
+ 1 1.00 2 0.57 3 1.00 4 0.57 5 0.57
+ 1 0.57 2 1.00 3 0.57 4 1.00 5 1.00
+ 1 0.57 2 1.00 3 0.57 4 1.00 5 1.00
+
+Type C<simat.pl> for a quick summary of options
+
+=head1 DESCRIPTION
+
+Constructs a similarity matrix for the given real-valued context 
+vectors. A similarity matrix shows the pairwise similarities between all 
+the different vectors. Vectors are represented in an N x M matrix, where 
+N is the number of vectors and M is the number of features. All NxN 
+combinations of vector pairs will be measured for similarity 
+and stored in a matrix.
 
 =head1 INPUT
 
@@ -21,7 +57,7 @@ simat.pl [OPTIONS] VECTOR
 Should be a file containing sparse/dense vectors as created by programs in
 dir Toolkit/vector.
 
-=head4 Sparse Format [default]
+=head4 Sparse Format (default)
 
 When the input vectors are in sparse format, the first line in the VECTOR
 file should show 3 space separated numbers -
@@ -53,7 +89,7 @@ Sample Sparse Format -
  2 0.661 3 0.778 4 0.762 6 0.957
  1 0.915 3 0.639 5 0.989 6 0.637 8 0.649
 
-Explaination -
+Explanation :
 
 =over
 
@@ -216,24 +252,26 @@ vectors.
 
 =head1 SYSTEM REQUIREMENTS
 
-PDL - http://search.cpan.org/dist/PDL/
+simat.pl is dependent on the following CPAN modules :
 
-Math::SparseVector - http://search.cpan.org/dist/Math-SparseVector/
+=over
 
-=head1 AUTHOR
+=item PDL - L<http://search.cpan.org/dist/PDL/>
 
-Amruta Purandare, Ted Pedersen.
-University of Minnesota, Duluth.
+=item Math::SparseVector - L<http://search.cpan.org/dist/Math-SparseVector/>
+
+=back
+
+=head1 AUTHORS
+
+ Amruta Purandare, University of Pittsburgh
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -247,9 +285,9 @@ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 
@@ -592,10 +630,11 @@ Type 'perldoc simat.pl' to view detailed documentation of simat.\n";
 #version information
 sub showversion()
 {
-        print "simat.pl      -       Version 0.08\n";
-        print "Displays a similarity matrix for given vectors.\n";
-        print "Copyright (c) 2002-2005, Amruta Purandare & Ted Pedersen.\n";
-        print "Date of Last Update:     06/01/2004\n";
+#        print "simat.pl      -       Version 0.08\n";
+	print '$Id: simat.pl,v 1.22 2008/03/29 23:36:03 tpederse Exp $';
+        print "\nCalcuate a similarity matrix for a given set of context vectors\n";
+#        print "Copyright (c) 2002-2005, Amruta Purandare & Ted Pedersen.\n";
+#        print "Date of Last Update:     06/01/2004\n";
 }
 
 #############################################################################

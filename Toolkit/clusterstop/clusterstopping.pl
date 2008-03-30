@@ -1,21 +1,17 @@
 #!/usr/local/bin/perl -w
 
-eval 'exec /usr/local/bin/perl -w -S $0 ${1+"$@"}'
-    if 0; # not running under some shell
-
 =head1 NAME
 
-clusterstopping.pl Predict the optimal number of clusters for your data
+clusterstopping.pl - Predict the optimal number of clusters in a data set
 
 =head1 SYNOPSIS
 
-Predicts the optimal number of clusters for the given data.
+ clusterstopping.pl [OPTIONS] INPUTFILE
 
-=head1 USAGE
+=head1 DESCRIPTION
 
-clusterstopping.pl [OPTIONS] INPUTFILE
-
-This script tries to find the optimal number of clusters for the given INPUTFILE.
+Predicts the optimal number of clusters for the given data. This script tries to find 
+the optimal number of clusters for the given INPUTFILE.
 
 =head1 INPUT
 
@@ -24,6 +20,7 @@ This script tries to find the optimal number of clusters for the given INPUTFILE
 =head3 INPUTFILE
 
 Matrix file containing either:
+
  * context vectors (in dense or sparse format)
  * similarity values between contexts	
 
@@ -68,15 +65,17 @@ are exactly equal. This is the default setting when the crfun values are integer
 Specify non-zero positive integer to stop the iterating clustering process when the diffference 
 between two consecutive crfun values is less than or equal to this value. However, note that the
 integer value specified is internally shifted to capture the difference in the least significant 
-digit of the crfun values when these crfun values are fractional.
- For example: 
+digit of the crfun values when these crfun values are fractional.  For example: 
+
     For crfun = 1.23e-02 & delta = 1 will be transformed to 0.0001
     For crfun = 2.45e-01 & delta = 5 will be transformed to 0.005
+
 The default delta value when the crfun values are fractional is 1.
 
 However if the crfun values are integer/whole numbers (exponent >= 2) then the specified delta 
 value is internally shifted only until the least significant digit in the scientific notation.
- For example: 
+For example: 
+
     For crfun = 1.23e+04 & delta = 2 will be transformed to 200
     For crfun = 2.45e+02 & delta = 5 will be transformed to 5
     For crfun = 1.44e+03 & delta = 1 will be transformed to 10
@@ -86,6 +85,7 @@ value is internally shifted only until the least significant digit in the scient
 Specifies the clustering method.
 
 The possible option values:
+
    rb - Repeated Bisections [Default]
    rbr - Repeated Bisections for by k-way refinement
    direct - Direct k-way clustering
@@ -100,6 +100,7 @@ Selects the criteria function for Clustering. The meanings of these criteria
 functions are explained in Cluto's manual.
 
 The possible option values:
+
    i1      -  I1  Criterion function
    i2      -  I2  Criterion function [Default]
    h1      -  H1  Criterion function
@@ -111,6 +112,7 @@ The possible option values:
 Specifies the similarity measure to be used
 
 The possible option values:
+
    cos      -  Cosine [Default]
    corr     -  Correlation Coefficient
 	
@@ -122,6 +124,7 @@ The option is used to specify the model to be used to scale every
 column of each row. (For further details please refer Cluto manual)
 
 The possible option values:
+
    none  -  no scaling is performed [Default]
    maxtf -  post scaling the values are between 0.5 and 1.0
    sqrt  -  square-root of actual values
@@ -133,6 +136,7 @@ The option is used to specify the model to be used to (globally) scale each
 column across all rows. (For further details please refer Cluto manual)
 
 The possible option values:
+
    none  -  no scaling is performed [Default]
    idf   -  scaling according to inverse-document-frequency 
 
@@ -163,6 +167,7 @@ Specifies whether to generate B replicates from a reference or to generate
 B references.
 
 The possible option values:
+
       rep - replicates [Default]
       ref - references
 
@@ -199,25 +204,18 @@ Displays to STDERR the current program status.
 
 =over
 
-=item * prefix.pk1
+=item * prefix.pk(1|2|3)
 
- Contains the crfun values, PK1 values and the predicted k.
-
-=item * prefix.pk2
-
- Contains the crfun values, PK2 values and the predicted k.
-
-=item * prefix.pk3
-
- Contains the crfun values, PK3 values and the predicted k.
+Contains the crfun values, (PK1, PK2, PK3) values and the predicted k.
 
 =item * prefix.gap
 
- Contains the crfun values, delta values and the predicted k.
+Contains the crfun values, delta values and the predicted k.
 
 =item * prefix.gap.log
- Contains a table of values for Gap(k), Obs(crfun(k)), Exp(crfun(k)), sd(k), s(k) and Confidence interval.
- Also contains individual crfun values for each of the B replicates/references for every value of K.
+
+Contains a table of values for Gap(k), Obs(crfun(k)), Exp(crfun(k)), sd(k), s(k) and Confidence interval.
+Also contains individual crfun values for each of the B replicates/references for every value of K.
 
 =back
 
@@ -228,19 +226,11 @@ creation of plots if required.
 
 =item * prefix.cr.dat
 
- Contains the crfun values.
+Contains the crfun values.
 
-=item * prefix.pk1.dat
+=item * prefix.pk(1|2|3).dat
  
- Contains the PK1 values.
-
-=item * prefix.pk2.dat
-
- Contains the PK2 values.
-
-=item * prefix.pk3.dat
-
- Contains the PK3 values.
+Contains the PK1, PK2, or PK3 values.
 
 =item * prefix.exp.dat
 
@@ -282,7 +272,7 @@ selected as the k value.
  PK2[m] = ------------
            crfun[m-1]
 
-where m = 2,...deltaM
+ where m = 2,...deltaM
 
 k selection strategy: One standard deviation interval for the set of PK2[m]
 values id calculated and the m value for which the PK2 score is outside this
@@ -295,7 +285,7 @@ the k value.
  PK3[m] = -------------------------
            crfun[m-1] + crfun[m+1]
  
-where m = 2,...deltaM
+ where m = 2,...deltaM
 
 k selection strategy: Similar to that of PK2. One standard deviation of the 
 PK3[m] scores is computed and the m value for which the PK3 score is outside 
@@ -320,14 +310,18 @@ two plots is choosen as the predicted k value.
 
 We provide two methods for the generation of reference data:
 
-1. One can choose to generate a random dataset over the observed distribution by 
+=over
+
+=item 1. One can choose to generate a random dataset over the observed distribution by 
 holding the row and the column marginals fixed and then generating B replicates 
 from this random dataset using Monte Carlo sampling.
   
-2. Or to generate B random datasets over the observed distribution by holding 
+=item 2. Or to generate B random datasets over the observed distribution by holding 
 the row and the column marginals fixed.
 
-Please refer to http://search.cpan.org/dist/Algorithm-RandomMatrixGeneration/ to
+=back
+
+Please refer to L<http://search.cpan.org/dist/Algorithm-RandomMatrixGeneration/> to
 learn more about generating random dataset over the observed distribution by holding
 the row and the column marginals fixed.
 
@@ -338,8 +332,10 @@ be integer or real. Depending upon the value specified for the space parameter
 the header in the input file (first line) changes.
 
 Example of input matrix in dense format when space=vector:
- The first line specifies the dimensions - #rows #cols
- From the second line the actual matrix follows.
+
+The first line specifies the dimensions - #rows #cols
+
+From the second line the actual matrix follows.
 
  6 5
  1.3       2       0       0       3
@@ -350,9 +346,12 @@ Example of input matrix in dense format when space=vector:
  2.1       0       4       2.7     0
 
 Example of input matrix in dense format when space=similarity:
- The matrix, when in similarity space, is square and symmetric. 
- The first line specifies the dimensions - #rows/#cols
- From the second line the actual matrix follows.
+
+The matrix, when in similarity space, is square and symmetric. 
+
+The first line specifies the dimensions - #rows/#cols
+
+From the second line the actual matrix follows.
 
  5
  1.0000   0.3179   0.5544   0.2541   0.4431   
@@ -362,7 +361,8 @@ Example of input matrix in dense format when space=similarity:
  0.4431   0.5413   0.2186   0.5148   1.0000
 
 Example of input matrix in sparse format when space=vector:
- The first line specifies the dimensions & number of non-zero elements - #rows #cols #nonzeroElem
+
+The first line specifies the dimensions & number of non-zero elements - #rows #cols #nonzeroElem
 
 From the second line the matrix contents follow. Only non-zero elements are specified. Thus the
 elements are specified as pairs of - #col elem. The row number is implied by the (line number-1).
@@ -378,8 +378,10 @@ elements are specified as pairs of - #col elem. The row number is implied by the
  2 4 3 1 4 2 5 5 7 1 9 1
 
 Example of input matrix in sparse format when space=similarity:
- The first line specifies the dimensions & number of non-zero elements - #rows/#cols #nonzeroElem
- The matrix format is same as explained above.
+
+The first line specifies the dimensions & number of non-zero elements - #rows/#cols #nonzeroElem
+
+The matrix format is same as explained above.
 
  5 15
  1 1.0000 3 0.5544 5 0.4431   
@@ -388,21 +390,16 @@ Example of input matrix in sparse format when space=similarity:
  2 0.4599 4 1.0000
  1 0.4431 2 0.5413 5 1.0000
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Anagha Kulkarni, University of Minnesota, Duluth.
+ Anagha Kulkarni, Carnegie-Mellon University
 
-Ted Pedersen, University of Minnesota, Duluth.
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006-2008,
-
- Ted Pedersen, University of Minnesota, Duluth.
- tpederse@d.umn.edu
-
- Anagha Kulkarni, University of Minnesota, Duluth.
- kulka020@d.umn.edu
+Copyright (c) 2006-2008, Anagha Kulkarni and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -438,7 +435,10 @@ $0=~s/.*\/(.+)/$1/;
 
 #use strict;
 use POSIX qw(floor ceil);
-use Math::BigFloat;
+
+### dependence on BigFloat only exists in RandomMatrix Generation
+### use Math::BigFloat; 
+
 use Algorithm::RandomMatrixGeneration;
 use Getopt::Long;
 
@@ -2086,10 +2086,12 @@ Displays to STDERR the current program status.
 #version information
 sub showversion()
 {
-        print "clusterstopping.pl      -       Version 0.04\n";
-        print "Cluster Stopping program.\n";
-        print "Copyright (c) 2006-2008, Ted Pedersen, Anagha Kulkarni.\n";
-        print "Date of Last Update:     07/29/2006\n";
+	print '$Id: clusterstopping.pl,v 1.33 2008/03/30 04:51:10 tpederse Exp $';
+	print "\nPredict the optimal number of clusters\n";
+#        print "clusterstopping.pl      -       Version 0.04\n";
+#        print "Cluster Stopping program.\n";
+#        print "Copyright (c) 2006-2008, Ted Pedersen, Anagha Kulkarni.\n";
+#        print "Date of Last Update:     07/29/2006\n";
 }
 
 #############################################################################

@@ -2,9 +2,42 @@
 
 =head1 NAME
 
-windower.pl Limit window of context around target word
+windower.pl - Limit window of context around a target word specified in a Senseval-2 input file
 
 =head1 SYNOPSIS
+
+Suppose we have a very small Senseval-2 file (small-test.xml) with just 
+2 instances. We would like to limit the surrounding context to 5 words 
+to the left and 5 words to the right of the target word:
+
+ windower.pl small.xml 5
+
+Output => 
+
+ <?xml version="1.0" encoding="iso-8859-1" ?>
+ <corpus lang='english' tagged="NO">
+ <lexelt item="begin.v">
+ <instance id="begin.555">
+ <answer instance="begin.555" senseid="begin%2:30:01::"/>
+ <context>
+ greats hardly knowns and unknowns <head>begin</head> a game three month season
+ </context>
+ </instance>
+ <instance id="begin.557">
+ <answer instance="begin.557" senseid="begin%2:30:01::"/>
+ <context>
+ late november it expects to <head>begin</head> construction by year end and
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
+
+This is from the first two lines of the file begin.v-test.xml.  You can 
+see the full contexts at /samples/Data.
+
+Type C<windower.pl --help> for a quick summary of options
+
+=head1 DESCRIPTION
 
 Limits the contexts of given instances to W tokens around the target word.
 
@@ -56,7 +89,7 @@ Following are some of the examples of TARGET word regex files -
 
 =item 1. 
 
-/<head>[Ll]ines?<\/head>/
+ /<head>[Ll]ines?<\/head>/
 
 which specifies that the target word could be 
 
@@ -68,13 +101,13 @@ delimited in <head> and </head> tags.
 
 Above regex can also be specified as multiple regexes in TARGET as -
 
-/<head>line<\/head>/
+ /<head>line<\/head>/
 
-/<head>lines<\/head>/
+ /<head>lines<\/head>/
 
-/<head>Line<\/head>/
+ /<head>Line<\/head>/
 
-/<head>Lines<\/head>/
+ /<head>Lines<\/head>/
 
 with a single regex per line
 
@@ -82,7 +115,7 @@ with a single regex per line
 
 Regex
 
-/<head>\w+<\/head>/
+ /<head>\w+<\/head>/
 
 shows a more general regex for target words marked in <head> tags
 
@@ -90,14 +123,14 @@ shows a more general regex for target words marked in <head> tags
 
 Regex 
 
-/<head.*>\w+<\/head>/
+ /<head.*>\w+<\/head>/
 
 Shows the regex for matching target words in the original Senseval-2 
 data.
 
 =item 5.
 
-/[Ll]ines?/
+ /[Ll]ines?/
 
 shows that any occurrence of words - Line, line, Lines, lines are target words 
 (that are not delimited in any special tags).
@@ -122,20 +155,16 @@ words around the target word.
 
 When --plain is ON, OUTPUT shows each context on a single line i.e. context of i'th instance in the given SVAL2 file is shown on the i'th line on stdout.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Amruta Purandare, Ted Pedersen.
-University of Minnesota, Duluth.
+Amruta Purandare, University of Pittsburgh
+
+Ted Pedersen, University of Minnesota, Duluth
+tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -563,10 +592,11 @@ Type 'perldoc windower.pl' to view detailed documentation of windower.\n";
 #version information
 sub showversion()
 {
-        print "windower.pl      -       Version 0.07\n";
-        print "Limits contexts to W tokens around the target word.\n";
-        print "Copyright (c) 2002-2005, Amruta Purandare & Ted Pedersen.\n";
-        print "Date of Last Update:     27/07/2006\n";
+#        print "windower.pl      -       Version 0.07\n";
+	print '$Id: windower.pl,v 1.13 2008/03/29 20:52:30 tpederse Exp $';
+        print "\nLimit contexts in a Senseval-2 file to N tokens around the target word\n";
+#        print "Copyright (c) 2002-2005, Amruta Purandare & Ted Pedersen.\n";
+#        print "Date of Last Update:     27/07/2006\n";
 }
 
 #############################################################################

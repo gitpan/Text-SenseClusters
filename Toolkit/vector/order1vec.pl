@@ -2,18 +2,19 @@
 
 =head1 NAME
 
-order1vec.pl Create first order context vectors
+order1vec.pl - Convert Senseval-2 format contexts into first order feature vectors in Cluto format
 
 =head1 SYNOPSIS
 
-Creates first order context vectors of feature vectors. Both of these 
-vectors indicate whether or not a given feature occurs in the given context. The 
-possible features are identified via Perl regular expressions of the form 
-created by nsp2regex.pl. 
+ order1vec.pl [OPTIONS] SVAL2 FEATURE_REGEX
 
-=head1 USAGE
+Type C<order1vec.pl --help> for a quick summary of options
 
-order1vec.pl [OPTIONS] SVAL2 FEATURE_REGEX
+=head1 DESCRIPTION
+
+Convert a context into a first order feature vector which shows how which features 
+occured in the contexts. The possible features are identified via Perl regular 
+expressions of the form created by L<nsp2regex.pl>. 
 
 =head1 INPUT
 
@@ -39,7 +40,6 @@ Sample FEATURE_REGEX files -
 
 =item 1. 
 
- --------------------------------------------------------------------
  /\s(<[^>]*>)*time(<[^>]*>)*\s/ @name = time
  /\s(<[^>]*>)*task(<[^>]*>)*\s/ @name = task
  /\s(<[^>]*>)*believe(<[^>]*>)*\s/ @name = believe
@@ -47,9 +47,8 @@ Sample FEATURE_REGEX files -
  /\s(<[^>]*>)*control(<[^>]*>)*\s/ @name = control
  /\s(<[^>]*>)*words(<[^>]*>)*\s/ @name = words
  /\s(<[^>]*>)*define(<[^>]*>)*\s/ @name = define
- --------------------------------------------------------------------
 
-Explanation -
+Explanation :
 
 =over 
 
@@ -71,13 +70,10 @@ non-tokens if exist should be put inside the angular brackets e.g. <item>, <sat>
 
 =item 2.
 
- --------------------------------------------------------------------
  /\s(<[^>]*>)*personal(<[^>]*>)*\s(<[^>]*>\s)*(<[^>]*>)*computer(<[^>]*>)*\s/ @name = personal<>computer
  /\s(<[^>]*>)*stock(<[^>]*>)*\s(<[^>]*>\s)*(<[^>]*>)*market(<[^>]*>)*\s/ @name = stock<>market
  /\s(<[^>]*>)*electronic(<[^>]*>)*\s(<[^>]*>\s)*(<[^>]*>)*systems(<[^>]*>)*\s/ @name = electronic<>systems
  /\s(<[^>]*>)*toll(<[^>]*>)*\s(<[^>]*>\s)*(<[^>]*>)*free(<[^>]*>)*\s/ @name = toll<>free
-
- --------------------------------------------------------------------
 
 Shows a bigram feature file in which each feature includes two tokens 
 separated by single space or any number of non-token sequences in <> brackets.
@@ -262,12 +258,11 @@ N M NNZ
 
 where
 
-N = Number of instances in SVAL2 file
+ N = Number of instances in SVAL2 file
 
-M = Number of features from the FEATURE_REGEX file that were found at least
-once in the SVAL2 file
+ M = Number of features from the FEATURE_REGEX file that were found at least once in the SVAL2 file
 
-NNZ = Total number of non-zero entries in all sparse vectors
+ NNZ = Total number of non-zero entries in all sparse vectors
 
 Each line thereafter shows a single sparse context vector on each line. In 
 short, every ith line after the 1st line shows the context vector of the 
@@ -408,17 +403,15 @@ sparse format.
 
 The first line on stdout will show 3 numbers separated by blanks as
 
-N M NNZ
+ N M NNZ
 
 where
 
-N = Number of features from the FEATURE_REGEX file that were found at least
-once in the SVAL2 file
+ N = Number of features from the FEATURE_REGEX file that were found at least once in the SVAL2 file
 
-M = Number of instances in SVAL2 file, for which at least one feature was
-identified
+ M = Number of instances in SVAL2 file, for which at least one feature was identified
 
-NNZ = Total number of non-zero entries in all sparse vectors
+ NNZ = Total number of non-zero entries in all sparse vectors
 
 Each line thereafter shows a single sparse feature vector on each line. In 
 short, every ith line after the 1st line shows the feature vector of the 
@@ -537,9 +530,11 @@ doesn't appear in the jth context.
 
 =head1 SYSTEM REQUIREMENTS
 
-PDL - http://search.cpan.org/dist/PDL/
+=over 
+=item PDL - L<http://search.cpan.org/dist/PDL/>
 
-Math::SparseVector - http://search.cpan.org/dist/Math-SparseVector/
+=item Math::SparseVector - L<http://search.cpan.org/dist/Math-SparseVector/>
+=back
 
 =head1 BUGS
 
@@ -550,29 +545,18 @@ should be added to make sure the input file is in Senseval2 format.
 
 =head1 AUTHOR
 
-Ted Pedersen, University of Minnesota, Duluth
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
-Amruta Purandare, University of Minnesota, Duluth
+ Amruta Purandare, University of Pittsburgh
 
-Anagha Kulkarni, University of Minnesota, Duluth
+ Anagha Kulkarni, Carnegie-Mellon University
 
-Mahesh Joshi, University of Minnesota, Duluth
+ Mahesh Joshi, Carnegie-Mellon University
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Amruta Purandare, University of Pittsburgh.
- amruta@cs.pitt.edu
-
- Ted Pedersen, University of Minnesota, Duluth.
- tpederse@umn.edu
-
- Anagha Kulkarni, University of Minnesota, Duluth
- kulk020@d.umn.edu
-
- Mahesh Joshi, University of Minnesota, Duluth
- josh031@d.umn.edu
+Copyright (c) 2002-2008, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, Mahesh Joshi
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -1670,8 +1654,10 @@ Type 'perldoc order1vec.pl' to view detailed documentation of order1vec.\n";
 #version information
 sub showversion()
 {
-	print '$Id: order1vec.pl,v 1.47 2008/03/24 00:56:59 tpederse Exp $';
-        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, & Mahesh Joshi\n";
+	print '$Id: order1vec.pl,v 1.48 2008/03/30 04:40:58 tpederse Exp $';
+	print "\nConvert Senseval-2 contexts into first order feature vectors\n";
+
+#        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, & Mahesh Joshi\n";
 #        print "order1vec.pl      -       Version 0.08\n";
 #        print "Displays the first order context vectors.\n";
 #        print "Date of Last Update:     03/04/2005\n";

@@ -2,31 +2,35 @@
 
 =head1 NAME
 
-keyconvert.pl Convert Senseval-2 answer key to Senseclusters format
+keyconvert.pl - Convert Senseval-2 answer key to Senseclusters format
 
 =head1 SYNOPSIS
 
+ keyconvert.pl [OPTIONS] INPUTFILE OUTFILE
+
+=head1 DESCRIPTION
+
 Converts the Senseval formatted input key file to SenseClusters' formatted
 output key file required by the SenseClusters package.
-
-=head1 USAGE
-
-keyconvert.pl [OPTIONS] INPUTFILE OUTFILE
 
 =head2 Required Arguments:
 
 =head3 INPUTFILE
 
- The Senseval key file. The format for Senseval key file is: 
+The Senseval key file. The format for Senseval key file is: 
+
  TARGET_WORD 	INSTANCE_ID	SENSE_ID+ 
- on each line showing one or more SENSE_IDs for an INSTANCE_ID.
+
+on each line showing one or more SENSE_IDs for an INSTANCE_ID.
 
 =head3 OUTFILE
 
- The file name which would have the resultant SenseClusters' formatted 
- key file. The SenseClusters' format id:
+The file name which would have the resultant SenseClusters' formatted 
+key file. The SenseClusters' format id:
+
  <instance id=\"I\"\/>	<sense id=\"S\"\/>+ 
- on each line where Sense Tags S are attached to an Instance I.
+
+on each line where Sense Tags S are attached to an Instance I.
 
 =head2 Optional Arguments:
 
@@ -43,21 +47,16 @@ Displays the quick summary of program options.
 
 Displays the version information.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Ted Pedersen, University of Minnesota, Duluth.
+ Amruta Purandare, University of Pittsburgh
 
-Amruta Purandare, University of Pittsburgh.
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse @ d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2006,
-
- Ted Pedersen, University of Minnesota, Duluth.
- tpederse@d.umn.edu
-
- Amruta Purandare, University of Pittsburgh.
- amruta@cs.pitt.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -80,7 +79,7 @@ this program; if not, write to
 
 #############################################################################
 #
-#       PROGRAM NAME-  keyconv.pl (A Component of SenseClusters Package)
+#       PROGRAM NAME-  keyconvert.pl (A Component of SenseClusters Package)
 #
 #############################################################################
 
@@ -288,10 +287,11 @@ OPTIONS:
 #version information
 sub showversion()
 {
-        print "keyconvert.pl      -       Version 0.03";
-        print "\nConverts Senseval2 KEY file into SenseCluster's KEY file format.";
-        print "\nCopyright (C) 2002, Ted Pedersen and Amruta Purandare.\n";
-        print "Date of Last Update:     03/17/2003\n";
+#        print "keyconvert.pl      -       Version 0.03";
+	print '$Id: keyconvert.pl,v 1.10 2008/03/29 20:52:28 tpederse Exp $';
+        print "\nConverts Senseval-2 KEY file into SenseCluster's KEY file\n";
+#        print "\nCopyright (C) 2002, Ted Pedersen and Amruta Purandare.\n";
+#        print "Date of Last Update:     03/17/2003\n";
 }
 
 #############################################################################

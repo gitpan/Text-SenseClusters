@@ -2,16 +2,20 @@
 
 =head1 NAME
 
-svdpackout.pl Reconstruct matrix from singular values output by SVDPACKC
+svdpackout.pl - Reconstruct post-SVD form of matrix from singular values output by SVDPACKC
 
 =head1 SYNOPSIS
 
+ svdpackout.pl [OPTIONS] lav2 lao2
+
+Type C<svdpackout.pl --help> for a quick summary of options
+
+=head1 DESCRIPTION
+
 Reconstructs a matrix from its singular values and singular vectors created 
-by SVDPack.
-
-=head1 USGAE
-
-svdpackout.pl [OPTIONS] lav2 lao2
+by SVDPACKC. The result of this is essentially a "smoothed" matrix equal in size to 
+the original pre-SVDPACKC matrix, but where the non-significant dimenions have been 
+removed.
 
 =head1 INPUT
 
@@ -19,29 +23,28 @@ svdpackout.pl [OPTIONS] lav2 lao2
 
 =head3 lav2 
 
-Binary output file created by SVDPack's las2
+Binary output file created by SVDPACKC's las2
 
 =head3 lao2
 
-ASCII output file created by SVDPack's las2
+ASCII output file created by SVDPACKC's las2
 
 =head2 Optional Arguments:
 
 =head4 --rowonly 
 
-Only the row vectors are reconstructed. By default, svdpackout
-reconstructs entire matrix. 
+Only the row vectors are reconstructed. By default, svdpackout reconstructs entire matrix. 
 
 =head4 --format FORM
 
 Specifies numeric format for representing output matrix values. 
-Following formats are supported with --format :
+The following formats are supported with --format :
 
-iN - Output matrix will contain integer values each occupying N spaces
+=over 
+=item iN - Output matrix will contain integer values each occupying N spaces
 
-fM.N - Output matrix will contain real values each occupying total M spaces
-of which last N digits show fractional part. M spaces for each entry include 
-the decimal point and +/- sign if any.
+=item fM.N - Output matrix will contain real values each occupying total M spaces of which last N digits show fractional part. M spaces for each entry include the decimal point and +/- sign if any.
+=back
 
 Default format value is f16.10.
 
@@ -57,31 +60,31 @@ Displays the version information.
 
 =head1 OUTPUT
 
-svdpackout displays a matrix reconstructed from the Singular Triplets 
-created by SVD. By default, entire matrix (product of left and right
+svdpackout.pl displays a matrix reconstructed from the Singular Triplets 
+created by SVDPACKC. By default, entire matrix (product of left and right
 signular vectors and singular values) is reconstructed. When --rowonly is ON, 
 only the reduced row vectors are built.
 
 =head1 SYSTEM REQUIREMENTS
 
-SVDPACK - http://netlib.org/svdpack/
+=over 
 
-PDL - http://search.cpan.org/dist/PDL/
+=item SVDPACKC - L<http://netlib.org/svdpack/> (also available in /External)
 
-=head1 AUTHOR
+=item PDL - L<http://search.cpan.org/dist/PDL/>
 
-Amruta Purandare, Ted Pedersen.
-University of Minnesota at Duluth.
+=back
+
+=head1 AUTHORS
+
+ Amruta Purandare, University of Pittsburgh
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -95,9 +98,9 @@ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 
@@ -502,7 +505,7 @@ sub showhelp()
 	print "Usage:  svdpackout.pl [OPTIONS] LAV2 LAO2 
 
 Reconstructs a rank-k matrix from output files LAV2 and LAO2 created by las2 
-program of SVDPack.
+program of SVDPACKC.
 
 LAV2
 	Binary output file created by las2
@@ -530,10 +533,11 @@ Type 'perldoc svdpackout.pl' to view detailed documentation of svdpackout.\n";
 #version information
 sub showversion()
 {
-        print "svdpackout.pl      -       Version 0.04\n";
-        print "Reconstructs a rank-k matrix from output of SVDPack.\n";
-        print "Copyright (c) 2002-2005, Amruta Purandare & Ted Pedersen.\n";
-        print "Date of Last Update:     06/02/2004\n";
+#        print "svdpackout.pl      -       Version 0.04\n";
+	print '$Id: svdpackout.pl,v 1.10 2008/03/30 04:19:02 tpederse Exp $';
+        print "\nReconstruct a rank-k matrix from output of SVDPACKC\n";
+#        print "Copyright (c) 2002-2005, Amruta Purandare & Ted Pedersen.\n";
+#        print "Date of Last Update:     06/02/2004\n";
 }
 
 #############################################################################

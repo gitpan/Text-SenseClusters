@@ -1,12 +1,40 @@
 =head1 NAME
 
-CHANGES Change log for SenseClusters
-
-=head1 SYNOPSIS
-
-CHANGES Revision history of SenseClusters
+CHANGES - Revision history of SenseClusters
 
 =head1 DESCRIPTION
+
+=item 1.00
+
+Released March 29, 2008 (All changes by TDP)
+This is a development release, meaning that "regular" users should 
+still use 0.95, our last stable release
+
+=over
+
+=item 
+
+Updated SYNOPSIS examples in many of the Toolkit programs to make their 
+stand alone use more clear
+
+=item
+
+Removed dependency on Math::BigInt, Math::BigFloat, as that has
+been added to Algorithm::RandomMatrixGeneration as of 0.06 (which
+is required).
+
+=item 
+
+Raised Text-NSP version requirement to 1.09, since there are a
+few bugs in the test cases for 1.07 and below for 64 bit architectures.
+
+=item 
+
+Changed CPAN module prereqs to require modules that only require Perl 
+5.6 or better. This relaxes SenseClusters from requiring Perl 5.8.5 to 
+5.6. 
+
+=back
 
 =item 0.98
 
@@ -126,7 +154,7 @@ on sourceforge or announced since strictly a development view.
  tpederse at d.umn.edu
 
 This document last modified by :
-$Id: CHANGES.pod,v 1.11 2008/03/25 03:25:05 tpederse Exp $
+$Id: CHANGES.pod,v 1.14 2008/03/29 23:47:44 tpederse Exp $
 
 =head1 SEE ALSO
 

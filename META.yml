@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Text-SenseClusters
-version:             0.98
+version:             1.00
 abstract:            SenseClusters - Clustering similar written contexts
 license:             gpl
 author:              
@@ -9,14 +9,13 @@ generated_by:        ExtUtils::MakeMaker version 6.44
 distribution_type:   module
 requires:     
     Algorithm::Munkres:            0.07
-    Algorithm::RandomMatrixGeneration: 0.04
+    Algorithm::RandomMatrixGeneration: 0.06
     Bit::Vector:                   6.3
-    Math::BigFloat:                1.51
     Math::SparseMatrix:            0.02
     Math::SparseVector:            0.04
     PDL:                           2.4.1
     Set::Scalar:                   1.19
-    Text::NSP:                     1.05
+    Text::NSP:                     1.09
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.3.html
     version: 1.3

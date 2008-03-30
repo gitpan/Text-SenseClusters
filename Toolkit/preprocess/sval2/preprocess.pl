@@ -2,28 +2,31 @@
 
 # THIS PROGRAM ORIGINALLY BELONGS TO THE SenseTools PACKAGE 
 # (http://www.d.umn.edu/~tpederse/sensetools.html) DEVELOPED 
-# BY SATANJEEV BANERJEE AND DR. TED PEDERSEN. IT HAS BEEN 
-# INCLUDED IN SenseClusters DISTRIBUTION FOR CONVENIENCE REASONS.
+# BY SATANJEEV BANERJEE AND TED PEDERSEN. IT HAS BEEN 
+# INCLUDED IN SenseClusters DISTRIBUTION AS A CONVENIENCE.
 
-# BELOW IS THE DOCUMENTATION THAT IS COMPILED FROM THE READMES' 
+# BELOW IS THE DOCUMENTATION THAT IS COMPILED FROM THE README 
 # FROM THE SenseTools PACKAGE
 
 =head1 NAME
 
-preprocess.pl Split Senseval-2 format file into one file per lexelt
+preprocess.pl - Split Senseval-2 data file into one file per lexical  
+item (lexelt), and carry out various tokenization and formatting tasks
 
 =head1 SYNOPSIS
 
-Takes an xml file in SENSEVAL-2 lexical-sample format
-and splits it apart into as many files as there are
-lexical elements in the original file. Each lexical 
-element usually corresponds with a word used in a 
-particular part of speech. It also does other sundry 
-preprocessing tasks with the data.
-
-=head1 USAGE
-
 preprocess.pl [OPTIONS] SOURCE
+
+=head1 DESCRIPTION
+
+Takes an xml file in SENSEVAL-2 lexical-sample format and splits it 
+apart into as many files as there are lexical elements in the original 
+file. Each lexical element usually corresponds with a word used in a 
+particular part of speech. It also does other sundry preprocessing 
+tasks with the data such as splitting it into training and test 
+portions, tokenizing, and providing various formatting options. It can 
+also create plain text versions of the xml files, which can be useful 
+when needed as training data. 
 
 =head1 INPUT
 
@@ -137,7 +140,7 @@ Turns on verbose mode. Silent by default.
 The following is an example SENSEVAL-2 file that we will refer to
 later in as example.xml 
 
-<corpus lang='english'>
+ <corpus lang='english'>
   <lexelt item="art.n">
     <instance id="art.40001">
       <answer instance="art.40001" senseid="art~1:06:00::"/>
@@ -175,7 +178,7 @@ later in as example.xml
       </context>
     </instance>
   </lexelt>
-</corpus>
+ </corpus>
 
 Here we have two lexelts, "art.n" and "authority.n", where "n" denotes
 that these are noun senses of the words. We have three instances of
@@ -243,14 +246,14 @@ signs. Further these should be perl regular expressions.
 
 Thus our regular expressions above would look like so: 
 
-/<head>\w+<\/head>/
-/\w+/
+ /<head>\w+<\/head>/
+ /\w+/
 
 We shall call the file these regular expressions lie in
 "token.txt". Then, we would run preprocess.pl on example.xml with this
 token file like so:
 
-preprocess.pl example.xml --token token.txt
+ preprocess.pl example.xml --token token.txt
 
 =head2 Various Issues of Tokenization wrt preprocess.pl
 
@@ -262,8 +265,8 @@ designated via the --token option, there is also a default definition
 of tokens that is used in the absence of a tokenization file, which
 consists of the following:
 
-/w+/
-/[\.,;:\?!]/ 
+ /w+/
+ /[\.,;:\?!]/ 
 
 According to this definition, a token is either a single punctuation
 mark from the specified class, or it is a string of alpha-numeric
@@ -272,11 +275,11 @@ choice for XML data since it does not treat XML tags as tokens and
 will result in them "breaking apart" during pre-processing. For
 example, given this default definition, the string :
 
-<head>art</head>
+ <head>art</head>
 
 will be represented by preprocess.pl as 
 
-<<> head <>> art <<> </> head <>>
+ <<> head <>> art <<> </> head <>>
 
 which suggests that "<", ">", and "/" are non-tokens, while "art" and
 "head" are. This is unlikely to provide useful information. 
@@ -305,17 +308,17 @@ files are also created.
 
 File authority.n.xml: 
 
-<corpus lang='english'>
-<lexelt item="authority.n">
-<instance id="authority.40001">
-<answer instance="authority.40001" senseid="authority~1:14:00::"/>
-<context>
+ <corpus lang='english'>
+ <lexelt item="authority.n">
+ <instance id="authority.40001">
+ <answer instance="authority.40001" senseid="authority~1:14:00::"/>
+ <context>
 
-Not only is it allowing certain health <head>authorities</head>to waste millions of pounds on computer systems that dont work, it also allowed the London ambulance service to put lives at risk with a system that had not been fully proven in practice. 
-</context>
-</instance>
-</lexelt>
-</corpus>
+ Not only is it allowing certain health <head>authorities</head>to waste millions of pounds on computer systems that dont work, it also allowed the London ambulance service to put lives at risk with a system that had not been fully proven in practice. 
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
 
 File authority.n.count: 
 
@@ -337,36 +340,36 @@ On the other hand if our token file token.txt were to contain the
 following regex which treats every sequence of alpha numeric
 characters as a token:
 
-/\w+/
+ /\w+/
 
 ... and we were to run the program like so: 
 
-preprocess.pl example.xml --token token.txt
+ preprocess.pl example.xml --token token.txt
 
 ... then our authority files would like like so: 
 
 File authority.n.xml: 
 
-<corpus lang='english'>
-<lexelt item="authority.n">
-<instance id="authority.40001">
-<answer instance="authority.40001" senseid="authority~1:14:00::"/>
-<context>
- Not only is it allowing certain health <<> head <>> authorities 
-<</> head <>> to waste millions of pounds on computer systems that dont 
-work <,> it also allowed the London ambulance service to put lives at 
-risk with a system that had not been fully proven in practice <.> 
-</context>
-</instance>
-</lexelt>
-</corpus>
+ <corpus lang='english'>
+ <lexelt item="authority.n">
+ <instance id="authority.40001">
+ <answer instance="authority.40001" senseid="authority~1:14:00::"/>
+ <context>
+  Not only is it allowing certain health <<> head <>> authorities 
+ <</> head <>> to waste millions of pounds on computer systems that dont 
+ work <,> it also allowed the London ambulance service to put lives at 
+ risk with a system that had not been fully proven in practice <.> 
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
 
 File authority.n.count: 
 
-Not only is it allowing certain health <<> head <>> authorities 
-<</> head <>> to waste millions of pounds on computer systems that 
-dont work <,> it also allowed the London ambulance service to put 
-lives at risk with a system that had not been fully proven in practice <.> 
+ Not only is it allowing certain health <<> head <>> authorities 
+ <</> head <>> to waste millions of pounds on computer systems that 
+ dont work <,> it also allowed the London ambulance service to put 
+ lives at risk with a system that had not been fully proven in practice <.> 
 
 Note again that since the '<' and '>' of the head tags are not
 alpha-numeric characters they are considered as "non-token"
@@ -382,20 +385,19 @@ like /<head>\w+<\/head>/ would work admirably.
 Besides the regular expressions <head>\w+</head> and \w+, we have
 found the following regular expressions useful too.
 
-/[\.,;:\?!]/  - This states that a single occurrence of one of the
-                puncutation marks in the list is a token. This helps
-                us specify that a puncutation mark is indeed a token
-                and should not be ignored! Further, this allows us to
-                create features consisting of punctuation marks using
-                NSP. 
+ /[\.,;:\?!]/  - This states that a single occurrence of one of the
+                 puncutation marks in the list is a token. This helps
+                 us specify that a puncutation mark is indeed a token
+                 and should not be ignored! Further, this allows us to
+                 create features consisting of punctuation marks using
+	         SenseClusters.
 
-/&([^;]+;)+/  - The XML format forces us to replace certain meta
-                symbols in the text by their standard formats. For
-                example, if the '<' symbol occurs in the text, it is
-                replaced with "&lt;". Similarly, '-' is replaced with
-                "&dash;". This regular expression recognizes these
-                constructs as tokens instead of breaking them up!
-
+ /&([^;]+;)+/  - The XML format forces us to replace certain meta
+                 symbols in the text by their standard formats. For
+                 example, if the '<' symbol occurs in the text, it is
+                 replaced with "&lt;". Similarly, '-' is replaced with
+                 "&dash;". This regular expression recognizes these
+                 constructs as tokens instead of breaking them up!
 
 =head2 Order of Regular Expressions Is Important: 
 
@@ -406,9 +408,9 @@ regular expression that matches. Thus the order of the regular
 expression makes a difference. For example, say our regular expression
 file has the following regular expressions in this order: 
 
-/he/
-/hear/
-/\w+/
+ /he/
+ /hear/
+ /\w+/
 
 and our input text is "hear me"
 
@@ -416,22 +418,21 @@ Then our output text is " he ar me "
 
 On the other hand, if we reverse the first two regular expressions
 
-/hear/
-/he/
-/\w+/
+ /hear/
+ /he/
+ /\w+/
 
 we get as output " hear me "
 
 Thus as expected, the order of the regular expressions define how the
 output will look. 
 
-
 =head2 Redundant Regular Expressions:
 
 Consider the following regular expressions: 
 
-/\S+/
-/\w+/
+ /\S+/
+ /\w+/
 
 As should be obvious, every token that matches the second regular
 expression matches the first one too. We say that the first regular
@@ -440,7 +441,6 @@ expression is redundant. This is because the matching mechanism will
 always stop at the first regular expression, and never get an
 opportunity to exercise the second one. Note of course that this does
 not adversely affect anything.
-
 
 =head2 Ignoring Non-Tokens using --removeNotToken:
 
@@ -455,8 +455,8 @@ No, he has no <head>authority</head> on me!
 
 and with regular expressions 
 
-<head>\w+</head>
-\w+
+ <head>\w+</head>
+ \w+
 
 and if we were to run the program with the switch --removeNotToken,
 preprocess.pl would convert the text into: 
@@ -476,9 +476,9 @@ token are matched. Those tokens that do not match the token
 regexes are then removed. Thus, the "order" of precedence during
 tokenization is:
 
--nontoken
--token
--removeNotToken
+ -nontoken
+ -token
+ -removeNotToken
 
 =head2 XML output: 
 
@@ -488,46 +488,46 @@ file of the name "word".xml. For example for the file example.xml,
 preprocess.pl will create files art.n.xml and authority.n.xml if it
 is run as follows: 
 
-preprocess.pl example.xml --token token.txt 
+ preprocess.pl example.xml --token token.txt 
 
 File art.n.xml: 
 
-<corpus lang='english'>
-<lexelt item="art.n">
-<instance id="art.40001">
-<answer instance="art.40001" senseid="art~1:06:00::"/>
-<answer instance="art.40001" senseid="fine_art%1:06:00::"/>
-<context>
- <head>Art</head> you can dance to from the creative group called Halo <.> 
-</context>
-</instance>
-<instance id="art.40002">
-<answer instance="art.40002" senseid="art_gallery~1:06:00::"/>
-<context>
- There <'> s always one to be heard somewhere during the summer in the piazza in front of the <head>art</head> gallery and town hall or in a park <.> 
-</context>
-</instance>
-<instance id="art.40005" docsrc="bnc_ckv_938">
-<answer instance="art.40005" senseid="art~1:04:00::"/>
-<context>
- Paintings <,> drawings and sculpture from every period of <head>art</head> during the last 350 years will be on display <.> 
-</context>
-</instance>
-</lexelt>
-</corpus>
+ <corpus lang='english'>
+ <lexelt item="art.n">
+ <instance id="art.40001">
+ <answer instance="art.40001" senseid="art~1:06:00::"/>
+ <answer instance="art.40001" senseid="fine_art%1:06:00::"/>
+ <context>
+  <head>Art</head> you can dance to from the creative group called Halo <.> 
+ </context>
+ </instance>
+ <instance id="art.40002">
+ <answer instance="art.40002" senseid="art_gallery~1:06:00::"/>
+ <context>
+  There <'> s always one to be heard somewhere during the summer in the piazza in front of the <head>art</head> gallery and town hall or in a park <.> 
+ </context>
+ </instance>
+ <instance id="art.40005" docsrc="bnc_ckv_938">
+ <answer instance="art.40005" senseid="art~1:04:00::"/>
+ <context>
+  Paintings <,> drawings and sculpture from every period of <head>art</head> during the last 350 years will be on display <.> 
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
 
 File authority.n.xml: 
 
-<corpus lang='english'>
-<lexelt item="authority.n">
-<instance id="authority.40001">
-<answer instance="authority.40001" senseid="authority~1:14:00::"/>
-<context>
- Not only is it allowing certain health <head>authorities</head> to waste millions of pounds on computer systems that dont work <,> it also allowed the London ambulance service to put lives at risk with a system that had not been fully proven in practice <.> 
-</context>
-</instance>
-</lexelt>
-</corpus>
+ <corpus lang='english'>
+ <lexelt item="authority.n">
+ <instance id="authority.40001">
+ <answer instance="authority.40001" senseid="authority~1:14:00::"/>
+ <context>
+  Not only is it allowing certain health <head>authorities</head> to waste millions of pounds on computer systems that dont work <,> it also allowed the London ambulance service to put lives at risk with a system that had not been fully proven in practice <.> 
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
 
 Observe of course that the text within the <context> </context> region
 has been tokenized as described previously according to the regular
@@ -555,13 +555,13 @@ would get the files art.n.count and authority.n.count.
 
 File art.n.count: 
 
-<head>Art</head> you can dance to from the creative group called Halo <.> 
-There <'> s always one to be heard somewhere during the summer in the piazza in front of the <head>art</head> gallery and town hall or in a park <.> 
-Paintings <,> drawings and sculpture from every period of <head>art</head> during the last 350 years will be on display <.> 
+ <head>Art</head> you can dance to from the creative group called Halo <.> 
+ There <'> s always one to be heard somewhere during the summer in the piazza in front of the <head>art</head> gallery and town hall or in a park <.> 
+ Paintings <,> drawings and sculpture from every period of <head>art</head> during the last 350 years will be on display <.> 
 
 File authority.n.count: 
 
-Not only is it allowing certain health <head>authorities</head> to waste millions of pounds on computer systems that dont work <,> it also allowed the London ambulance service to put lives at risk with a system that had not been fully proven in practice <.> 
+ Not only is it allowing certain health <head>authorities</head> to waste millions of pounds on computer systems that dont work <,> it also allowed the London ambulance service to put lives at risk with a system that had not been fully proven in practice <.> 
 
 This default behavior can be stopped either by using the switch
 --count FILE, by which only one FILE is created, or by using the
@@ -594,20 +594,20 @@ preceding <answer> tag.
 
 For example, running the program like so:
 
-preprocess.pl example.xml --useLexelt --useSenseid --token token.txt
+ preprocess.pl example.xml --useLexelt --useSenseid --token token.txt
 
 produces this for authority.n.xml:
 
-<corpus lang='english'>
-<lexelt item="authority.n">
-<instance id="authority.40001">
-<answer instance="authority.40001" senseid="authority~1:14:00::"/>
-<context>
-Not only is it allowing certain health <head> authorities <lexelt=authority.n/><senseid=authority~1:14:00::/></head> to waste millions of pounds on computer systems that dont work , it also allowed the London ambulance service to put lives at risk with a system that had not been fully proven in practice . 
-</context>
-</instance>
-</lexelt>
-</corpus>
+ <corpus lang='english'>
+ <lexelt item="authority.n">
+ <instance id="authority.40001">
+ <answer instance="authority.40001" senseid="authority~1:14:00::"/>
+ <context>
+ Not only is it allowing certain health <head> authorities <lexelt=authority.n/><senseid=authority~1:14:00::/></head> to waste millions of pounds on computer systems that dont work , it also allowed the London ambulance service to put lives at risk with a system that had not been fully proven in practice . 
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
 
 Note that the extra information is put inside the <head> </head>
 region. Hence the user has to provide a token file that will preserve
@@ -619,8 +619,8 @@ within the tags.
 
 So for example, the following regular expression file is adequate: 
 
-<head>\w+</head>
-\w+
+ <head>\w+</head>
+ \w+
 
 =head3 Inserting Sentence-Boundary Tags
 
@@ -637,42 +637,42 @@ tags will not be indicative of a sentence boundary either.
 
 For example, assume the following is our source xml file, source.xml:
 
-<corpus lang='english'>
-<lexelt item="word">
-<instance id="word.1">
-<answer instance="word.1" senseid="1"/>
-<context>
-This is the first line
-This is the second line
-This is the last line for <head>word</head>
-</context>
-</instance>
-</lexelt>
-</corpus>
+ <corpus lang='english'>
+ <lexelt item="word">
+ <instance id="word.1">
+ <answer instance="word.1" senseid="1"/>
+ <context>
+ This is the first line
+ This is the second line
+ This is the last line for <head>word</head>
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
 
 Further assume our token file is this: 
 
-/<head>\w+</head>/
-/<s>/
-/<\/s>/
-/\w+/
+ /<head>\w+</head>/
+ /<s>/
+ /<\/s>/
+ /\w+/
 
 Running preprocess.pl like so: 
 
-preprocess.pl --token token.txt source.xml 
+ preprocess.pl --token token.txt source.xml 
 
 Produces the following word.xml file:
 
-<corpus lang='english'>
-<lexelt item="word">
-<instance id="word.1">
-<answer instance="word.1" senseid="1"/>
-<context>
- This is the first line This is the second line This is the last line for <head>word</head> 
-</context>
-</instance>
-</lexelt>
-</corpus>
+ <corpus lang='english'>
+ <lexelt item="word">
+ <instance id="word.1">
+ <answer instance="word.1" senseid="1"/>
+ <context>
+  This is the first line This is the second line This is the last line for <head>word</head> 
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
 
 and the following word.count file:
 
@@ -680,20 +680,20 @@ and the following word.count file:
 
 However, running preprocess.pl like so:
 
-preprocess.pl --token token.txt --putSentenceTags source.xml
+ preprocess.pl --token token.txt --putSentenceTags source.xml
 
 Produces the following word.xml file: 
 
-<corpus lang='english'>
-<lexelt item="word">
-<instance id="word.1">
-<answer instance="word.1" senseid="1"/>
-<context>
- <s> This is the first line </s> <s> This is the second line </s> <s> This is the last line for <head>word</head> </s> 
-</context>
-</instance>
-</lexelt>
-</corpus>
+ <corpus lang='english'>
+ <lexelt item="word">
+ <instance id="word.1">
+ <answer instance="word.1" senseid="1"/>
+ <context>
+  <s> This is the first line </s> <s> This is the second line </s> <s> This is the last line for <head>word</head> </s> 
+ </context>
+ </instance>
+ </lexelt>
+ </corpus>
 
 and the following word.count file:
 
@@ -738,20 +738,16 @@ The instances are shuffled before being put into training and test
 files. Perl automatically seeds the randomizing process... but you can
 specify your own seed using the switch --seed.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
- Satanjeev Banerjee, Carnegie Mellon University, Pittsburgh.
- Ted Pedersen, University of Minnesota, Duluth.
+ Satanjeev Banerjee, Carnegie-Mellon University
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2001-2005,
-
- Satanjeev Banerjee, Carnegie Mellon University, Pittsburgh.
- satanjeev@cmu.edu
-
- Ted Pedersen, University of Minnesota, Duluth.
- tpederse@umn.edu
+Copyright (c) 2001-2008, Satanjeev Banerjee and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -1743,10 +1739,11 @@ sub showHelp
 # function to output the version number
 sub showVersion
 {
-    print STDERR "preprocess.pl  -  Version 0.3\n";
-    print STDERR "A component of SenseTools 0.3\n";
-    print STDERR "Copyright (C) 2001-2003, Ted Pedersen & Satanjeev Banerjee\n";
-    print STDERR "Date of Last Update: May 10, 2003 by TDP\n";
+#    print STDERR "preprocess.pl  -  Version 0.3\n";
+    print  '$Id: preprocess.pl,v 1.8 2008/03/29 20:52:30 tpederse Exp $';     
+    print  "\nFormat and clean a Senseval-2 data file\n";
+#    print STDERR "Copyright (C) 2001-2003, Ted Pedersen & Satanjeev Banerjee\n";
+#    print STDERR "Date of Last Update: May 10, 2003 by TDP\n";
 }
 
 # function to output "ask for help" message when the user's goofed up!

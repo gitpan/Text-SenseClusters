@@ -1,5 +1,6 @@
 NAME
-    SenseClusters : cluster similar contexts
+    SenseClusters - Cluster similar contexts using co-occurrence matrices
+    and Latent Semantic Analysis
 
 SYNOPSIS
     SenseClusters is a suite of Perl programs that supports unsupervised
@@ -13,7 +14,7 @@ SYNOPSIS
     and analysis of results.
 
     SenseClusters integrates specialized tools such as the Ngram Statistics
-    Package (NSP), SVDPACK, the Perl Data Language (PDL) and CLUTO to
+    Package (Text::NSP), SVDPACK, the Perl Data Language (PDL) and CLUTO to
     provide a variety of choices and high efficiency at each step in its
     processing.
 
@@ -61,13 +62,6 @@ OVERVIEW
     occur in similar contexts.
 
 DOCUMENTATION
-    SenseClusters' documentation is available ONLINE at :
-    http://senseclusters.sourceforge.net/SenseClusters-Code-README.html
-
-    For OFFLINE browsing, directory Docs/HTML is provided in SenseClusters'
-    main package directory and the SenseClusters-Code-README.html file can
-    be found here and locally browsed.
-
     All programs have inline source code documentation written in pod style
     and this can be browsed from command line as a man page or using the
     'perldoc' command. For example, 'man bitsimat.pl' or 'perldoc
@@ -75,10 +69,14 @@ DOCUMENTATION
     program. Each program also has a --help option to provide information
     about program options.
 
+    You can see all of the modules and their associated documentation at
+    README.Toolkit.
+
 GETTING STARTED
-    You might first like to run the Demo scripts in samples/ directory to
-    get an idea of SenseClusters' usage and functionality, or try the web
-    interface that is provided at <http://senseclusters.sourceforge.net>.
+    You might first like to run the demonstration scripts in samples/
+    directory to get an idea of SenseClusters' usage and functionality, or
+    try the web interface that is provided at
+    <http://senseclusters.sourceforge.net>.
 
     samples/ contains scripts that utilize the wrapper program
     discriminate.pl that calls various other programs from the package to
@@ -110,7 +108,7 @@ PACKAGE ORGANIZATION
     files/directories within SenseClusters' directory.
 
     README, INSTALL, CHANGES, TODO, FAQ
-        Read only copies of documentation found in doc/*.pod
+        Read-only copies of documentation found in doc/*.pod
 
     GPL.txt
         A copy of the GNU General Public License, the terms under which

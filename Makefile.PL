@@ -1,5 +1,5 @@
 # Generate a Makefile for SenseClusters. 
-# $Id: Makefile.PL,v 1.71 2008/03/25 03:15:42 tpederse Exp $
+# $Id: Makefile.PL,v 1.73 2008/03/29 15:16:28 tpederse Exp $
 
 # if you want to understand how Makefile.PL works, you should check out
 # http://search.cpan.org/~rgarcia/perl-5.6.2/lib/ExtUtils/MakeMaker.pm
@@ -63,19 +63,16 @@ WriteMakefile(
 ## This lists various CPAN modules that are used and must be available
 ## for SenseClusters to function.
 
-	'PREREQ_PM'	=> {'Algorithm::Munkres' => '0.07',
-			    'Algorithm::RandomMatrixGeneration' => '0.04',
-	  		    'Bit::Vector' => '6.3',
-			    'Math::BigFloat' => '1.51',
+	'PREREQ_PM'	=> {'Bit::Vector' => '6.3',
+			    'Set::Scalar' => '1.19',
+			    'PDL' => '2.4.1',
+			 ## the following modules were developed in Duluth,
+			 ## home of SenseClusters
+			    'Algorithm::Munkres' => '0.07',
+			    'Algorithm::RandomMatrixGeneration' => '0.06',
 			    'Math::SparseVector' => '0.04',
 			    'Math::SparseMatrix' => '0.02',
-			    'PDL' => '2.4.1',
-			    'Set::Scalar' => '1.19',
-			    'Text::NSP' => '1.05'},
-
-### maybe not necessary to print out long help screen as 
-### INSTALL now includes a Bundle and other helpful aids
-###	'CONFIGURE'	=> \&configSub,
+			    'Text::NSP' => '1.09'},
 
 ## if you change INSTALLDIRS from site to perl or default, some of the
 ## below must change too. Search for INSTALLDIRS to find where. 
@@ -89,19 +86,7 @@ WriteMakefile(
 #  install man pages, we use MAN1PODS to keep all man pages in /man1
 
 	'MAN1PODS' =>  {
-# only create man pages for *.pl programs in the main line of SenseClusters
-#		'doc/TODO.pod' => '$(INST_MAN1DIR)/TODO.1',
-#		'doc/FAQ.pod' => '$(INST_MAN1DIR)/FAQ.1',
-#		'doc/Flowcharts/README.Flowcharts.pod' => '$(INST_MAN1DIR)/README.Flowcharts.1',
-#		'samples/README.Demos.pod' => '$(INST_MAN1DIR)/README.Demos.1',
-#		'Testing/README.Testing.pod' => '$(INST_MAN1DIR)/README.Testing.1',
-#		'Toolkit/README.Toolkit.pod' => '$(INST_MAN1DIR)/README.Toolkit.1',
-#		'Web/README.Web.pod' => '$(INST_MAN1DIR)/README.Web.1',
-#		'Web/SC-cgi/README.SC-cgi.pod' => '$(INST_MAN1DIR)/README.SC-cgi.1',
-#		'Web/SC-htdocs/README.SC-htdocs.pod' => '$(INST_MAN1DIR)/README.SC-htdocs.1',
-#		'Web/SC-cgi/user_data/README.user_data.pod' => '$(INST_MAN1DIR)/README.user_data.1',
-#		'samples/setup.pl' => '$(INST_MAN1DIR)/setup.pl.1',
-#		'Testing/svd/svdpackout/svdcompare.pl' => '$(INST_MAN1DIR)/svdcompare.pl.1',
+# only create man pages for *.pl programs in the Toolkit of SenseClusters
 		'lib/Text/SenseClusters.pm' => '$(INST_MAN1DIR)/SenseClusters.1',
 		'discriminate.pl' => '$(INST_MAN1DIR)/discriminate.pl.1',
 		'Toolkit/clusterlabel/clusterlabeling.pl' => '$(INST_MAN1DIR)/clusterlabeling.pl.1',
@@ -147,7 +132,6 @@ WriteMakefile(
 
 	'EXE_FILES'	=> [
 		map ("$_", @wrappers),
-##		map ("Testing/svd/svdpackout/$_",@testing_svd_svdpackout),
 		map ("Toolkit/preprocess/plain/$_", @toolkit_preprocess_plain),
 		map ("Toolkit/preprocess/sval2/$_", @toolkit_preprocess_sval),
 		map ("Toolkit/count/$_", @toolkit_count),
@@ -172,36 +156,9 @@ WriteMakefile(
 
 );
 
-# we no longer display this, not clear if it was really that helpful 
-
-sub configSub {
-
-print "#################################################################\n";
-print "You are running Makefile.PL. When this finishes, remember that you\n";
-print "will need to run the following to finish the install of SenseClusters:\n";
-print "\n";
-print "        make\n";
-print "        make install\n";
-print "\n";
-print "if \"make install\" fails and indicates that you don\'t have proper\n";
-print "permissions to install, you do have the option to install SenseClusters in\n";
-print "a local directory of your own choosing. You can do this as follows:\n";
-print "\n";
-print "        perl Makefile.PL PREFIX=/MYPATH\n";
-print "        make\n";
-print "        make install\n";
-print "\n";
-print "where /MYPATH is a path/directory that you own and have read write\n";
-print "authority. If you aren't sure what to set /MYPATH to, try \$HOME/SC\n";
-print "\n";
-print "After all this is done, you can run \"make clean\" to remove some\n";
-print "of the files created during installation\n";
-print "#################################################################\n";
-
-return {};  
-}
 
 ## postamble is run with "make install"
+## this is no longer displayed either
 
 sub MY::postamble {
 

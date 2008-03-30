@@ -2,16 +2,69 @@
 
 =head1 NAME
 
-balance.pl Created balanced data with same number of senses for each possible outcome
+balance.pl - Create a balanced Senseval-2 data file that has the same 
+number of instances for each possible sense. 
 
 =head1 SYNOPSIS
 
-Chooses exactly given number of instances of each sense from a given Senseval-2
-file.
+ balance.pl [OPTIONS] DATA N > Balanced-DATA
 
-=head1 USGAE
+This is the original distribution of senses in the Senseval-2 data file:
 
-balance.pl [OPTIONS] DATA N
+ frequency.pl begin-v.test.xml
+
+Output => 
+
+ <sense id="begin%2:30:00::" percent="64.31"/>
+ <sense id="begin%2:30:01::" percent="14.51"/>
+ <sense id="begin%2:42:04::" percent="21.18"/>
+ Total Instances = 255
+ Total Distinct Senses=3
+ Distribution={64.31,21.18,14.51}
+ % of Majority Sense = 64.31
+
+Here they are balanced with 20 instances per sense.
+
+ balance.pl begin.v-test.xml 20 > bal-output
+
+ frequency.pl bal-output
+
+Output => 
+
+ <sense id="begin%2:30:00::" percent="33.33"/>
+ <sense id="begin%2:30:01::" percent="33.33"/>
+ <sense id="begin%2:42:04::" percent="33.33"/>
+ Total Instances = 60
+ Total Distinct Senses=3
+ Distribution={33.33,33.33,33.33}
+ % of Majority Sense = 33.33
+
+Here they are balanced with 50 instances per sense. Please note that any 
+sense with less than 50 instances is removed from the data.
+
+ balance.pl begin.v-test.xml 50 > bal-output
+
+ frequency.pl bal-output
+
+Output => 
+
+ <sense id="begin%2:30:00::" percent="50.00"/>
+ <sense id="begin%2:42:04::" percent="50.00"/>
+ Total Instances = 100
+ Total Distinct Senses=2
+ Distribution={50.00,50.00}
+ % of Majority Sense = 50.00
+
+You can find L<begin-v.test.xml> in samples/Data
+ 
+Type C<balance.pl --help> for a quick summary of options
+
+=head1 SYNOPSIS
+
+This program will choose exactly the same number of instances for each 
+sense found in a given Senseval-2 file. Unless a value is specified, it 
+will choose the number of instances present in the least frequent sense. 
+Output is to STDOUT, so the original input data is unchanged. 
 
 =head1 INPUT
 
@@ -29,10 +82,10 @@ Specifies the number of instances to be selected from each sense.
 
 --count COUNT
 
-Balances the COUNT file created by SenseTool's preprocess.pl along with the 
-DATA file. COUNT file is balanced such that it stays consistent with the new 
-balanced DATA file and contains only those instances left after balancing, 
-in the same order as they appear in the output. 
+Balances the COUNT file created by SenseTool's L<preprocess.pl> along 
+with the DATA file. COUNT file is balanced such that it stays consistent 
+with the new balanced DATA file and contains only those instances left 
+after balancing, in the same order as they appear in the output. 
 
 Balanced COUNT is written to file COUNT.balanced and every ith line in 
 COUNT.balanced is instance data within <context> and </context> tags for the 
@@ -51,29 +104,26 @@ Displays the version information.
 =head1 OUTPUT
 
 Output is a sense balanced Senseval-2 file and is displayed to stdout. Output 
-will show exactly N instances of each sense that has atleast N instances.
-All senses in the output Senseval-2 will have equal number of instances meaning
-the senses will be equally distributed.
+will show exactly N instances of each sense that has at least N 
+instances. All senses in the output Senseval-2 will have equal number of 
+instances meaning the senses will be equally distributed.
 
 =head1 BUGS
 
-output of balance.pl will have un-balanced distribution of senses when 
-some of the instances have multiple sense tags in the given DATA file.
+The output of balance.pl will have un-balanced distribution of senses 
+when some of the instances have multiple sense tags in the given DATA 
+file.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
- Amruta Purandare, Ted Pedersen.
- University of Minnesota, Duluth.
+ Ted Pedersen,  University of Minnesota, Duluth
+ tpederse at d.umn.edu
+
+ Amruta Purandare, University of Pittsburgh
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -87,9 +137,9 @@ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 
@@ -332,7 +382,7 @@ if(defined $countfile)
 #-------------------
 #shuffle subroutine
 #-------------------
-#this code is taken from the book PerlCookbook Chapter 4 that describes
+#this code is taken from the book Perl Cookbook Chapter 4 that describes
 #randomizing array(Page 121-122)
 
 #Reference : Perl Cookbook, Tom Christiansen & Nathan Torkington, O'Reilly
@@ -388,8 +438,9 @@ N
 #version information
 sub showversion()
 {
-	print "balance.pl	-	Version 0.11\n";
-	print "A component of SenseClusters Package that balances sense distribution in a\ngiven Senseval-2 file.\n";
-	print "Copyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
- 	print "Date Of Last Update:     05/23/2003\n";
+	print '$Id: balance.pl,v 1.11 2008/03/29 20:52:27 tpederse Exp $';
+#	print "balance.pl	-	Version 0.11\n";
+	print "\nBalance sense distribution in a Senseval-2 file\n";
+#	print "Copyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
+# 	print "Date Of Last Update:     05/23/2003\n";
 }

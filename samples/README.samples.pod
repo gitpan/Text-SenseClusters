@@ -1,8 +1,10 @@
 =head1 Name
 
-README.samples How to run SenseCluster sample scripts
+README.samples - How to run SenseCluster sample scripts 
 
 =head1 SYNOPSIS
+
+ cd samples
 
  csh ./makedata.sh
  csh ./sc-toolkit.sh

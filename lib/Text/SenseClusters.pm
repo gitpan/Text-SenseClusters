@@ -8,7 +8,7 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 
-our $VERSION = '0.98';
+our $VERSION = '1.00';
 
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
@@ -35,7 +35,7 @@ __END__
 
 =head1 NAME
 
-SenseClusters : cluster similar contexts
+SenseClusters - Cluster similar contexts using co-occurrence matrices and Latent Semantic Analysis
 
 =head1 SYNOPSIS
 
@@ -50,8 +50,9 @@ dimensionality reduction by singular value decomposition, clustering,
 and analysis of results. 
 
 SenseClusters integrates specialized tools such as the Ngram Statistics 
-Package (NSP), SVDPACK, the Perl Data Language (PDL) and CLUTO to provide 
-a variety of choices and high efficiency at each step in its processing.
+Package (L<Text::NSP>), SVDPACK, the Perl Data Language (L<PDL>) and 
+CLUTO to provide a variety of choices and high efficiency at each step 
+in its processing.
 
 =head1 OVERVIEW
 
@@ -99,13 +100,6 @@ in similar contexts.
 
 =head1 DOCUMENTATION
 
-SenseClusters' documentation is available ONLINE at :
-http://senseclusters.sourceforge.net/SenseClusters-Code-README.html
-
-For OFFLINE browsing, directory Docs/HTML is provided in SenseClusters' main
-package directory and the SenseClusters-Code-README.html file can be found
-here and locally browsed.
-
 All programs have inline source code documentation written in pod style 
 and this can be browsed from command line as a man page or using 
 the 'perldoc' command. For example, 'man bitsimat.pl' or 'perldoc 
@@ -113,11 +107,15 @@ bitsimat.pl' will displayed the documentation for the bitsimat.pl program.
 Each program also has a --help option to provide information about program 
 options. 
 
+You can see all of the modules and their associated documentation at 
+L<README.Toolkit>.
+
 =head1 GETTING STARTED
 
-You might first like to run the Demo scripts in samples/ directory to 
-get an idea of SenseClusters' usage and functionality, or try the web 
-interface that is provided at L<http://senseclusters.sourceforge.net>.
+You might first like to run the demonstration scripts in samples/ 
+directory to get an idea of SenseClusters' usage and functionality, or 
+try the web interface that is provided at 
+L<http://senseclusters.sourceforge.net>.
 
 samples/ contains scripts that utilize the wrapper program discriminate.pl 
 that calls various other programs from the package to run a complete  
@@ -151,27 +149,27 @@ files/directories within SenseClusters' directory.
 
 =over 4
 
-=item README, INSTALL, CHANGES, TODO, FAQ
+=item L<README>, L<INSTALL>, L<CHANGES>, L<TODO>, L<FAQ>
 
-Read only copies of documentation found in doc/*.pod
+Read-only copies of documentation found in doc/*.pod
 
-=item GPL.txt
+=item L<GPL.txt>
 
 A copy of the GNU General Public License, the terms under which SenseClusters
 is distributed.
 
-=item FDL.txt
+=item L<FDL.txt>
 
 A copy of the GNU Free Documentation License, the terms under which the
 documentation of SenseClusters is distributed.
 
-=item discriminate.pl
+=item L<discriminate.pl>
 
 A wrapper program that acts as a driver for many other programs in 
 the package. It clusters the given text instances based on their  
 contextual similarities.
 
-=item Makefile.PL 
+=item L<Makefile.PL>
 
 Generates a Makefile on running 'perl Makefile.PL'.
 

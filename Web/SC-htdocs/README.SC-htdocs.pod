@@ -1,6 +1,6 @@
 =head1 NAME
 
-README.SC-htdocs Purposes of the htdocs directory in the SenseClusters web interface
+README.SC-htdocs - [Web Interface] Description of the htdocs directory in the Web interface
 
 =head1 Description
 

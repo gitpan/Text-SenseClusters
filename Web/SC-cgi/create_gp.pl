@@ -2,7 +2,7 @@
 
 =head1 NAME 
 
-create_gp.pl Creates gnuplot file (*.gp file) for web user 
+create_gp.pl - [Web Interface] Creates gnuplot file (*.gp file) for Web user 
 
 =head1 AUTHOR
 

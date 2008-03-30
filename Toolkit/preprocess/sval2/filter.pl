@@ -2,15 +2,87 @@
 
 =head1 NAME
 
-filter.pl Remove low  frequency sense tags
+filter.pl - Remove the instances of low frequency sense tags from a Senseval-2 data file 
 
 =head1 SYNOPSIS
 
-Filters given data by removing low frequency sense tags.
+ filter.pl [OPTIONS] DATA FREQUENCY_OUTPUT
 
-=head1 USAGE
+Determine the distribution of senses in the given Senseval-2 input file
 
-filter.pl [OPTIONS] DATA FREQUENCY_OUTPUT
+ frequency.pl begin.v-test.xml > freq-output
+
+ frequency.pl freq-output
+
+Output =>
+
+ <sense id="begin%2:30:00::" percent="64.31"/>
+ <sense id="begin%2:30:01::" percent="14.51"/>
+ <sense id="begin%2:42:04::" percent="21.18"/>
+ Total Instances = 255
+ Total Distinct Senses=3
+ Distribution={64.31,21.18,14.51}
+ % of Majority Sense = 64.31
+
+Filter any sense that occurs in less than 1% of the instances (there are 
+none in this data, so frequency output is unchanged)
+
+ filter.pl begin.v-test.xml freq-output >fil-output
+
+ frequency.pl fil-output
+
+Output =>
+
+ <sense id="begin%2:30:00::" percent="64.31"/>
+ <sense id="begin%2:30:01::" percent="14.51"/>
+ <sense id="begin%2:42:04::" percent="21.18"/>
+ Total Instances = 255
+ Total Distinct Senses=3
+ Distribution={64.31,21.18,14.51}
+ % of Majority Sense = 64.31
+
+Keep only the top 2 ranked (most frequent) senses
+
+ filter.pl --rank 2 begin.v-test.xml freq-output > fil-output
+
+ frequency.pl fil-output
+
+Output =>
+
+ <sense id="begin%2:30:00::" percent="75.23"/>
+ <sense id="begin%2:42:04::" percent="24.77"/>
+ Total Instances = 218
+ Total Distinct Senses=2
+ Distribution={75.23,24.77}
+ % of Majority Sense = 75.23
+
+Keep all senses that occur in at least 20% of the instances in the 
+original data
+
+ filter.pl --p 20 begin.v-test.xml freq-output > fil-output
+
+ frequency.pl fil-output
+
+Output =>
+
+ <sense id="begin%2:30:00::" percent="75.23"/>
+ <sense id="begin%2:42:04::" percent="24.77"/>
+ Total Instances = 218
+ Total Distinct Senses=2
+ Distribution={75.23,24.77}
+ % of Majority Sense = 75.23
+
+You can find L<begin.v-test.xml> in samples/Data
+
+Type C<filter.pl --help> for a quick summary of available options.
+
+=head1 DESCRIPTION
+
+This program will remove low frequency sense tags from a Senseval-2 data 
+set by specifying a percentage or rank threshhold. By default it  
+removes any sense tag associated with less than 1% of the total 
+instances. Output is to STDOUT, so the original input data file is 
+unchanged.
 
 =head1 INPUT
 
@@ -93,20 +165,16 @@ Displays the version information.
 Output is a sense filtered Senseval-2 file that shows only those DATA instances 
 which have at least one sense tag left after filtering.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Amruta Purandare, Ted Pedersen.
-University of Minnesota, Duluth.
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
+
+ Amruta Purandare, University of Pittsburgh
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -120,9 +188,9 @@ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 
@@ -133,35 +201,6 @@ Boston, MA  02111-1307, USA.
 #	these tags.
 #
 #############################################################################
-#                       ---------------------
-#                       COPYRIGHT INFORMATION
-#                       ---------------------
-
-# Copyright (c) 2002-2005,
-# Amruta Purandare, University of Pittsburgh
-# amruta@cs.pitt.edu
-# Ted Pedersen, University of Minnesota, Duluth
-# tpederse@umn.edu
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to
-#
-# The Free Software Foundation, Inc.,
-# 59 Temple Place - Suite 330,
-# Boston, MA  02111-1307, USA.
-#
-###############################################################################
-
 #                               THE CODE STARTS HERE
 
 #$0 contains the program name along with
@@ -202,7 +241,7 @@ if($#ARGV<1)
 }
 
 # --percent P will remove all sense tags 
-# occuring less than P% of the times
+# occurring less than P% of the times
 if(defined $opt_percent)
 {
 	$percent=$opt_percent;
@@ -245,7 +284,7 @@ if(defined $opt_count)
 #                          INITIALIZATION AND INPUT
 #                       ================================
 
-#argv[0] should be the file to be filetered
+#argv[0] should be the file to be filtered
 if(!defined $ARGV[0])
 {
         print STDERR "ERROR($0):
@@ -719,10 +758,11 @@ Default Filter
 #version information
 sub showversion()
 {
-        print "filter.pl      -       Version 0.11";
-        print "\nFilters a Senseval-2 formatted DATA file by removing low \% Sense Tags.";
-        print "\nCopyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
-        print "Date of Last Update:     05/07/2003\n";
+#        print "filter.pl      -       Version 0.11";
+	print '$Id: filter.pl,v 1.12 2008/03/29 20:52:27 tpederse Exp $';
+        print "\nRemove low frequency sense tags from a Senseval-2 file\n";
+#        print "\nCopyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
+#        print "Date of Last Update:     05/07/2003\n";
 }
 
 #############################################################################

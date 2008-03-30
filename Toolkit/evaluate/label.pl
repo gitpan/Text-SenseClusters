@@ -2,16 +2,18 @@
 
 =head1 NAME
 
-label.pl Assign labels to clusters to maximize agreement 
+label.pl - Assign labels to clusters in a confusion matrix to maximize agreement 
 
 =head1 SYNOPSIS
 
+ label.pl [OPTIONS] PRELABEL
+
+Type C<label.pl --help> for a quick summary of options
+
+=head1 DESCRIPTION 
+
 Labels the discovered clusters with sense tags such that maximum number of 
 contexts are correctly assigned.
-
-=head1 USAGE
-
-label.pl [OPTIONS] PRELABEL
 
 =head1 INPUT
 
@@ -29,9 +31,9 @@ Sample CLUTO2LABEL format
  C1:	 2       2       2       2
  C2:	 1       3       3       2
 
-where the 1st line shows the number of unclustereted instances = 2 
+ where the 1st line shows the number of unclustereted instances = 2 
 
-2nd line shows a space separated list of sense classes starting with // mark.
+ 2nd line shows a space separated list of sense classes starting with // mark.
 
 Each line thereafter shows the sense distribution of the instances belonging
 to each discovered cluster in the form of a cluster by sense distribution
@@ -309,34 +311,26 @@ sub showhelp()
 #version information
 sub showversion()
 {
- 	print '$Id: label.pl,v 1.14 2008/03/24 00:56:58 tpederse Exp $'; 
-       print "\nCopyright (C) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
+ 	print '$Id: label.pl,v 1.15 2008/03/30 05:06:07 tpederse Exp $'; 
+#       print "\nCopyright (C) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
 #        print "label.pl      -       Version 0.11\n";
-#	print "Labels the discovered clusters with sense tags.";
+	print "\nLabel discovered clusters with sense tags to maximize agreement\n";
 #	print "Date of Last Update:	11/30/2004\n";
 	
 }
 
-=head1 AUTHOR
-
-Ted Pedersen, University of Minnesota, Duluth
-
-Amruta Purandare, University of Pittsburgh
-
-Anagha Kukarni, University of Minnesota, Duluth
-
-=head1 COPYRIGHT
-
-Copyright (c) 2002-2006,
-
- Anagha Kulkarni, University of Minnesota, Duluth
- kulka020 at d.umn.edu
+=head1 AUTHORS
 
  Ted Pedersen, University of Minnesota, Duluth
  tpederse at d.umn.edu
 
  Amruta Purandare, University of Pittsburgh
- amruta at cs.pitt.edu
+
+ Anagha Kukarni, Carnegie-Mellon University
+
+=head1 COPYRIGHT
+
+Copyright (c) 2002-2008, Ted Pedersen, Amruta Purandare, Anagha Kulkarni
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

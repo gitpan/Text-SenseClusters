@@ -2,15 +2,15 @@
 
 =head1 NAME
 
-wordvec.pl Construct word vectors from bigram or co-occurrence matrices
+wordvec.pl - Construct word vectors from bigram or co-occurrence matrices
 
 =head1 SYNOPSIS
 
+ wordvec.pl [OPTIONS] WORD_PAIRS
+
+=head1 DESCRIPTION
+
 Constructs word vectors from the given WORD_PAIRS.
-
-=head1 USAGE
-
-Usage: wordvec.pl [OPTIONS] WORD_PAIRS
 
 =head1 INPUT
 
@@ -28,19 +28,19 @@ Various ways to create WORD_PAIRS are -
 
 =item 1. Run count.pl alone 
 
-(WORD_PAIRS show bigram frequency counts)
+ (WORD_PAIRS show bigram frequency counts)
 
 =item 2. Run count.pl followed by combig.pl
 
-(WORD_PAIRS show co-occurrence pair frequency counts)
+ (WORD_PAIRS show co-occurrence pair frequency counts)
 
 =item 3. Run count.pl followed by statistic.pl
 
-(WORD_PAIRS show test of association scores of bigrams)
+ (WORD_PAIRS show test of association scores of bigrams)
 
 =item 4. Run count.pl followed by combig.pl followed by statistic.pl
 
-(WORD_PAIRS show test of association scores of co-occurrence pairs)
+ (WORD_PAIRS show test of association scores of co-occurrence pairs)
 
 =back
 
@@ -153,10 +153,9 @@ Specifies numeric format for representing each word vector entry.
 
 Possible values of FORM are
 
-iN   -> integer format allocating total N bytes/digits for each entry
+ iN   -> integer format allocating total N bytes/digits for each entry
 
-fN.M -> floating point format allocating total N bytes/digits for each entry 
-of which last M digits show fractional part. 
+ fN.M -> floating point format allocating total N bytes/digits for each entry of which last M digits show fractional part. 
 
 When --binary is ON, default format is i2 and otherwise default is f16.10.
 
@@ -580,26 +579,20 @@ The dimension file created with --dims will show -
 
 =head1 SYSTEM REQUIREMENTS
 
-To create the input file WORD_PAIRS, you will require the Ngram Statistic 
-Package (NSP) which can be freely downloaded from - http://www.d.umn.edu/~tpederse/nsp.html
+=over
+=item Ngram Statistics Package - L<http://search.cpan.org/dist/Text-NSP> 
+=back
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Amruta Purandare
-University of Pittsburgh.
+Amruta Purandare, University of Pittsburgh.
 
-Ted Pedersen.
-University of Minnesota, Duluth.
+Ted Pedersen, University of Minnesota, Duluth
+tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-
-Amruta Purandare, University of Pittsburgh.
-amruta@cs.pitt.edu
-
-Ted Pedersen, University of Minnesota, Duluth.
-tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -613,9 +606,9 @@ FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 
@@ -1403,10 +1396,12 @@ Type 'perldoc wordvec.pl' to view detailed documentation of wordvec.\n";
 #version information
 sub showversion()
 {
-        print "wordvec.pl      -       Version 0.4\n";
-        print "Builds word vectors.\n";
-        print "Copyright (c) 2002-2005, Amruta Purandare, Anagha Kulkarni & Ted Pedersen.\n";
-        print "Date of Last Update:     03/04/2005\n";
+	print '$Id: wordvec.pl,v 1.24 2008/03/30 04:40:58 tpederse Exp $';
+	print "\nCreate word vectors from Text-NSP output\n";
+#        print "wordvec.pl      -       Version 0.4\n";
+#        print "Builds word vectors.\n";
+#        print "Copyright (c) 2002-2005, Amruta Purandare, Anagha Kulkarni & Ted Pedersen.\n";
+#        print "Date of Last Update:     03/04/2005\n";
 }
 
 #############################################################################

@@ -2,17 +2,34 @@
 
 =head1 NAME
 
-frequency.pl Display distribution of senses in Senseval-2 file
+frequency.pl - Compute the distribution of senses in a Senseval-2 data file
 
 =head1 SYNOPSIS
 
-Displays distribution of senses in a given Senseval-2 file. 
+ frequency.pl [OPTIONS] SOURCE
 
-=head1 USGAE
+You can find begin.v-test.xml in samples/Data
 
-Usage: frequency.pl [OPTIONS] SOURCE
+ frequency.pl begin.v-test.xml
 
-Type 'frequency.pl --help' for quick summary of the Options.
+Output => 
+
+ <sense id="begin%2:30:00::" percent="64.31"/>
+ <sense id="begin%2:30:01::" percent="14.51"/>
+ <sense id="begin%2:42:04::" percent="21.18"/>
+ Total Instances = 255
+ Total Distinct Senses=3
+ Distribution={64.31,21.18,14.51}
+ % of Majority Sense = 64.31
+
+Type C<frequency.pl --help> for a quick summary of options
+
+=head1 DESCRIPTION
+
+Displays distribution of senses in a given Senseval-2 file to STDOUT. 
+This information can be used to better understand the data, and also to 
+decide to filter low frequency senses (using L<filter.pl>) or balance 
+the distribution of senses (using L<balance.pl>). 
 
 =head1 INPUT
 
@@ -93,39 +110,34 @@ where majority sense has frequency = 59.49
 
 The <sense> tags show the frequency of each individual tag.
 
+=head1 AUTHORS
 
-=head1 AUTHOR
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
-Amruta Purandare, Ted Pedersen.
-University of Minnesota, Duluth.
+ Amruta Purandare,  University of Pittsburgh 
+
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002-2005,
-Amruta Purandare, University of Pittsburgh. amruta@cs.pitt.edu
-Ted Pedersen, University of Minnesota, Duluth. tpederse@umn.edu
+Copyright (c) 2002-2008, Amruta Purandare and Ted Pedersen
 
-This program is free software; you can
-redistribute it and/or modify it under the
-terms of the GNU General Public License as
-published by the Free Software Foundation;
-either version 2 of the License, or (at your
+This program is free software; you can redistribute it and/or modify it 
+under the terms of the GNU General Public License as published by the 
+Free Software Foundation; either version 2 of the License, or (at your 
 option) any later version.
 
-This program is distributed in the hope
-that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty
-of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE. See the GNU General Public License
-for more details.
+This program is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General 
+Public License for more details.
 
-You should have received a copy of the GNU
-General Public License along with this program;
-if not, write to
+You should have received a copy of the GNU General Public License along 
+with this program; if not, write to :
 
-The Free Software Foundation, Inc.,
-59 Temple Place - Suite 330,
-Boston, MA  02111-1307, USA.
+ The Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330,
+ Boston, MA  02111-1307, USA.
 
 =cut
 
@@ -284,11 +296,11 @@ OPTIONS:
 #version information
 sub showversion()
 {
-        print "frequency.pl      -       Version 0.11";
-        print "
-Displays sense distribution in a given Senseval-2 file.";
-        print "\nCopyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
-        print "Date of Last Update:     05/07/2003\n";
+#        print "frequency.pl      -       Version 0.11";
+	print '$Id: frequency.pl,v 1.11 2008/03/29 20:52:27 tpederse Exp $';
+        print "\nDisplay sense distribution of a given Senseval-2 file\n";
+#        print "\nCopyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
+#        print "Date of Last Update:     05/07/2003\n";
 }
 
 #############################################################################
