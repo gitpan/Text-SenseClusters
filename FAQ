@@ -1,8 +1,8 @@
 NAME
-    FAQ Frequently Asked Questions about SenseClusters
+    FAQ - Frequently Asked Questions about SenseClusters
 
 SYNOPSIS
-    Answers to some frequently asked questions about SenseClusters.
+    Answers to some frequently asked questions about SenseClusters
 
 DESCRIPTION
   Functionality related questions :
@@ -263,11 +263,14 @@ SEE ALSO
     <http://senseclusters.sourceforge.net/>
 
 AUTHORS
-    Ted Pedersen, University of Minnesota, Duluth tpederse at d.umn.edu
+     Ted Pedersen, University of Minnesota, Duluth
+     tpederse at d.umn.edu
 
-    Amruta Purandare University of Pittsburgh
+     Amruta Purandare
+     University of Pittsburgh
 
-    Anagha Kulkarni Carnegie-Mellon University
+     Anagha Kulkarni
+     Carnegie-Mellon University
 
 COPYRIGHT
     Copyright (c) 2003-2008, Ted Pedersen, Amruta Purandare, Anagha Kulkarni

@@ -1,6 +1,6 @@
 =head1 NAME
 
-README.SC-cgi - [Web Interface] Description of cgi files used in SenseClusters web interface
+README.Web.SC-cgi - [Web Interface] Description of cgi files used in SenseClusters web interface
 
 =head1 Description
 
@@ -11,12 +11,16 @@ web-server.
 eg: For apache web-server's default settings, the files in this directory 
 should be placed under cgi-bin/SC-cgi
 
-=head1 Acknowledgment
+=head1 AUTHORS
 
-This work has been partially supported by a National Science Foundation
-Faculty Early CAREER Development award (#0092784).
+ Anagha Kulkarni, Carnegie-Mellon University
 
-=head1 Copyright
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
+
+=head1 COPYRIGHT
+
+Copyright (c) 2008, Ted Pedersen and Anagha Kulkarni
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 

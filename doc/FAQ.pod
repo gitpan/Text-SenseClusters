@@ -1,10 +1,10 @@
 =head1 NAME
 
-FAQ Frequently Asked Questions about SenseClusters
+FAQ - Frequently Asked Questions about SenseClusters
 
 =head1 SYNOPSIS
 
-Answers to some frequently asked questions about SenseClusters. 
+Answers to some frequently asked questions about SenseClusters 
 
 =head1 DESCRIPTION
 
@@ -285,14 +285,14 @@ L<http://senseclusters.sourceforge.net/>
 
 =head1 AUTHORS
 
-Ted Pedersen, University of Minnesota, Duluth
-tpederse at d.umn.edu
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
-Amruta Purandare
-University of Pittsburgh
+ Amruta Purandare
+ University of Pittsburgh
 
-Anagha Kulkarni
-Carnegie-Mellon University
+ Anagha Kulkarni
+ Carnegie-Mellon University
 
 =head1 COPYRIGHT
 

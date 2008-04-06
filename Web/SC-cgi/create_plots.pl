@@ -6,9 +6,10 @@ create_plots.pl - [Web Interface] Create gnuplot output for Web interface user
 
 =head1 AUTHOR
 
- Anagha Kulkarni, University of Minnesota, Duluth
+ Anagha Kulkarni, Carnegie-Mellon University
 
  Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 

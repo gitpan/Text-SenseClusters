@@ -1,8 +1,8 @@
-=head1 Name
+=head1 NAME
 
 README.Flowcharts - Word and Context Clustering Flowcharts
 
-=head1 Description
+=head1 DESCRIPTION
 
 The /doc/Flowcharts directory contains sequence diagrams for  
 SenseClusters in .ai and .pdf format :
@@ -11,7 +11,8 @@ Using SenseClusters to cluster contexts:
 
 =over 4
 
-=item L<http://search.cpan.org/src/TPEDERSE/Text-SenseClusters-0.98/doc/Flowcharts/SenseClusters-ContextClustering.pdf>
+=item 
+L<http://search.cpan.org/src/TPEDERSE/Text-SenseClusters-1.01/doc/Flowcharts/SenseClusters-ContextClustering.pdf>
 
 =back
 
@@ -19,7 +20,8 @@ Using SenseClusers to cluster words/features :
 
 =over 4
  
-=item L<http://search.cpan.org/src/TPEDERSE/Text-SenseClusters-0.98/doc/Flowcharts/SenseClusters-ContextClustering.pdf>
+=item 
+L<http://search.cpan.org/src/TPEDERSE/Text-SenseClusters-1.01/doc/Flowcharts/SenseClusters-ContextClustering.pdf>
 
 =back
 
@@ -32,12 +34,10 @@ and possible variations in feature, context and clustering type.
 
  Mahesh Joshi, Carnegie-Mellon University
 
-=head1 Acknowledgements
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
-This work has been partially supported by a National Science Foundation
-Faculty Early CAREER Development award (Grant #0092784).
-
-=head1 Copyright
+=head1 COPYRIGHT
 
 Copyright (C) 2005-2008 Ted Pedersen, Anagha Kukarni, Mahesh Joshi
 

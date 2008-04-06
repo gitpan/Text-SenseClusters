@@ -1256,7 +1256,7 @@ Type 'perldoc order2vec.pl' to view detailed documentation of order2vec.\n";
 #version information
 sub showversion()
 {
-	print '$Id: order2vec.pl,v 1.32 2008/03/30 04:40:58 tpederse Exp $';
+	print '$Id: order2vec.pl,v 1.33 2008/03/30 23:31:16 tpederse Exp $';
 	print "\nConvert Senseval-2 contexts into second order feature vectors\n";
  #       print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Mahesh Joshi\n";
  #       print "order2vec.pl      -       Version 0.3\n";

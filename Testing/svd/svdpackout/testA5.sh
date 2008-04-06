@@ -1,4 +1,5 @@
 #!/bin/csh
+
 echo "Test A5 for svdpackout.pl"
 
 cp test-A5.matrix matrix
@@ -6,8 +7,9 @@ cp test-A5.lap2 lap2
 
 echo "Running las2"
 las2
-echo "Running svdpackout.pl --rowonly --format f8.5 lav2 lao2 > test-A5.output"
-svdpackout.pl --rowonly --format f8.5 lav2 lao2 > test-A5.output
+
+echo "Running svdpackout.pl --rowonly --format f9.5 lav2 lao2 > test-A5.output"
+svdpackout.pl --rowonly --format f9.5 lav2 lao2 > test-A5.output
 
 sort test-A5.output > t0
 sort test-A5.reqd > t1

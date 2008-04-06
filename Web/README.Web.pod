@@ -32,23 +32,23 @@ requires read, write and execute permissions.
 Thus make sure that "others" user level has read-write-execute 
 access till the SC-cgi/user_data and SC-htdocs directory. 
 eg: all the directories in this path 
-/usr/local/apache2/cgi-bin/SC-cgi/user_data should have 
+usr/local/apache2/cgi-bin/SC-cgi/user_data should have 
 read-write-execute permissions.
 
 =item 5
 
-Install XML::Simple 
+Install L<XML::Simple>
 
 This module is used by callwrap.pl to verify if a created xml file
 is well-formed.
 
-http://search.cpan.org/dist/XML-Simple/
+L<http://search.cpan.org/dist/XML-Simple/>
 
 If you have supervisor access on your machine, you can install
 this module nearly automatically via:
 
-perl -MCPAN -e shell
-> install XML::Simple 
+ perl -MCPAN -e shell
+ > install XML::Simple 
 
 If you do not have supervisor access, you will need to install this
 module locally as described by the INSTALL document under the main
@@ -64,12 +64,16 @@ please make sure that each of the following utilities is installed on your syste
 
 =back
 
-=head1 Acknowledgment
+=head1 AUTHORS
 
-This work has been partially supported by a National Science Foundation
-Faculty Early CAREER Development award (#0092784).
+ Anagha Kulkarni, Carnegie-Mellon University
 
-=head1 License
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
+
+=head1 COPYRIGHT
+
+Copyright (c) 2008, Ted Pedersen and Anagha Kulkarni
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 

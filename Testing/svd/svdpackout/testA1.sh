@@ -7,11 +7,12 @@ cp test-A1a.lap2 lap2
 
 echo "Running las2"
 las2
+
 echo "Running svdpackout.pl --format i4 lav2 lao2 > test-A1a.output"
 svdpackout.pl --format i4 lav2 lao2 > test-A1a.output
 
 # redirect STDOUT and STDERR, both to var because svdcompare.pl right to STDERR
-perl ./svdcompare.pl test-A1a.output test-A1a.reqd 1 >& var
+perl ./svdcompare.pl test-A1a.output test-A1a.reqd 1.0 >& var
 
 if(-z var) then
 	echo "Test Ok";
@@ -30,10 +31,10 @@ cp test-A1b.lap2 lap2
 
 echo "Running las2"
 las2
-echo "Running svdpackout.pl --format f7.3 lav2 lao2 > test-A1b.output"
-svdpackout.pl --format f7.3 lav2 lao2 > test-A1b.output
+echo "Running svdpackout.pl lav2 lao2 > test-A1b.output"
+svdpackout.pl lav2 lao2 > test-A1b.output
 
-perl ./svdcompare.pl test-A1b.output test-A1b.reqd 0.1 >& var
+perl ./svdcompare.pl test-A1b.output test-A1b.reqd 1.0 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -55,7 +56,7 @@ las2
 echo "Running svdpackout.pl --format i5 lav2 lao2 > test-A1c.output"
 svdpackout.pl --format i5 lav2 lao2 > test-A1c.output
 
-perl ./svdcompare.pl test-A1c.output test-A1c.reqd 1 >& var
+perl ./svdcompare.pl test-A1c.output test-A1c.reqd 1.0 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -74,10 +75,10 @@ cp test-A1d.lap2 lap2
 
 echo "Running las2"
 las2
-echo "Running svdpackout.pl --format f8.3 lav2 lao2 > test-A1d.output"
-svdpackout.pl --format f8.3 lav2 lao2 > test-A1d.output
+echo "Running svdpackout.pl lav2 lao2 > test-A1d.output"
+svdpackout.pl lav2 lao2 > test-A1d.output
 
-perl ./svdcompare.pl test-A1d.output test-A1d.reqd 0.1 >& var
+perl ./svdcompare.pl test-A1d.output test-A1d.reqd 1.0 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -99,7 +100,7 @@ las2
 echo "Running svdpackout.pl --format i4 lav2 lao2 > test-A1e.output"
 svdpackout.pl --format i4 lav2 lao2 > test-A1e.output
 
-perl ./svdcompare.pl test-A1e.output test-A1e.reqd 1 >& var
+perl ./svdcompare.pl test-A1e.output test-A1e.reqd 1.0 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -118,10 +119,10 @@ cp test-A1f.lap2 lap2
 
 echo "Running las2"
 las2
-echo "Running svdpackout.pl --format f7.3 lav2 lao2 > test-A1f.output"
-svdpackout.pl --format f7.3 lav2 lao2 > test-A1f.output
+echo "Running svdpackout.pl lav2 lao2 > test-A1f.output"
+svdpackout.pl lav2 lao2 > test-A1f.output
 
-perl ./svdcompare.pl test-A1f.output test-A1f.reqd 0.1 >& var
+perl ./svdcompare.pl test-A1f.output test-A1f.reqd 1.0 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -143,7 +144,7 @@ las2
 echo "Running svdpackout.pl --format i5 lav2 lao2 > test-A1g.output"
 svdpackout.pl --format i5 lav2 lao2 > test-A1g.output
 
-perl ./svdcompare.pl test-A1g.output test-A1g.reqd 1 >& var
+perl ./svdcompare.pl test-A1g.output test-A1g.reqd 1.0 >& var
 
 if(-z var) then
         echo "Test Ok";
@@ -162,10 +163,10 @@ cp test-A1h.lap2 lap2
 
 echo "Running las2"
 las2
-echo "Running svdpackout.pl --format f7.3 lav2 lao2 > test-A1h.output"
-svdpackout.pl --format f7.3 lav2 lao2 > test-A1h.output
+echo "Running svdpackout.pl lav2 lao2 > test-A1h.output"
+svdpackout.pl lav2 lao2 > test-A1h.output
 
-perl ./svdcompare.pl test-A1h.output test-A1h.reqd 0.1 >& var
+perl ./svdcompare.pl test-A1h.output test-A1h.reqd 1.0 >& var
 
 if(-z var) then
         echo "Test Ok";

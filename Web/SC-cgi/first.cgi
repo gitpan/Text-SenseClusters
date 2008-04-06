@@ -15,7 +15,7 @@ $clustype=$q->param("clustype");
 
 print "<html>
 <head>
-<title>SenseClusters' Demo</title>
+<title>SenseClusters</title>
 </head>
 <body>
 

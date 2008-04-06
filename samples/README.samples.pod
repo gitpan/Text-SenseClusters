@@ -1,4 +1,4 @@
-=head1 Name
+=head1 NAME
 
 README.samples - How to run SenseCluster sample scripts 
 
@@ -23,7 +23,7 @@ The script makedata.sh takes the English lexical sample data found in
 directory within LexSample, which allows for a series of experiments to 
 be carried out on the words individually.
 
-=head1 Description
+=head1 DESCRIPTION
 
 The samples directory allows a user to run various sample experiments 
 with the SenseClusters system. Sample data is provided in the /Data 
@@ -50,7 +50,7 @@ SenseClusters also supports word clustering in native SenseClusters mode
 and feature clustering in LSA mode. These are shown in the script 
 word-wrapper.sh 
 
-=head1 Sample data preparation
+=head1 SAMPLE DATA PREPARATION (makedata.sh)
 
 A number of sample data files are provided in /Data. The files that begin 
 with eng-lex-sample.* are from the Senseval-2 word sense disambiguation  
@@ -84,7 +84,7 @@ Before running any sample, make sure to do the following :
 
 =back
 
-=head1 Contents of /Regexs
+=head1 CONTENTS OF /Regexs
 
 =item token.regex
 
@@ -102,7 +102,7 @@ the stoplist discussed below.
 
 The token and nontoken files are modeled after the same technique in the 
 Ngram Statistics Package. You can find out more about them here :
-L<http://search.cpan.org/dist/Text-NSP/docs/README.pod#5.3._Using_User-Provided_Token_Definitions:> 
+L<Text::NSP> 
 
 =item target.regex
 
@@ -139,12 +139,12 @@ formatted as a series of regular expressions as shown above.
 
 Our stoplists follow the format of those used in the Ngram Statistics 
 Package. More information about that format can be found here :
-L<http://search.cpan.org/dist/Text-NSP/docs/README.pod#5.6._%22Stopping%22_the_Ngrams:>
+L<Text::NSP>.
 
-=head1 Acknowledgments
+=head1 AUTHOR
 
-This work has been partially supported by a National Science Foundation
-Faculty Early CAREER Development award (#0092784).
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 

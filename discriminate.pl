@@ -3476,17 +3476,16 @@ Other Options :
 --version
 	Displays the version information.
 
-Type 'perldoc discriminate.pl' to view the detailed documentation of 
-discriminate.\n";
+Type 'perldoc discriminate.pl' for more detailed information.\n";
 }
 
 #------------------------------------------------------------------------------
 #version information
 sub showversion()
 {
-        print '$Id: discriminate.pl,v 1.104 2008/03/24 04:06:47 tpederse Exp $';
-#        print "Wrapper program for using SenseClusters' Toolkit.\n";
-        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, & Mahesh Joshi\n";
+        print '$Id: discriminate.pl,v 1.105 2008/04/06 17:46:02 tpederse Exp $';
+        print "\nDriver to Run SenseClusters\n";
+##        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, & Mahesh Joshi\n";
 ##        print "Date of Last Update:     07/30/2006\n";
 }
 

@@ -1,4 +1,5 @@
 #!/bin/csh
+
 echo "Test A3a for svdpackout.pl"
 
 cp test-A3a.matrix matrix
@@ -6,6 +7,7 @@ cp test-A3a.lap2 lap2
 
 echo "Running las2"
 las2
+
 echo "Running svdpackout.pl --format i4 lav2 lao2 > test-A3a.output"
 svdpackout.pl --format i4 lav2 lao2 > test-A3a.output
 
@@ -28,8 +30,8 @@ cp test-A3b.lap2 lap2
 
 echo "Running las2"
 las2
-echo "Running svdpackout.pl --format f8.3 lav2 lao2 > test-A3b.output"
-svdpackout.pl --format f8.3 lav2 lao2 > test-A3b.output
+echo "Running svdpackout.pl lav2 lao2 > test-A3b.output"
+svdpackout.pl lav2 lao2 > test-A3b.output
 
 perl ./svdcompare.pl test-A3b.output test-A3b.reqd 0.1 >& var
 
@@ -72,8 +74,8 @@ cp test-A3d.lap2 lap2
 
 echo "Running las2"
 las2
-echo "Running svdpackout.pl --format f7.3 lav2 lao2 > test-A3d.output"
-svdpackout.pl --format f7.3 lav2 lao2 > test-A3d.output
+echo "Running svdpackout.pl lav2 lao2 > test-A3d.output"
+svdpackout.pl lav2 lao2 > test-A3d.output
 
 perl ./svdcompare.pl test-A3d.output test-A3d.reqd 0.1 >& var
 
@@ -116,8 +118,8 @@ cp test-A3f.lap2 lap2
 
 echo "Running las2"
 las2
-echo "Running svdpackout.pl --format f7.3 lav2 lao2 > test-A3f.output"
-svdpackout.pl --format f7.3 lav2 lao2 > test-A3f.output
+echo "Running svdpackout.pl lav2 lao2 > test-A3f.output"
+svdpackout.pl lav2 lao2 > test-A3f.output
 
 perl ./svdcompare.pl test-A3f.output test-A3f.reqd 2 >& var
 

@@ -2,13 +2,21 @@
 
 =head1 NAME
 
-callwrap.pl - [Web Interface] Check user input and create command to run on Web interface
+callwrap.pl - [Web Interface] Check user input to Web interface and create discriminate.pl command to run on Web server
+
+=head1 DESCRIPTION
+
+This program constructs the discriminate.pl command that is run by the 
+Web server. This program requires that you edit config.txt to fit your 
+system. This will point to your PATH, PERL5LIB, and the locations of the 
+cgi-bin, SC-cgi and SC-htdocs directories. 
 
 =head1 AUTHOR
 
  Anagha Kulkarni, University of Minnesota, Duluth
 
  Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
@@ -487,7 +495,7 @@ Please refer to the <a href=\"/SC-htdocs/$usr_dir_name/logfile\">logfile</a> for
           # create $prefix.clusters.html
           open(CLUST,">$prefix.clusters.html") || error($q, "Error while creating $prefix.clusters.html");
           
-          print CLUST $q->start_html("SenseClusters' Demo");
+          print CLUST $q->start_html("SenseClusters");
           print CLUST "<br>";
           
           # flag to check if the file can be displayed as an xml or has to be displayed as a plain text file
@@ -592,7 +600,7 @@ Please refer to the <a href=\"/SC-htdocs/$usr_dir_name/logfile\">logfile</a> for
         # create $prefix.clusters.html
         open(CLUST,">$prefix.clusters.$cs_name.html") || error($q, "Error while creating $prefix.clusters.$cs_name.html");
           
-        print CLUST $q->start_html("SenseClusters' Demo");
+        print CLUST $q->start_html("SenseClusters");
         print CLUST "<br>";
         
         # flag to check if the file can be displayed as an xml or has to be displayed as a plain text file

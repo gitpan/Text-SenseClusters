@@ -1507,14 +1507,14 @@ Web/SC-cgi/fifth.cgi
 Web/SC-cgi/first.cgi
 Web/SC-cgi/fourth.cgi
 Web/SC-cgi/index.cgi
-Web/SC-cgi/README.SC-cgi.pod
+Web/SC-cgi/README.Web.SC-cgi.pod
 Web/SC-cgi/second.cgi
 Web/SC-cgi/stopfile
 Web/SC-cgi/target.regex
 Web/SC-cgi/testXML.pl
 Web/SC-cgi/third.cgi
 Web/SC-cgi/token.regex
-Web/SC-cgi/user_data/README.user_data.pod
+Web/SC-cgi/user_data/README.Web.user_data.pod
 Web/SC-htdocs/feature_clust.html
 Web/SC-htdocs/headless_clust.html
 Web/SC-htdocs/headless_lsa_clust.html
@@ -1522,7 +1522,7 @@ Web/SC-htdocs/headword_clust.html
 Web/SC-htdocs/headword_lsa_clust.html
 Web/SC-htdocs/help.html
 Web/SC-htdocs/lsa.html
-Web/SC-htdocs/README.SC-htdocs.pod
+Web/SC-htdocs/README.Web.SC-htdocs.pod
 Web/SC-htdocs/sc_methodology.html
 Web/SC-htdocs/stopfile
 Web/SC-htdocs/target.regex

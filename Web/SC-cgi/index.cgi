@@ -12,7 +12,7 @@ my $host = $ENV{'HTTP_HOST'};
 
 print "<html>
 <head>
-<title>SenseClusters Web Interface</title>
+<title>SenseClusters</title>
 </head>
 <body>
 

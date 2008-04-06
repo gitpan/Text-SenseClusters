@@ -11,7 +11,7 @@ $q=new CGI;
 my $host = $ENV{'HTTP_HOST'};
 
 print $q->header;
-print $q->start_html("SenseClusters' Demo");
+print $q->start_html("SenseClusters");
 
 $clustype=$q->param("clustype");
 

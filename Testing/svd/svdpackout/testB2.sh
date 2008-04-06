@@ -1,6 +1,7 @@
 #!/bin/csh
 
 echo "Test B2 for svdpackout.pl"
+
 echo "Running svdpackout.pl test-B2.lav2 test-B2.lao2"
 
 svdpackout.pl test-B2.lao2 test-B2.lav2 >& test-B2.output

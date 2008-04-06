@@ -1,8 +1,8 @@
 =head1 Name
 
-README.Testing Explains structure and use of Testing/
+README.Testing - Explains structure and use of /Testing 
 
-=head1 Purpose
+=head1 DESCRIPTION
 
 The purpose of Testing directory is to provide test scripts to test the 
 correct functionality of the programs provided with this distribution. The 
@@ -10,7 +10,7 @@ test scripts can be run to make sure that package is installed properly and
 all required system paths are set. This also helps us to test backward 
 compatibility of programs when programs are upgraded. 
 
-=head1 Organization 
+=head2 Organization 
 
 Testing/ contains various sub directories, each of which tests 
 individual program of this package. 
@@ -18,7 +18,9 @@ individual program of this package.
 Each subdirectory has various .sh test files written in C shell script. 
 All tests that test behavior of a program under normal conditions are 
 named as testA*sh, and all those that test error conditions are named as 
-testB*.sh. Note that in earlier versions the testA*.sh scripts were run 
+testB*.sh. 
+
+Note that in earlier versions the testA*.sh scripts were run 
 by a script called normal-op.sh, and the testB*.sh scripts were run by a 
 script called error-op.sh. However, this required that subtestll.sh and 
 testall.sh (the main driver scripts for the Testing directory) be 
@@ -40,28 +42,23 @@ Tests will show the following:
 
  STATUS : ERROR 
 
-=head1 Authors
+=head1  AUTHORS
 
-Ted Pedersen, University of Minnesota, Duluth
-tpederse at d.umn.edu
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
-Amruta Purandare
-University of Pittsburgh
+ Amruta Purandare
+ University of Pittsburgh
 
-Anagha Kulkarni
-Carnegie-Mellon University
+ Anagha Kulkarni
+ Carnegie-Mellon University
 
-Mahesh Joshi
-Carnegie-Mellon University
-
-=head1 Acknowledgment
-
-This work has been partially supported by a National Science Foundation
-Faculty Early CAREER Development award (#0092784).
+ Mahesh Joshi
+ Carnegie-Mellon University
 
 =head1 Copyright
 
-Copyright 2002-2008, Ted Pedersen, Anagha Kulkarni, Mahesh Joshi, Amruta Purandare
+Copyright (c) 2002-2008, Ted Pedersen, Anagha Kulkarni, Mahesh Joshi, Amruta Purandare
 
 This suite of programs is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as published by

@@ -81,7 +81,7 @@ $q=new CGI;
 my $host = $ENV{'HTTP_HOST'};
 
 print $q->header;
-print $q->start_html("SenseClusters' Demo");
+print $q->start_html("SenseClusters");
 
 # check if error occurred during reading the PATH and PERL5LIB variables
 if($err_msg ne "")

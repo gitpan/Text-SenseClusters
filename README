@@ -135,14 +135,14 @@ PACKAGE ORGANIZATION
         packages like NSP, SVDPACK and CLUTO to run experiments without
         wrappers.
 
+    * Testing/
+        A directory of test cases written as C-shell scripts that will test
+        if the package is installed properly or not.
+
     lib/
         A stub for the Text::Similarity perl module. At present
         SenseClusters is oriented about the command line, so this is mostly
         for the benefit of CPAN indexing.
-
-    * Testing/
-        A directory of test cases written as C-shell scripts that will test
-        if the package is installed properly or not.
 
     t/  A stub directory created by h2xs - future site of test cases rather
         than /Testing
@@ -161,31 +161,40 @@ PACKAGE ORGANIZATION
         and separately without using the wrapper programs are encouraged to
         browse through the Toolkit and Toolkit.pod.
 
-    * Web/
+    Web/
         Contains an easy to use and install web interface for SenseClusters.
 
-CONTACT US
+SEE ALSO
     Please join our mailing lists to participate in the package related
     discussions, to post your questions or bugs and also to suggest
     enhancements to the package functionality.
 
     To subscribe to the user's mailing list, visit :
-    <http://lists.sourceforge.net/lists/listinfo/senseclusters-users>
+
+     L<http://lists.sourceforge.net/lists/listinfo/senseclusters-users>
 
     To subscribe to a low volume news mailing list, visit :
-    <http://lists.sourceforge.net/lists/listinfo/senseclusters-news>
+
+     L<http://lists.sourceforge.net/lists/listinfo/senseclusters-news>
 
     To subscribe to the developer's mailing list, visit :
-    <http://lists.sourceforge.net/lists/listinfo/senseclusters-developers>
 
-SEE ALSO
-    <http://senseclusters.sourceforge.net/>
+     L<http://lists.sourceforge.net/lists/listinfo/senseclusters-developers>
+
+    Visit the SenseClusters project home page :
+
+     L<http://senseclusters.sourceforge.net/>
+
+ACKNOWLEDGMENTS
+    The SenseClusters project has been partially supported by a National
+    Science Foundation Faculty Early CAREER Development award (Grant
+    #0092784). This award funded the work of Amruta Purandare (2002-2004)
+    and Anagha Kulkarni (2004-2006).
 
 AUTHORS
      Ted Pedersen
      University of Minnesota, Duluth
      tpederse at d.umn.edu
-     http://www.d.umn.edu/~tpederse/
 
      Amruta Purandare
      University of Pittsburgh
@@ -195,10 +204,6 @@ AUTHORS
 
      Mahesh Joshi
      Carnegie-Mellon University
-
-ACKNOWLEDGMENTS
-    This work has been partially supported by a National Science Foundation
-    Faculty Early CAREER Development award (Grant #0092784).
 
 COPYRIGHT
     Copyright (c) 2003-2008, Ted Pedersen, Amruta Purandare, Anagha

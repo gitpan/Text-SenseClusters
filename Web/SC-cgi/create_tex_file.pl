@@ -6,9 +6,10 @@ create_tex_file.pl - [Web Interface] Create .tex file output for Web interface u
 
 =head1 AUTHOR
 
- Anagha Kulkarni, University of Minnesota, Duluth
+ Anagha Kulkarni, Carnegie-Mellon University
 
  Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 

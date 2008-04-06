@@ -1,8 +1,8 @@
 =head1 NAME
 
-README.user_data - [Web Interface] Description of user_data directory in Web interface
+README.Web.user_data - [Web Interface] Description of user_data directory in Web interface
 
-=head1 Purpose of the directory
+=head1 DESCRIPTION
 
 For each instance of the web-interface a directory is created under this 
 user_data directory.
@@ -17,12 +17,16 @@ remains here.
 So ideally this directory should act only as a temporary residence for these 
 user directories and should contain only this README.user_data.pod file.
 
-=head1 Acknowledgement
+=head1 AUTHORS
 
-This work has been partially supported by a National Science Foundation
-Faculty Early CAREER Development award (#0092784).
+ Anagha Kulkarni, Carnegie-Mellon University
+
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 Copyright
+
+Copyright (c) 2008, Ted Pedersen and Anagha Kulkarni
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 

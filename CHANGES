@@ -2,6 +2,44 @@ NAME
     CHANGES - Revision history of SenseClusters
 
 DESCRIPTION
+    1.01
+    Released April 6, 2008 (All changes by TDP)
+
+    *   Relaxed test conditions for svdpackout and install.sh to simply
+        check if SVDPACKC is producing results.
+
+    *   Removed diagnostic warning from mat2harbo.pl that gave guidelines on
+        setting las2.h parameters. A version of las2.h is now being provided
+        in /External with fairly large values pre-set, thus making these
+        warnings somewhat less necessary.
+
+    *   Changed the interpretation of the --negatives option below to mean
+        that if this option is on, then any negative values in svdpackout.pl
+        output will be set to zero. By default then, square root values are
+        not taken, and negatives are not smoothed.
+
+    *   Introduced --sqrt option for svdpackout.pl to request that values in
+        S matrix have their square root taken before recombination. This was
+        previously the default, but will not be any longer.
+
+    *   Updated svdpackout.pl to include the following changes, provided by
+        Richard Wicentowski in November 2006 (via senseclusters-developers
+        list)
+
+        * Added feature to output the component U, S, and V' matrices.
+        * Added a new command-line option "--output" with three options:
+
+          * reconstruct - reconstructs the rank-k matrix (default)
+          * rowonly - same as --rowonly
+          * components - output U, S, V' matrices to U.txt, S.txt, VT.txt
+
+        * Added a new command-line option "--negatives": Allows negative
+        values; otherwise all negative values are set to 0 (except in
+        component output).
+        * New options maintain backward compatibility
+        * Updated the documentation.
+        * Passes all tests (testA1-A4,B1-B2)
+
     1.00
     Released March 29, 2008 (All changes by TDP) This is a development
     release, meaning that "regular" users should still use 0.95, our last
@@ -93,15 +131,17 @@ DESCRIPTION
         released on sourceforge or announced since strictly a development
         view.
 
+SEE ALSO
+         L<TODO.pod>
+
 AUTHORS
          Ted Pedersen, University of Minnesota, Duluth
          tpederse at d.umn.edu
 
-        This document last modified by : $Id: CHANGES.pod,v 1.14 2008/03/29
-        23:47:44 tpederse Exp $
+        This document last modified by : $Id: CHANGES.pod,v 1.20 2008/04/06
+        15:44:03 tpederse Exp $
 
-SEE ALSO
-COPYRIGHT AND LICENSE
+COPYRIGHT
         Copyright (c) 2004-2008 Ted Pedersen
 
         Permission is granted to copy, distribute and/or modify this

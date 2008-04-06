@@ -1171,13 +1171,15 @@ if(defined $opt_param)
 		open(PAR,">lap2") || die "Error($0):
 				          Error(code=$!) in opening parameter file <lap2>.\n";	
 
-		# the minimum required amt of memory, based on the data we have...
+# the need for these warnings is somewhat less now, given that
+# we are providing a las2.h file set with fairly large values
 
-		$lmtnw_minimum = (6*$cols)+(4*$iter)+1+($iter**2);
+#		# the minimum required amt of memory, based on the data we have...
+#		$lmtnw_minimum = (6*$cols)+(4*$iter)+1+($iter**2);
 
-		print STDERR "NOTE($0):
-     		The size of your default work area (LMTNW) in las2.h should be 
-     		greater than $lmtnw_minimum (cols=$cols, iter=$iter).\n";
+#		print STDERR "NOTE($0):
+#    		The size of your default work area (LMTNW) in las2.h should be 
+#     		greater than $lmtnw_minimum (cols=$cols, iter=$iter).\n";
 		
 		# the actual value in las2.h for LMTNW is:
 		### 900,300,001 
@@ -1289,7 +1291,7 @@ Type 'perldoc mat2harbo.pl' to view detailed documentation of mat2harbo.\n";
 #version information
 sub showversion()
 {
-	print '$Id: mat2harbo.pl,v 1.33 2008/03/30 04:19:02 tpederse Exp $';
+	print '$Id: mat2harbo.pl,v 1.35 2008/03/31 21:31:13 tpederse Exp $';
 ##      print "mat2harbo.pl      -       Version 0.4";
 	print "\nConvert a matrix in SenseClusters sparse format to Harwell-Boeing sparse format\n";
 ##        print "\nCopyright (c) 2002-2006, Amruta Purandare & Ted Pedersen\n";

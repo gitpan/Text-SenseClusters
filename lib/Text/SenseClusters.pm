@@ -8,7 +8,7 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
@@ -169,7 +169,7 @@ A wrapper program that acts as a driver for many other programs in
 the package. It clusters the given text instances based on their  
 contextual similarities.
 
-=item L<Makefile.PL>
+=item Makefile.PL
 
 Generates a Makefile on running 'perl Makefile.PL'.
 
@@ -183,16 +183,16 @@ together the programs provided in SenseClusters' Toolkit with other
 packages like NSP, SVDPACK and CLUTO to run experiments without 
 wrappers.
 
+=item * Testing/ 
+
+A directory of test cases written as C-shell scripts that will test if the 
+package is installed properly or not. 
+
 =item lib/
 
 A stub for the Text::Similarity perl module. At present SenseClusters is 
 oriented about the command line, so this is mostly for the benefit of 
 CPAN indexing. 
-
-=item * Testing/ 
-
-A directory of test cases written as C-shell scripts that will test if the 
-package is installed properly or not. 
 
 =item t/
 
@@ -216,37 +216,46 @@ who are interested to use SenseClusters' tools individually and separately
 without using the wrapper programs are encouraged to browse through the 
 Toolkit and Toolkit.pod.
 
-=item * Web/
+=item Web/
 
 Contains an easy to use and install web interface for SenseClusters. 
 
 =back
 
-=head1 CONTACT US
+=head1 SEE ALSO
 
 Please join our mailing lists to participate in the package related 
 discussions, to post your questions or bugs and also to suggest 
 enhancements to the package functionality.
 
 To subscribe to the user's mailing list, visit : 
-L<http://lists.sourceforge.net/lists/listinfo/senseclusters-users>
+
+ L<http://lists.sourceforge.net/lists/listinfo/senseclusters-users>
 
 To subscribe to a low volume news mailing list, visit : 
-L<http://lists.sourceforge.net/lists/listinfo/senseclusters-news>
+
+ L<http://lists.sourceforge.net/lists/listinfo/senseclusters-news>
 
 To subscribe to the developer's mailing list, visit : 
-L<http://lists.sourceforge.net/lists/listinfo/senseclusters-developers>
 
-=head1 SEE ALSO
+ L<http://lists.sourceforge.net/lists/listinfo/senseclusters-developers>
 
-L<http://senseclusters.sourceforge.net/>
+Visit the SenseClusters project home page : 
+
+ L<http://senseclusters.sourceforge.net/>
+
+=head1 ACKNOWLEDGMENTS
+
+The SenseClusters project has been partially supported by a National 
+Science Foundation Faculty Early CAREER Development award (Grant 
+#0092784). This award funded the work of Amruta Purandare (2002-2004)
+and Anagha Kulkarni (2004-2006).
 
 =head1 AUTHORS
  
  Ted Pedersen
  University of Minnesota, Duluth
  tpederse at d.umn.edu
- http://www.d.umn.edu/~tpederse/
 
  Amruta Purandare
  University of Pittsburgh
@@ -256,11 +265,6 @@ L<http://senseclusters.sourceforge.net/>
 
  Mahesh Joshi
  Carnegie-Mellon University
-
-=head1 ACKNOWLEDGMENTS
-
-This work has been partially supported by a National Science Foundation 
-Faculty Early CAREER Development award (Grant #0092784). 
 
 =head1 COPYRIGHT
 

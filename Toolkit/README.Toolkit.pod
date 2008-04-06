@@ -1,8 +1,9 @@
 =head1 NAME 
 
-README.Toolkit  Description of SenseClusters Toolkit directory structure 
+README.Toolkit - SenseClusters Toolkit directory structure with links to 
+all program documentation  
 
-=head1 Toolkit Organization 
+=head1 DIRECTORY STRUCTURE
 
 This briefly describes the structure of the Toolkit 
 directory, and gives a brief idea of what each program 
@@ -148,14 +149,14 @@ the clusters. Also creates separate file for each cluster.
 
 =back
 
-=head1 Acknowledgements
+=head1 AUTHOR
 
-This work has been partially supported by a National Science Foundation
-Faculty Early CAREER Development award (#0092784).
+ Ted Pedersen, University of Minnesota, Duluth
+ tpederse at d.umn.edu
 
 =head1 COPYRIGHT
 
-Copyright 2003-2008, Ted Pedersen
+Copyright (c) 2003-2008, Ted Pedersen
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 

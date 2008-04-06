@@ -9,7 +9,7 @@ number of instances for each possible sense.
 
  balance.pl [OPTIONS] DATA N > Balanced-DATA
 
-This is the original distribution of senses in the Senseval-2 data file:
+This is the original distribution of senses in a Senseval-2 data file:
 
  frequency.pl begin-v.test.xml
 
@@ -55,11 +55,11 @@ Output =>
  Distribution={50.00,50.00}
  % of Majority Sense = 50.00
 
-You can find L<begin-v.test.xml> in samples/Data
+You can find begin-v.test.xml in samples/Data
  
 Type C<balance.pl --help> for a quick summary of options
 
-=head1 SYNOPSIS
+=head1 DESCRIPTION
 
 This program will choose exactly the same number of instances for each 
 sense found in a given Senseval-2 file. Unless a value is specified, it 
@@ -438,7 +438,7 @@ N
 #version information
 sub showversion()
 {
-	print '$Id: balance.pl,v 1.11 2008/03/29 20:52:27 tpederse Exp $';
+	print '$Id: balance.pl,v 1.12 2008/03/31 16:19:57 tpederse Exp $';
 #	print "balance.pl	-	Version 0.11\n";
 	print "\nBalance sense distribution in a Senseval-2 file\n";
 #	print "Copyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";

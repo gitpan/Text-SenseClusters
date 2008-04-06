@@ -11,7 +11,7 @@
 #######################################################################
  
 CC    =	gcc -ansi
-CFLAGS=	-O -c 
+CFLAGS= -O -c 
 LIB=	-lm
 TIMER=	timersun.o
 
