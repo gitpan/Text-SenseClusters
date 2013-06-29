@@ -1,5 +1,5 @@
 # Generate a Makefile for SenseClusters. 
-# $Id: Makefile.PL,v 1.73 2008/03/29 15:16:28 tpederse Exp $
+# $Id: Makefile.PL,v 1.74 2013/06/22 19:06:40 tpederse Exp $
 
 # if you want to understand how Makefile.PL works, you should check out
 # http://search.cpan.org/~rgarcia/perl-5.6.2/lib/ExtUtils/MakeMaker.pm
@@ -65,7 +65,7 @@ WriteMakefile(
 
 	'PREREQ_PM'	=> {'Bit::Vector' => '6.3',
 			    'Set::Scalar' => '1.19',
-			    'PDL' => '2.4.1',
+			    'PDL' => '2.006',
 			 ## the following modules were developed in Duluth,
 			 ## home of SenseClusters
 			    'Algorithm::Munkres' => '0.07',

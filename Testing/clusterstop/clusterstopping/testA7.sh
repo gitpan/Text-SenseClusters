@@ -7,9 +7,9 @@ clusterstopping.pl --prefix testA7 --measure all --delta 0 --clmethod rbr --crfu
 
 set OSNAME=`uname -s`;
 if ($OSNAME == "SunOS") then
-    diff -w testA6.output testA6.reqd_Sun > var
+    diff -w testA7.output testA7.reqd_Sun > var
 else if ($OSNAME == "Linux") then
-    diff -w testA6.output testA6.reqd_Linux > var
+    diff -w testA7.output testA7.reqd_Linux > var
 endif
 
 if(-z var) then

@@ -26,6 +26,8 @@ testA2.sh tests clusterlabeling.pl for non-unique labels.
 testA3.sh tests clusterlabeling.pl for unique labels.
 testA4.sh tests clusterlabeling.pl with Pointwise Mutual Information (pmi) as the test of association.
 testA5.sh tests clusterlabeling.pl without stoplist.
+testA6.sh tests clusterlabeling.pl for ngram parameter with trigram feature without stoplist (to see if we are capturing important phrases).
+testA7.sh tests clusterlabeling.pl for ngram parameter with trigram feature with stoplist.
 
 Conclusions:
 ---------------

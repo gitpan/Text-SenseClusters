@@ -15,6 +15,8 @@
 # if they seem to have failed, you will need to do manual
 # installs of SVDPACKC and/or Cluto as described in INSTALL
 
+# this script assumes you are using x86 on Linux for Cluto
+
 if ($#argv != 1) then
        echo "Usage: $0 install_directory"
        echo "specify directory to install svdpackc and cluto"
@@ -22,8 +24,9 @@ if ($#argv != 1) then
        exit
 endif
 
-set CLUTOSITE = 'http://glaros.dtc.umn.edu/gkhome/fetch/sw/cluto/cluto-2.1.1.tar.gz'
-set CLUTODIR = 'cluto-2.1.1'
+set CLUTOSITE = 'http://glaros.dtc.umn.edu/gkhome/fetch/sw/cluto/cluto-2.1.2a.tar.gz'
+set CLUTOTARDIR = 'cluto-2.1.2a'
+set CLUTODIR = 'cluto-2.1.2'
 set OSNAME = `uname -s`
 set INSTALLDIR = $1
 set GCCVERSION = `gcc --version`
@@ -104,14 +107,14 @@ echo " "
 
 wget $CLUTOSITE
 
-echo "...will now unzip $CLUTODIR.tar.gz"
+echo "...will now unzip $CLUTOTARDIR.tar.gz"
 
-gunzip $CLUTODIR.tar.gz
+gunzip $CLUTOTARDIR.tar.gz
 
-echo "...will now untar $CLUTODIR.tar"
+echo "...will now untar $CLUTOTARDIR.tar"
 
-tar -xvf $CLUTODIR.tar
-rm -fr $CLUTODIR.tar
+tar -xvf $CLUTOTARDIR.tar
+rm -fr $CLUTOTARDIR.tar
 
 echo "it looks like you are using $OSNAME ..."
 
@@ -121,8 +124,8 @@ if ($OSNAME == "SunOS") then
 	echo "...installed scluster and vcluster in $INSTALLDIR"
 	echo "...make sure $INSTALLDIR include in your PATH"
 else if ($OSNAME == "Linux") then
-        cp $CLUTODIR/Linux/scluster $INSTALLDIR
-        cp $CLUTODIR/Linux/vcluster $INSTALLDIR
+        cp $CLUTODIR/Linux-x86_64/scluster $INSTALLDIR
+        cp $CLUTODIR/Linux-x86_64/vcluster $INSTALLDIR
 	echo "...installed scluster and vcluster in $INSTALLDIR"
 	echo "...make sure $INSTALLDIR is included in your PATH"
 else echo "...sorry, automatic install of Cluto isn't possible..."

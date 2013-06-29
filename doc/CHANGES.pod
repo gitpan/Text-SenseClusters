@@ -4,6 +4,48 @@ CHANGES - Revision history of SenseClusters
 
 =head1 DESCRIPTION
 
+=over
+
+=item 1.03
+
+Released June 29, 2013 (changes by TDP and AMJ)
+
+=over 
+
+=item 
+
+Modify install.sh to default to Linux-x86_64 for Cluto installation (TDP)
+
+=item
+
+Removed various instances of if (defined %hash) in preprocess/sval2 in favor of if (%hash) - defined %hash is now deprecated - however left that in keyconvert.pl as removed caused syntax issue that should be checked out further (TDP)
+
+=item
+
+Fixed Testing/ALL-TESTS.sh to run all test cases by enumerating in for loop - previous method of using wild card did not seem to be running all cases (TDP)
+
+=item
+
+Fixed some test cases for clusterstopping in Testing - note that we still have Sun test cases included although no Sun platform to test on. Should keep those though as cluto still comes with a Sun version (TDP)
+
+=item
+  
+Added the flag "ngram" for clusterlabeling.pl. It will allow user to provide the value for ngram. The features selection while creating the labels of cluster will be based on this parameter. (AMJ)
+	 
+=item	    	
+
+Added --label_ngram option to discriminate.pl to support new --ngram option in clusterlabeling.pl (AMJ)
+		    	
+=item	    			    	
+
+Added test cases testA6 and testA7 to test changes in clusterlabeling. (AMJ)
+
+=item 
+
+Updated INSTALL to mention depencies on csh and using bash as the system shell (TDP)
+
+=back 
+
 =item 1.01 
 
 Released April 6, 2008 (All changes by TDP)
@@ -211,7 +253,7 @@ on sourceforge or announced since strictly a development view.
 
 =back
 
-=over
+=back
 
 =head1 SEE ALSO
 
@@ -223,11 +265,11 @@ on sourceforge or announced since strictly a development view.
  tpederse at d.umn.edu
 
 This document last modified by :
-$Id: CHANGES.pod,v 1.21 2008/04/06 19:10:17 tpederse Exp $
+$Id: CHANGES.pod,v 1.28 2013/06/29 20:52:32 tpederse Exp $
 
 =head1 COPYRIGHT
 
-Copyright (c) 2004-2008 Ted Pedersen
+Copyright (c) 2004-2013 Ted Pedersen
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2

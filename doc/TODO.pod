@@ -8,9 +8,14 @@ Plans for future versions of SenseClusters
 
 =head1 DESCRIPTION
 
-=head2 Version 1.03 Todo
+=head2 Version 1.05 Todo
 
 =over
+
+=item * Add support for ngram cluster labeling to web interface? 
+
+=item * Resolve Testing error in wordvec.pl, and also deprecated
+use of defined in keyconvert.pl. These are known issues in 1.03.
 
 =item * Consider the use of SVDLIBC rather than SVDPACKC for SVD, 
 however, have been having problems compiling SVDLIBC on 64 bit 

@@ -402,7 +402,7 @@ while(<FREQ>)
 	}
 }
 
-if(!defined %freq_hash)
+if(!%freq_hash)
 {
 	print STDERR "ERROR($0):	
 	No valid <sense id=\"S\" percent=\"P\"\/> entry found in the sense 
@@ -759,7 +759,7 @@ Default Filter
 sub showversion()
 {
 #        print "filter.pl      -       Version 0.11";
-	print '$Id: filter.pl,v 1.12 2008/03/29 20:52:27 tpederse Exp $';
+	print '$Id: filter.pl,v 1.13 2013/06/22 20:31:12 tpederse Exp $';
         print "\nRemove low frequency sense tags from a Senseval-2 file\n";
 #        print "\nCopyright (c) 2002-2005, Amruta Purandare, Ted Pedersen.\n";
 #        print "Date of Last Update:     05/07/2003\n";

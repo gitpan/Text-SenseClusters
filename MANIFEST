@@ -102,6 +102,12 @@ Testing/clusterlabel/clusterlabeling/testA4.sh
 Testing/clusterlabel/clusterlabeling/testA5.clusters_context
 Testing/clusterlabel/clusterlabeling/testA5.reqd
 Testing/clusterlabel/clusterlabeling/testA5.sh
+Testing/clusterlabel/clusterlabeling/testA6.clusters_context
+Testing/clusterlabel/clusterlabeling/testA6.reqd
+Testing/clusterlabel/clusterlabeling/testA6.sh
+Testing/clusterlabel/clusterlabeling/testA7.clusters_context
+Testing/clusterlabel/clusterlabeling/testA7.reqd
+Testing/clusterlabel/clusterlabeling/testA7.sh
 Testing/clusterlabel/clusterlabeling/token.regex
 Testing/clusterstop/clusterstopping/README.txt
 Testing/clusterstop/clusterstopping/testA1.reqd_Linux

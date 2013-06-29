@@ -493,9 +493,16 @@ LABEL_STOPFILE
 
 Default is OR.
 
+=head4 --label_ngram LABEL_NGRAM
+
+Specifies the value of n in 'n-gram' for the feature selection. 
+The supported values for n are 2, 3 and 4.
+
+Default value is 2 i.e. bigram.
+
 =head4 --label_remove LABEL_N
 
-Removes bigrams that occur less than LABEL_N times.
+Removes ngrams that occur less than LABEL_N times.
 
 =head4 --label_window LABEL_W
 
@@ -510,7 +517,7 @@ Specifies the statistical scores of association.
 
 Available tests of association are :
 
-	dice            -       Dice Coefficient
+		dice            -       Dice Coefficient
         ll              -       Log Likelihood Ratio
         odds            -       Odds Ratio
         phi             -       Phi Coefficient
@@ -716,7 +723,7 @@ use Getopt::Long qw(:config no_auto_abbrev);
 
 # command line options
 # catch, abort and print the message for unknown options specified
-eval(GetOptions ("help","version","training=s","token=s","target=s","stop=s","feature=s","remove=i","window=i","scope_train=i","scope_test=i","stat=s","stat_rank=i","stat_score=f","context=s","binary","svd","k=i","rf=i","iter=i","clusters=i","space=s","clmethod=s","crfun=s","sim=s","eval","verbose","showargs","prefix=s","format=s","rank_filter=i","percent_filter=f","label_window=i","label_stop=s","label_remove=i","label_stat=s","label_rank=i","wordclust","split=i","rowmodel=s","colmodel=s","cluststop=s","threspk1=f","delta=i","B=i","typeref=s","percentage=i","seed=i", "lsa")) or die("Please check the above mentioned option(s).\n");
+eval(GetOptions ("help","version","training=s","token=s","target=s","stop=s","feature=s","remove=i","window=i","scope_train=i","scope_test=i","stat=s","stat_rank=i","stat_score=f","context=s","binary","svd","k=i","rf=i","iter=i","clusters=i","space=s","clmethod=s","crfun=s","sim=s","eval","verbose","showargs","prefix=s","format=s","rank_filter=i","percent_filter=f","label_ngram=n","label_window=i","label_stop=s","label_remove=i","label_stat=s","label_rank=i","wordclust","split=i","rowmodel=s","colmodel=s","cluststop=s","threspk1=f","delta=i","B=i","typeref=s","percentage=i","seed=i", "lsa")) or die("Please check the above mentioned option(s).\n");
 
 # show help option
 if(defined $opt_help)
@@ -2688,6 +2695,18 @@ if(!defined $opt_wordclust)
         $cluslabel_str .= " --window $opt_label_window "; 
     }
     
+    if(defined $opt_label_ngram)
+    {    
+    	if($opt_label_ngram < 2 || $opt_label_ngram > 4)
+		{
+        	print STDERR "\n ERROR($0):
+        		Labeling mechanism only support bigrams, trigrams and 4-grams for feature selection..\n";
+        	exit 1;
+		}
+
+        $cluslabel_str .= " --ngram $opt_label_ngram "; 
+    }
+        
     if(defined $opt_label_stop)
     {
         $cluslabel_str .= " --stop $opt_label_stop "; 
@@ -3413,8 +3432,14 @@ Labeling Options :
 	A file of Perl regexes that define the stop list of words to be 
 	excluded from the labels.
 
+--label_ngram LABEL_NGRAM
+	Specifies the value of n in 'n-gram' for the feature selection. 
+	The supported values for n are 2, 3 and 4.
+	
+	Default value is 2.
+
 --label_remove LABEL_N
-	Removes bigrams that occur less than LABEL_N times.
+	Removes ngrams that occur less than LABEL_N times.
 
 --label_window LABEL_W
 	Specifies the window size for bigrams. Pairs of words that co-occur 
@@ -3439,7 +3464,7 @@ Labeling Options :
                 rightFisher     -       Right Fisher's Test
 
 --label_rank LABEL_R
-	Word pairs ranking below LABEL_R when arranged in descending order of 
+	Features ranking below LABEL_R when arranged in descending order of 
 	their test scores are ignored. 
 
 Other Options :
@@ -3483,7 +3508,7 @@ Type 'perldoc discriminate.pl' for more detailed information.\n";
 #version information
 sub showversion()
 {
-        print '$Id: discriminate.pl,v 1.105 2008/04/06 17:46:02 tpederse Exp $';
+        print '$Id: discriminate.pl,v 1.108 2013/06/26 01:09:24 jhaxx030 Exp $';
         print "\nDriver to Run SenseClusters\n";
 ##        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, Anagha Kulkarni, & Mahesh Joshi\n";
 ##        print "Date of Last Update:     07/30/2006\n";

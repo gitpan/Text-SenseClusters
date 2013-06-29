@@ -64,6 +64,13 @@ AND mode ignores word pairs in which both words are stop words.
 
 OR mode ignores word pairs in which either word is a stop word.
 
+=head4 --ngram n
+
+Allows user to set the size of the ngrams that will be used for the 
+labels. Valid values are 2, 3, and 4. 
+
+Default value for this option is 2 (i.e. default feature selection)
+
 =head4 --remove N
 
 Removes bigrams that occur less than N times.
@@ -180,7 +187,7 @@ $0=~s/.*\/(.+)/$1/;
 
 # command line options
 use Getopt::Long;
-GetOptions ("help","version","verbose","stop=s","remove=i","window=i","stat=s","rank=i","prefix=s","token=s","newLine");
+GetOptions ("help","version","verbose","stop=s","remove=i","window=i","stat=s","rank=i","prefix=s","token=s","newLine", "ngram=n");
 
 # show help option
 if(defined $opt_help)
@@ -268,6 +275,27 @@ chomp($cwd);
 
 #*********************************************************************
 
+# String to hold ngram option.
+$ngram_str = "";
+
+# Added: NGRAM option in the program.
+if(defined $opt_ngram){
+    $ngram_str = " --ngram $opt_ngram "; 
+    
+    
+	if($opt_ngram < 2 || $opt_ngram > 4)
+	{
+        print STDERR "\n ERROR($0):
+        Labeling mechanism only supports bigrams, trigrams and 4-grams for feature selection.\n";
+        exit 1;
+	}
+
+}else{
+    $ngram_str .= " --ngram 2 "; 
+}
+
+
+
 # form the parameter string for count.pl
 $count_str = "";
 
@@ -298,6 +326,9 @@ if(defined $opt_newLine)
 
 $count_str .= " --token $token ";
 
+# Adding the new ngram option here.
+$count_str .= $ngram_str;
+
 # form the parameter string for statistic.pl
 $stat_str = "";
 
@@ -318,6 +349,13 @@ else
 {
     $stat_str .= " --rank 10 "; 
 }
+
+# Adding the new ngram option in statistical calculation.
+$stat_str .= $ngram_str;
+
+
+
+
 
 # open the input file in read mode
 open(INP,"$inpfile") || die "Error while opening the $inpfile for reading";
@@ -441,7 +479,27 @@ while($#clusters)
         while(<FP>)
         {
             @tmp = split(/<>/);
-            $label = "$tmp[0] $tmp[1]";
+
+            # Following code will support the ngram features for label.
+            $label = "";
+
+			# If ngram is defined, use that as features.
+            if(defined $opt_ngram){
+	 			$labelSize = $opt_ngram;	           
+		        foreach $tempName (@tmp) {
+		        	if($labelSize > 0){
+					    $label = $label." ".$tempName;
+					    $labelSize--;
+					}else{
+						last;
+					}
+		        }
+			}else{
+			# If ngram is not defined then default feature is bigram.			
+			   	$label = "$tmp[0] $tmp[1]";            
+            }
+          
+            
             $l_aoh[$array_cnt]{$label} = $cId;
         }
 
@@ -661,6 +719,13 @@ their test scores are ignored.
 
 Default value for this option is 10
 
+--ngram n
+
+This parameter allows user to enter the value of ngram for feature selections. 
+The supported values for n are 2, 3 and 4.
+
+Default value for this option is 2 (i.e. default feature selectection is bigram).
+
 --newLine
 
 If turned on, word pair selection process will not span across newlines.
@@ -686,7 +751,7 @@ Type 'perldoc clusterlabeling.pl' to view the detailed documentation.\n";
 #version information
 sub showversion()
 {
-	print '$Id: clusterlabeling.pl,v 1.28 2008/03/30 04:51:26 tpederse Exp $';
+	print '$Id: clusterlabeling.pl,v 1.35 2013/06/27 14:44:48 tpederse Exp $';
 	print "\nLabel discovered clusters based on their content\n";
 #        print "\nCopyright (c) 2004-2006, Ted Pedersen, & Anagha Kulkarni\n";
 #        print "clusterlabeling.pl      -       Version 0.04\n";
@@ -698,7 +763,7 @@ sub showversion()
 
 =head1 COPYRIGHT
 
-Copyright (c) 2004-2008, Anagha Kulkarni and Ted Pedersen
+Copyright (c) 2004-2008,2013 Anagha Kulkarni and Ted Pedersen
 
 This program is free software; you can redistribute it and/or modify it 
 under the terms of the GNU General Public License as published by the Free 

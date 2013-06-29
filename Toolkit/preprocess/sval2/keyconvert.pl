@@ -288,7 +288,7 @@ OPTIONS:
 sub showversion()
 {
 #        print "keyconvert.pl      -       Version 0.03";
-	print '$Id: keyconvert.pl,v 1.10 2008/03/29 20:52:28 tpederse Exp $';
+	print '$Id: keyconvert.pl,v 1.12 2013/06/25 14:58:11 tpederse Exp $';
         print "\nConverts Senseval-2 KEY file into SenseCluster's KEY file\n";
 #        print "\nCopyright (C) 2002, Ted Pedersen and Amruta Purandare.\n";
 #        print "Date of Last Update:     03/17/2003\n";

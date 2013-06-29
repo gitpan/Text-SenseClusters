@@ -221,7 +221,7 @@ while(<IN>)
         }
 }
 
-if(defined %target_form)
+if(%target_form)
 {
         $targetfile="target.regex";
         if(-e $targetfile)
@@ -316,7 +316,7 @@ Type 'perldoc maketarget.pl' to view detailed documentation of maketarget.\n";
 #version information
 sub showversion()
 {
-        print '$Id: maketarget.pl,v 1.17 2008/03/29 20:52:30 tpederse Exp $';
+        print '$Id: maketarget.pl,v 1.18 2013/06/22 20:28:29 tpederse Exp $';
 ##        print "\nCopyright (c) 2002-2006, Ted Pedersen, Amruta Purandare, & Anagha Kulkarni\n";
 ##        print "maketarget.pl      -       Version 0.01\n";
         print "\nCreate a Perl regex for a target word in a Senseval-2 file\n";

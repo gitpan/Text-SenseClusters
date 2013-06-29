@@ -33,13 +33,26 @@ your preferred directory here.
 SenseClusters consists of the core SenseClusters programs 
 (primarily .pl programs found in this distribution), Perl modules 
 available from CPAN, and two external programs (SVDPACKC and Cluto). 
-SenseClusters requires Perl 5.6.0 or better.
+SenseClusters requires Perl 5.6.0 or better. 
 
 SVDPACKC is distributed as C source code, and Cluto is distributed in 
 binary form for Linux and Solaris. This dependence on CLUTO limits 
 SenseClusters to running on Linux or Solaris. There is a Windows 
 version of CLUTO available, but we have not tested how well this 
-integrates into SenseClusters.
+integrates into SenseClusters. 
+
+Please note that SenseClusters uses the csh - this is an artifact of 
+it originally being developed on Solaris/Sun systems (which used csh
+as a default). Many Linux distributions do not include csh, so you
+will want to install that if you don't already have it. On Ubuntu and
+Debian systems, this can be done simply via :
+
+ sudo apt-get install csh
+
+Also note that the default behavior of Ubuntu distributions to use 
+dash as the system shell causes some problems, so you may want to reset
+this to use bash. See L<https://wiki.ubuntu.com/DashAsBinSh> for more
+details. 
 
 =head1 AUTOMATIC INSTALLATION
 
@@ -541,7 +554,7 @@ senseclusters-developers is for implementation related questions:
  Amruta Purandare, University of Pittsburgh
 
 This document last modified by :
-$Id: INSTALL.pod,v 1.15 2008/03/31 16:19:57 tpederse Exp $
+$Id: INSTALL.pod,v 1.16 2013/06/27 14:34:06 tpederse Exp $
 
 =head1 COPYRIGHT
 
